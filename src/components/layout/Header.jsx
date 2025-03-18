@@ -13,6 +13,7 @@ const Header = () => {
   const [activeGallery, setActiveGallery] = useState(null);
   const [activeDogs, setActiveDogs] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [pageTitle, setPageTitle] = useState("Vår Kennel");
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -77,6 +78,21 @@ const Header = () => {
       })
       .catch(console.error);
   }, []);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "siteInfo"][0]{
+          pageTitle
+        }`
+      )
+      .then((data) => {
+        if (data && data.pageTitle) {
+          setPageTitle(data.pageTitle);
+        }
+      })
+      .catch(console.error);
+  }, []);
+  
 
   useEffect(() => {
     const path = location.pathname;
@@ -167,7 +183,7 @@ const Header = () => {
           className="hero-image"
         />
         <HeroText className="col-12 m-auto text-center d-none d-lg-block py-2">
-          <a href="/"> Kennel Shirkus</a>
+          <a href="/"> {pageTitle} </a>
         </HeroText>
       </HeaderContainer>
 
@@ -176,7 +192,7 @@ const Header = () => {
           <Container className="d-flex justify-content-between align-items-center col-lg-10">
             <div className="mobile-header d-lg-none d-flex flex-row-reverse align-items-center justify-content-center w-100">
               <HeroText className="m-0 justify-content-center m-auto">
-                Kennel Shirkus
+              {pageTitle} 
               </HeroText>
               <Navbar.Toggle
                 aria-controls="navbar-nav"
