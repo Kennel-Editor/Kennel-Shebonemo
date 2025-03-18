@@ -5,10 +5,9 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'Shirkus CMS',
-
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID,
-  dataset: process.env.SANITY_STUDIO_DATASET,
+  title: 'Kennel-Shebonemo',
+  projectId: 'l6081rg7', // Sett inn prosjekt-ID-en din her
+  dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
 
