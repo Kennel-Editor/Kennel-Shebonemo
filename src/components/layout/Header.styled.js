@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
     height: 100%;
     object-fit: cover;
     object-position: center;
-    object-position: 50% 50%;
+    object-position: 50% 80%;
   }
 `;
 

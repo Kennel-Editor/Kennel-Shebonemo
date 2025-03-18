@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { HeaderContainer, HeroText, NavContainer } from "./Header.styled";
-import backgroundImage from "../../assets/images/ShirkusHeader2.jpg";
+import backgroundImage from "../../assets/images/Header.jpg";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import sanityClient from "../../sanityClient";
@@ -92,7 +92,6 @@ const Header = () => {
       })
       .catch(console.error);
   }, []);
-  
 
   useEffect(() => {
     const path = location.pathname;
@@ -192,7 +191,7 @@ const Header = () => {
           <Container className="d-flex justify-content-between align-items-center col-lg-10">
             <div className="mobile-header d-lg-none d-flex flex-row-reverse align-items-center justify-content-center w-100">
               <HeroText className="m-0 justify-content-center m-auto">
-              {pageTitle} 
+                {pageTitle}
               </HeroText>
               <Navbar.Toggle
                 aria-controls="navbar-nav"
