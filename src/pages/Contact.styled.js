@@ -31,6 +31,6 @@ export const ContactInfoContainer = styled.div`
 export const ContactInfo = styled.p`
   font-family: ${(props) => props.theme.fonts.body};
   font-size: 1.2rem;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.text};
   list-style: none;
 `;

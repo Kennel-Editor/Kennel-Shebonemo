@@ -37,7 +37,7 @@ const Carousel = ({ images, currentIndex, setCurrentImageIndex }) => {
         <CarouselNav onClick={nextImage}>❯</CarouselNav>
       </CarouselImageContainer>
 
-      <CarouselCaptionContainer>
+      <CarouselCaptionContainer className="col-lg-10 col-xl-8 col-xxl-6 mx-auto">
         <p className="col-lg-8 m-auto">{caption}</p>
       </CarouselCaptionContainer>
     </CarouselContainer>

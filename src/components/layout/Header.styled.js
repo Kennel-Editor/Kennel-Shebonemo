@@ -22,7 +22,7 @@ export const HeroText = styled.h1`
   bottom: 0%;
   font-size: 2.6rem;
   background: ${(props) => props.theme.colors.accentTransparent};
-
+  font-family: ${(props) => props.theme.fonts.accent};
   color: ${(props) => props.theme.colors.white};
   text-shadow: ${(props) => props.theme.shadows.textShadow};
   @media (max-width: 992px) {

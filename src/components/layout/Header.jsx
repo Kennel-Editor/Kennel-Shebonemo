@@ -14,11 +14,17 @@ const Header = () => {
   const [activeDogs, setActiveDogs] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [pageTitle, setPageTitle] = useState("Vår Kennel");
+  const dogTypes = activeDogs ? activeDogs.map((dog) => dog.dogType) : [];
+  const hasBreeding = dogTypes.includes("breeding");
+  const hasDeceased = dogTypes.includes("deceased");
+  const hasCurrent = dogTypes.includes("current");
+
+  const showDogDropdown = hasCurrent && (hasBreeding || hasDeceased);
+  const redirectToDogSection = !hasCurrent && !hasBreeding && !hasDeceased;
 
   const location = useLocation();
   const navigate = useNavigate();
   const navbarRef = useRef(null);
-
   useEffect(() => {
     sanityClient
       .fetch(
@@ -223,7 +229,7 @@ const Header = () => {
                   </NavLink>
                 )}
 
-                {activeDogs && activeDogs.length > 0 && (
+                {!redirectToDogSection && showDogDropdown && (
                   <div className="nav-item dropdown">
                     <NavLink
                       to="#"
@@ -260,6 +266,16 @@ const Header = () => {
                       </div>
                     )}
                   </div>
+                )}
+
+                {redirectToDogSection && (
+                  <NavLink
+                    to="/dogs"
+                    onClick={() => handleLinkClick("våre-hunder")}
+                    className="nav-link våre-hunder"
+                  >
+                    Våre hunder
+                  </NavLink>
                 )}
 
                 <NavLink

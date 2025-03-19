@@ -57,7 +57,6 @@ export const PositionIndicator = styled.div`
 `;
 
 export const CarouselCaptionContainer = styled.div`
-  width: 100%;
   background-color: ${(props) => props.theme.colors.accent};
   color: ${(props) => props.theme.colors.text};
   padding: 10px;
