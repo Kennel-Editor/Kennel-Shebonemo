@@ -1,13 +1,12 @@
 // styles/theme.js
-import background1 from '../assets/images/background-beige.jpg';
-import background2 from '../assets/images/background-pink.jpg';
-import background3 from '../assets/images/background-pastelle.jpg';
-import background4 from '../assets/images/background-pink&purple.jpg';
-import background5 from '../assets/images/background-blue.jpg';
-import background6 from '../assets/images/background-dogs-pink.jpeg';
-import background7 from '../assets/images/background-red.jpg';
-import background8 from '../assets/images/background-orange.jpg';
-
+import HeroImage1 from "../assets/images/background-beige.jpg";
+import HeroImage2 from "../assets/images/background-pink.jpg";
+import HeroImage3 from "../assets/images/background-pastelle.jpg";
+import HeroImage4 from "../assets/images/background-pink&purple.jpg";
+import HeroImage5 from "../assets/images/background-blue.jpg";
+import HeroImage6 from "../assets/images/background-dogs-pink.jpeg";
+import HeroImage7 from "../assets/images/background-red.jpg";
+import HeroImage8 from "../assets/images/background-orange.jpg";
 
 export const theme = {
   version1: {
@@ -31,7 +30,7 @@ export const theme = {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: background1,
+    heroImage: HeroImage1,
   },
 
   version2: {
@@ -55,7 +54,7 @@ export const theme = {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: background2,
+    heroImage: HeroImage2,
   },
 
   version3: {
@@ -79,7 +78,7 @@ export const theme = {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: background3,
+    heroImage: HeroImage3,
   },
 
   version4: {
@@ -103,7 +102,7 @@ export const theme = {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: background4,
+    heroImage: HeroImage4,
   },
 
   version5: {
@@ -127,7 +126,7 @@ export const theme = {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: background5,
+    heroImage: HeroImage5,
   },
 
   version6: {
@@ -151,7 +150,7 @@ export const theme = {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: background6,
+    heroImage: HeroImage6,
   },
 
   version7: {
@@ -175,7 +174,7 @@ export const theme = {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: background7,
+    heroImage: HeroImage7,
   },
 
   version8: {
@@ -199,6 +198,6 @@ export const theme = {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: background8,
+    heroImage: HeroImage8,
   },
 };
