@@ -25,7 +25,15 @@ const App = () => {
       <GlobalStyles />
       <Router>
         <Routes>
-          <Route path="/" element={<Layout setCurrentTheme={setCurrentTheme} />}>
+          <Route
+            path="/"
+            element={
+              <Layout
+                currentTheme={currentTheme}
+                setCurrentTheme={setCurrentTheme}
+              />
+            }
+          >
             <Route index element={<Home />} />
             <Route path="dogs" element={<OurDogs />} />
             <Route path="dogs/:id" element={<DogDetail />} />

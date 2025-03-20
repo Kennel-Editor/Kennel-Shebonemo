@@ -1,4 +1,3 @@
-// src/components/Layout.jsx
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
@@ -6,35 +5,44 @@ import Footer from "./Footer";
 import { LayoutContainer } from "./Layout.styled";
 import { theme } from "../../styles/theme";
 
-const Layout = ({ setCurrentTheme }) => {
+const Layout = ({ currentTheme, setCurrentTheme }) => {  // Endre til props
   return (
-    <LayoutContainer>
-      <Header />
-      <div style={{ textAlign: "center", margin: "20px 0" }}>
+    <LayoutContainer
+      style={{
+        fontFamily: currentTheme?.fonts?.body || "sans-serif",  // Håndter tilfelle der fonts ikke er definert
+        backgroundColor: currentTheme?.colors?.background || "#FFF", // Håndter tilfelle der bakgrunnsfarge ikke er definert
+        color: currentTheme?.colors?.text || "#333",  // Håndter tilfelle der tekstfarge ikke er definert
+      }}
+    >
+      <Header currentTheme={currentTheme} />
+      
+      <div>
         <h3>Velg Tema</h3>
-        {Object.entries(theme).map(([key, theme]) => (
+        {Object.entries(theme).map(([key, themeVersion]) => (
           <button
             key={key}
             style={{
               margin: "5px",
               padding: "10px",
               borderRadius: "8px",
-              backgroundColor: theme.colors.accent,
+              backgroundColor: themeVersion.colors.accent,
               color: "#fff",
-              border: "none", 
+              border: "none",
               cursor: "pointer",
-              fontFamily: theme.fonts.body,
+              fontFamily: themeVersion.fonts.body,
             }}
-            onClick={() => setCurrentTheme(theme)}
+            onClick={() => setCurrentTheme(themeVersion)} // Oppdaterer tema
           >
-            {theme.name}
+            {themeVersion.name}
           </button>
         ))}
       </div>
+      
       <main>
-        <Outlet />
+        <Outlet />  {/* Bruk temaet i innholdet */}
       </main>
-      <Footer />
+
+      <Footer currentTheme={currentTheme} />
     </LayoutContainer>
   );
 };
