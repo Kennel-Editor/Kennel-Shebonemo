@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Merriweather:wght@400;700&family=Great+Vibes&family=Poppins:wght@400;700&family=Lora:wght@400;700&family=Dancing+Script&family=Nunito:wght@400;700&family=Bitter:wght@400;700&family=Pacifico&family=Raleway:wght@400;600&family=Playfair+Display:wght@400;700&family=Pinyon+Script&family=Muli&family=Roboto+Slab:wght@400;700&family=Alex+Brush&family=Lato:wght@400;700&family=EB+Garamond&family=Parisienne&family=Birthstone&family=Estonia&family=Island+Moments&family=Cabin:wght@400;700&family=Quicksand:wght@400;700&family=Oswald:wght@400;700&family=Vollkorn:wght@400;700&family=Marck+Script&family=Lobster&family=Herr+Von+Muellerhoff&family=Euphoria+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Allura&display:wght@400;600&family=Merriweather:wght@400;700&family=Great+Vibes&family=Poppins:wght@400;700&family=Lora:wght@400;700&family=Dancing+Script&family=Nunito:wght@400;700&family=Bitter:wght@400;700&family=Pacifico&family=Raleway:wght@400;600&family=Playfair+Display:wght@400;700&family=Pinyon+Script&family=Muli&family=Roboto+Slab:wght@400;700&family=Alex+Brush&family=Lato:wght@400;700&family=EB+Garamond&family=Parisienne&family=Birthstone&family=Estonia&family=Island+Moments&family=Cabin:wght@400;700&family=Quicksand:wght@400;700&family=Oswald:wght@400;700&family=Vollkorn:wght@400;700&family=Marck+Script&family=Herr+Von+Muellerhoff&family=Euphoria+Script&family=Bad+Script&display=swap');
     
 root:
   body {

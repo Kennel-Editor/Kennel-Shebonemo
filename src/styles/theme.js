@@ -17,7 +17,7 @@ export const theme = {
     name: "Elegant Lilla",
     colors: {
       primary: "#4B2D6A",
-      secondary: "#F4E1D2",
+      secondary: "#9E6C8C",
       accent: "#D6A7E3",
       accentTransparent: "rgba(214, 167, 227, 0.8)",
       white: "#FFFFFF",
@@ -41,7 +41,7 @@ export const theme = {
     name: "Romantisk Rose",
     colors: {
       primary: "#8B3A62",
-      secondary: "#FBE3E8",
+      secondary: "#D08A9C",
       accent: "#D881A4",
       accentTransparent: "rgba(216, 129, 164, 0.8)",
       white: "#FFFFFF",
@@ -65,7 +65,7 @@ export const theme = {
     name: "Myk Beige",
     colors: {
       primary: "#705D56",
-      secondary: "#F5E6CC",
+      secondary: "#9E8B69",
       accent: "#A68B6E",
       accentTransparent: "rgba(166, 139, 110, 0.8)",
       white: "#FFFFFF",
@@ -89,7 +89,7 @@ export const theme = {
     name: "Støvet Lavendel",
     colors: {
       primary: "#725A7A",
-      secondary: "#ECE2F0",
+      secondary: "#9F7D94",
       accent: "#B088A3",
       accentTransparent: "rgba(176, 136, 163, 0.8)",
       white: "#FFFFFF",
@@ -113,7 +113,7 @@ export const theme = {
     name: "Himmelblå Drøm",
     colors: {
       primary: "#3D5A80",
-      secondary: "#E0FBFC",
+      secondary: "#7A9BB8",
       accent: "#98C1D9",
       accentTransparent: "rgba(152, 193, 217, 0.8)",
       white: "#FFFFFF",
@@ -137,7 +137,7 @@ export const theme = {
     name: "Vintage Blomster",
     colors: {
       primary: "#6C4F77",
-      secondary: "#FAE3E3",
+      secondary: "#A8849F",
       accent: "#D291BC",
       accentTransparent: "rgba(210, 145, 188, 0.8)",
       white: "#FFFFFF",
@@ -161,7 +161,7 @@ export const theme = {
     name: "Rød Luksus",
     colors: {
       primary: "#8B0000",
-      secondary: "#FFCDD2",
+      secondary: "#E26D6D",
       accent: "#D32F2F",
       accentTransparent: "rgba(211, 47, 47, 0.8)",
       white: "#FFFFFF",
@@ -185,7 +185,7 @@ export const theme = {
     name: "Høstvarme",
     colors: {
       primary: "#D2691E",
-      secondary: "#FFE5B4",
+      secondary: "#D18C4C",
       accent: "#FF8C00",
       accentTransparent: "rgba(255, 140, 0, 0.8)",
       white: "#FFFFFF",
@@ -209,7 +209,7 @@ export const theme = {
     name: "Sommersol",
     colors: {
       primary: "#F7C59F",
-      secondary: "#F0D9C8",
+      secondary: "#b06e48",
       accent: "#FF9F80",
       accentTransparent: "rgba(255, 159, 128, 0.8)",
       white: "#FFFFFF",
@@ -220,7 +220,7 @@ export const theme = {
     fonts: {
       body: "Quicksand, sans-serif",
       heading: "Raleway, sans-serif",
-      accent: "'Lobster', cursive",
+      accent: "'Bad Script', cursive",
     },
     shadows: {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
@@ -233,7 +233,7 @@ export const theme = {
     name: "Nattens Eleganse",
     colors: {
       primary: "#2C3E50",
-      secondary: "#34495E",
+      secondary: "#7B8D93 ",
       accent: "#BDC3C7",
       accentTransparent: "rgba(189, 195, 199, 0.8)",
       white: "#FFFFFF",
@@ -244,7 +244,7 @@ export const theme = {
     fonts: {
       body: "Lora, serif",
       heading: "Playfair Display, serif",
-      accent: "'Herr Von Muellerhoff', cursive",
+      accent: "'Allura', cursive",
     },
     shadows: {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
@@ -257,7 +257,7 @@ export const theme = {
     name: "Tropisk Solnedgang",
     colors: {
       primary: "#FF6F61",
-      secondary: "#F9D56E",
+      secondary: "#c78f7d",
       accent: "#FF9F80",
       accentTransparent: "rgba(255, 159, 128, 0.8)",
       white: "#FFFFFF",
@@ -281,7 +281,7 @@ export const theme = {
     name: "Mørk Skog",
     colors: {
       primary: "#3E5C5B",
-      secondary: "#B1D8D1",
+      secondary: "#A8C8B3",
       accent: "#A1A59E",
       accentTransparent: "rgba(161, 165, 158, 0.8)",
       white: "#FFFFFF",

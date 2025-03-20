@@ -168,7 +168,7 @@ const Header = ({ currentTheme }) => {
           alt="Hero Image"
           className="hero-image"
         />
-        <HeroText className="col-12 m-auto text-center d-none d-lg-block py-1">
+        <HeroText className="col-12 m-auto text-center d-none d-lg-block py-2">
           <a href="/"> {pageTitle} </a>
         </HeroText>
       </HeaderContainer>

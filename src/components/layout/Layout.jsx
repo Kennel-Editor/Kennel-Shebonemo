@@ -16,20 +16,21 @@ const Layout = ({ currentTheme, setCurrentTheme }) => {  // Endre til props
     >
       <Header currentTheme={currentTheme} />
       
-      <div>
-        <h3>Velg Tema</h3>
+      <div className="col-10 m-auto border">
+        <h3 className="text-center">Velg Tema</h3>
+        <p className="text-center">bruk litt tid på å finne farger og skrifttyper du liker. Kombiner gjerne fra forskjellige temaer <br/> kan også velge andre skrifttyper om du ønsker!</p>
         {Object.entries(theme).map(([key, themeVersion]) => (
           <button
             key={key}
             style={{
               margin: "5px",
-              padding: "10px",
+              padding: "5px",
               borderRadius: "8px",
               backgroundColor: themeVersion.colors.accent,
               color: "#fff",
               border: "none",
               cursor: "pointer",
-              fontFamily: themeVersion.fonts.body,
+              fontFamily: themeVersion.fonts.heading,
             }}
             onClick={() => setCurrentTheme(themeVersion)} // Oppdaterer tema
           >

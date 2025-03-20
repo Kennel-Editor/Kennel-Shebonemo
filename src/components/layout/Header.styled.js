@@ -7,6 +7,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   .hero-image {
     width: 100%;
@@ -14,6 +15,9 @@ export const HeaderContainer = styled.header`
     object-fit: cover;
     object-position: center;
     object-position: 50% 50%;
+  }
+  @media (min-width: 992px) {
+    height: 40vh;
   }
 `;
 
@@ -62,7 +66,6 @@ export const NavContainer = styled.nav`
   .dropdown-menu {
     background: ${(props) => props.theme.colors.accent};
     padding: 10px 0px;
-
 
     .nav-link.no-active {
       border-bottom: none;
