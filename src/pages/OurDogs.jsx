@@ -105,5 +105,5 @@ const OurDogs = () => {
     </DogsContainer>
   );
 };
-
+ 
 export default OurDogs;

@@ -12,19 +12,17 @@ const Header = () => {
   const [activeLitter, setActiveLitter] = useState(null);
   const [activeGallery, setActiveGallery] = useState(null);
   const [activeDogs, setActiveDogs] = useState(null);
+  const [breedingDogs, setBreedingDogs] = useState([]);
+  const [deceasedDogs, setDeceasedDogs] = useState([]);
+
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [pageTitle, setPageTitle] = useState("Vår Kennel");
-  const dogTypes = activeDogs ? activeDogs.map((dog) => dog.dogType) : [];
-  const hasBreeding = dogTypes.includes("breeding");
-  const hasDeceased = dogTypes.includes("deceased");
-  const hasCurrent = dogTypes.includes("current");
-
-  const showDogDropdown = hasCurrent && (hasBreeding || hasDeceased);
-  const redirectToDogSection = !hasCurrent && !hasBreeding && !hasDeceased;
 
   const location = useLocation();
   const navigate = useNavigate();
   const navbarRef = useRef(null);
+  const dropdownRef = useRef(null);
+
   useEffect(() => {
     sanityClient
       .fetch(
@@ -72,18 +70,25 @@ const Header = () => {
     sanityClient
       .fetch(
         `*[_type == "dog"]{
-          _id,
-          name,
-          isBreedingDog
-        }`
+        _id,
+        name,
+        dogType
+      }`
       )
       .then((data) => {
         if (data.length > 0) {
           setActiveDogs(data);
+
+          const breeding = data.filter((dog) => dog.dogType === "breeding");
+          const deceased = data.filter((dog) => dog.dogType === "deceased");
+
+          setBreedingDogs(breeding);
+          setDeceasedDogs(deceased);
         }
       })
       .catch(console.error);
   }, []);
+
   useEffect(() => {
     sanityClient
       .fetch(
@@ -101,23 +106,14 @@ const Header = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === "/") {
-      setActiveLink("hjem");
-    } else if (path === "/litters") {
-      setActiveLink("valpekull");
-    } else if (path.startsWith("/litters/")) {
-      setActiveLink("no-active");
-    } else if (path === "/about") {
-      setActiveLink("om-oss");
-    } else if (path === "/contact") {
-      setActiveLink("kontakt");
-    } else if (path === "/dogs") {
-      setActiveLink("våre-hunder");
-    } else if (path === "/gallery") {
-      setActiveLink("galleri");
-    } else {
-      setActiveLink("");
-    }
+    if (path === "/") setActiveLink("hjem");
+    else if (path === "/litters") setActiveLink("valpekull");
+    else if (path.startsWith("/litters/")) setActiveLink("no-active");
+    else if (path === "/about") setActiveLink("om-oss");
+    else if (path === "/contact") setActiveLink("kontakt");
+    else if (path === "/dogs") setActiveLink("våre-hunder");
+    else if (path === "/gallery") setActiveLink("galleri");
+    else setActiveLink("");
   }, [location]);
 
   const handleLinkClick = (linkName) => {
@@ -142,41 +138,25 @@ const Header = () => {
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
-        const isOnDogsPage = location.pathname === "/dogs";
-        const isDesktop = window.innerWidth >= 992;
-        let yOffset;
-
-        if (isOnDogsPage) {
-          yOffset = isDesktop ? -10 : -300;
-        } else {
-          yOffset = isDesktop ? -20 : -100;
-        }
-
-        const y =
-          element.getBoundingClientRect().top + window.scrollY + yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
+        window.scrollTo({ top: element.offsetTop - 20, behavior: "smooth" });
       }
     }, 100);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-        setIsNavOpen(false);
-      }
       if (
+        navbarRef.current &&
         !navbarRef.current.contains(event.target) &&
-        !event.target.closest(".dropdown-menu")
+        !dropdownRef.current?.contains(event.target)
       ) {
+        setIsNavOpen(false);
         setIsDropdownOpen(false);
       }
     };
 
     document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   return (
@@ -195,15 +175,10 @@ const Header = () => {
       <NavContainer ref={navbarRef}>
         <Navbar expand="lg" className="navbar">
           <Container className="d-flex justify-content-between align-items-center col-lg-10">
-            <div className="mobile-header d-lg-none d-flex flex-row-reverse align-items-center justify-content-center w-100">
-              <HeroText className="m-0 justify-content-center m-auto">
-                {pageTitle}
-              </HeroText>
-              <Navbar.Toggle
-                aria-controls="navbar-nav"
-                onClick={() => setIsNavOpen(!isNavOpen)}
-              />
-            </div>
+            <Navbar.Toggle
+              aria-controls="navbar-nav"
+              onClick={() => setIsNavOpen(!isNavOpen)}
+            />
 
             <Navbar.Collapse id="navbar-nav" in={isNavOpen}>
               <Nav className="w-100 d-lg-flex justify-content-between fs-5 mb-lg-1">
@@ -229,19 +204,23 @@ const Header = () => {
                   </NavLink>
                 )}
 
-                {!redirectToDogSection && showDogDropdown && (
-                  <div className="nav-item dropdown">
+                {activeDogs && (
+                  <div className="nav-item dropdown" ref={dropdownRef}>
                     <NavLink
                       to="#"
                       className={`nav-link dropdown-toggle ${
                         location.pathname === "/dogs" ? "active" : "no-active"
                       }`}
-                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsDropdownOpen(!isDropdownOpen);
+                      }}
                     >
                       Våre hunder
                     </NavLink>
+
                     {isDropdownOpen && (
-                      <div className="dropdown-menu">
+                      <div className="dropdown-menu show">
                         <NavLink
                           to="/dogs#current"
                           onClick={() => handleDropdownClick("current")}
@@ -249,33 +228,27 @@ const Header = () => {
                         >
                           Alle hundene
                         </NavLink>
-                        <NavLink
-                          to="/dogs#breeding"
-                          onClick={() => handleDropdownClick("breeding")}
-                          className="nav-link no-active"
-                        >
-                          Avlshunder
-                        </NavLink>
-                        <NavLink
-                          to="/dogs#deceased"
-                          onClick={() => handleDropdownClick("deceased")}
-                          className="nav-link no-active"
-                        >
-                          Tidligere hunder
-                        </NavLink>
+                        {breedingDogs.length > 0 && (
+                          <NavLink
+                            to="/dogs#breeding"
+                            onClick={() => handleDropdownClick("breeding")}
+                            className="nav-link no-active"
+                          >
+                            Avlshunder
+                          </NavLink>
+                        )}
+                        {deceasedDogs.length > 0 && (
+                          <NavLink
+                            to="/dogs#deceased"
+                            onClick={() => handleDropdownClick("deceased")}
+                            className="nav-link no-active"
+                          >
+                            Tidligere hunder
+                          </NavLink>
+                        )}
                       </div>
                     )}
                   </div>
-                )}
-
-                {redirectToDogSection && (
-                  <NavLink
-                    to="/dogs"
-                    onClick={() => handleLinkClick("våre-hunder")}
-                    className="nav-link våre-hunder"
-                  >
-                    Våre hunder
-                  </NavLink>
                 )}
 
                 <NavLink
@@ -287,7 +260,6 @@ const Header = () => {
                 >
                   Valpekull
                 </NavLink>
-
                 {activeGallery && activeGallery.length > 0 && (
                   <NavLink
                     to="/gallery"
@@ -299,7 +271,6 @@ const Header = () => {
                     📸 Galleri
                   </NavLink>
                 )}
-
                 <NavLink
                   to="/about"
                   onClick={() => handleLinkClick("om-oss")}
@@ -309,7 +280,6 @@ const Header = () => {
                 >
                   Om oss
                 </NavLink>
-
                 <NavLink
                   to="/contact"
                   onClick={() => handleLinkClick("kontakt")}
