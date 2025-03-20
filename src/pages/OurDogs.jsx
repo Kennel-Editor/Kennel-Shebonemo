@@ -69,14 +69,11 @@ const OurDogs = () => {
         )}
       </div>
 
-      <div id="breeding" className="row g-4 costum-border">
-        <h2 className="mb-3 text-center">Avlshunder</h2>
-        {breedingDogs.length > 0 ? (
-          breedingDogs.map((dog) => (
-            <div
-              key={dog._id}
-              className="col-12 col-sm-10 col-md-6 col-xl-4 mx-auto"
-            >
+        {breedingDogs.length > 0 && (
+        <div id="breeding" className="row g-4 costum-border">
+          <h2 className="mb-3 text-center">Avlshunder</h2>
+          {breedingDogs.map((dog) => (
+            <div key={dog._id} className="col-12 col-sm-10 col-md-6 col-xl-4 mx-auto">
               <DogCard>
                 <Link to={`/dogs/${dog._id}`}>
                   <img src={urlFor(dog.image)} alt={dog.name} />
@@ -85,20 +82,15 @@ const OurDogs = () => {
                 </Link>
               </DogCard>
             </div>
-          ))
-        ) : (
-          <p>Ingen avlshunder tilgjengelig.</p>
-        )}
-      </div>
+          ))}
+        </div>
+      )}
 
-      <div id="deceased" className="row g-4 costum-border">
-        <h2 className="mb-3 text-center">Tidligere Hunder</h2>
-        {deceasedDogs.length > 0 ? (
-          deceasedDogs.map((dog) => (
-            <div
-              key={dog._id}
-              className="col-12 col-sm-10 col-md-6 col-xl-4 mx-auto"
-            >
+{deceasedDogs.length > 0 && (
+        <div id="deceased" className="row g-4 costum-border">
+          <h2 className="mb-3 text-center">Tidligere Hunder</h2>
+          {deceasedDogs.map((dog) => (
+            <div key={dog._id} className="col-12 col-sm-10 col-md-6 col-xl-4 mx-auto">
               <DogCard>
                 <Link to={`/dogs/${dog._id}`}>
                   <img src={urlFor(dog.image)} alt={dog.name} />
@@ -107,13 +99,11 @@ const OurDogs = () => {
                 </Link>
               </DogCard>
             </div>
-          ))
-        ) : (
-          <p>Ingen tidligere hunder tilgjengelig.</p>
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </DogsContainer>
   );
 };
-
+ 
 export default OurDogs;
