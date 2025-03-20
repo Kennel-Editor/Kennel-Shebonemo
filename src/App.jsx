@@ -1,5 +1,6 @@
 // src/App.jsx
 import React from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/GlobalStyles";
@@ -16,12 +17,23 @@ import Gallery from "./pages/Gallery";
 import GalleryDetail from "./pages/GalleryDetail";
 
 const App = () => {
+  // Starter med første tema som default
+  const [currentTheme, setCurrentTheme] = useState(theme.version1);
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route
+            path="/"
+            element={
+              <Layout
+                currentTheme={currentTheme}
+                setCurrentTheme={setCurrentTheme}
+              />
+            }
+          >
             <Route index element={<Home />} />
             <Route path="dogs" element={<OurDogs />} />
             <Route path="dogs/:id" element={<DogDetail />} />

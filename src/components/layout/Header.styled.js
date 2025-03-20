@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
     height: 100%;
     object-fit: cover;
     object-position: center;
-    object-position: 50% 80%;
+    object-position: 50% 50%;
   }
 `;
 
@@ -62,6 +62,7 @@ export const NavContainer = styled.nav`
   .dropdown-menu {
     background: ${(props) => props.theme.colors.accent};
     padding: 10px 0px;
+
 
     .nav-link.no-active {
       border-bottom: none;
