@@ -27,11 +27,14 @@ export default {
               return {
                 name: dog?.name || '',
                 nickname: dog?.nickname || '',
-                image: dog?.image || null, 
+                image: dog?.image || null,
                 healthResults: dog?.healthResults || [],
                 additionalInfo: dog?.additionalInfo || '',
-                overrideImageButton: typeof litter?.overrideImageButton === 'boolean' ? dog.overrideImageButton : false,
-                overrideImage: litter?.overrideImage || null, 
+                overrideImageButton:
+                  typeof litter?.overrideImageButton === 'boolean'
+                    ? dog.overrideImageButton
+                    : false,
+                overrideImage: litter?.overrideImage || null,
               }
             }
             return {}
@@ -70,7 +73,7 @@ export default {
           type: 'image',
           options: {hotspot: true},
           description: 'Mor burde se til høyere.',
-          hidden: ({parent}) => parent?.isOwned === true || parent?.overrideImageButton !== true,
+          hidden: ({parent}) => parent?.isOwned === true && parent?.overrideImageButton !== true,
         },
 
         {
@@ -122,11 +125,14 @@ export default {
               return {
                 name: dog?.name || '',
                 nickname: dog?.nickname || '',
-                image: dog?.image || null, 
+                image: dog?.image || null,
                 healthResults: dog?.healthResults || [],
                 additionalInfo: dog?.additionalInfo || '',
-                overrideImageButton: typeof litter?.overrideImageButton === 'boolean' ? dog.overrideImageButton : false,
-                overrideImage: litter?.overrideImage || null, 
+                overrideImageButton:
+                  typeof litter?.overrideImageButton === 'boolean'
+                    ? dog.overrideImageButton
+                    : false,
+                overrideImage: litter?.overrideImage || null,
               }
             }
             return {}
@@ -167,7 +173,7 @@ export default {
           name: 'overrideImageButton',
           title: 'Bruk et annet bilde?',
           type: 'boolean',
-          description: 'Mor burde se til høyere.',
+          description: 'Far burde se til høyere.',
           hidden: ({parent}) => parent?.isOwned === false,
         },
         {
@@ -176,7 +182,7 @@ export default {
           type: 'image',
           options: {hotspot: true},
           description: 'Velg et bilde for å overstyre referansebildet.',
-          hidden: ({parent}) => !parent?.overrideImageButton,
+          hidden: ({parent}) => parent?.isOwned === false || parent?.overrideImageButton !== true,
         },
         {
           name: 'image',
@@ -184,7 +190,7 @@ export default {
           type: 'image',
           options: {hotspot: true},
           description: 'Far burde se til høyere.',
-          hidden: ({parent}) => parent?.isOwned === true && parent?.overrideImageButton === true,
+          hidden: ({parent}) => parent?.isOwned === true && parent?.overrideImageButton !== true,
         },
 
         {
