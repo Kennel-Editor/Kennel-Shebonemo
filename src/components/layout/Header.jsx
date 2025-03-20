@@ -176,11 +176,16 @@ const Header = ({ currentTheme }) => {
       <NavContainer ref={navbarRef}>
         <Navbar expand="lg" className="navbar">
           <Container className="d-flex justify-content-between align-items-center col-lg-10">
-            <Navbar.Toggle
-              aria-controls="navbar-nav"
-              onClick={() => setIsNavOpen(!isNavOpen)}
-            />
+            <div className="mobile-header d-lg-none d-flex flex-row-reverse align-items-center justify-content-center w-100">
+              <HeroText className="m-0 justify-content-center m-auto">
+                {pageTitle}
+              </HeroText>
 
+              <Navbar.Toggle
+                aria-controls="navbar-nav"
+                onClick={() => setIsNavOpen(!isNavOpen)}
+              />
+            </div>
             <Navbar.Collapse id="navbar-nav" in={isNavOpen}>
               <Nav className="w-100 d-lg-flex justify-content-between fs-5 mb-lg-1">
                 <NavLink

@@ -61,7 +61,8 @@ export const NavContainer = styled.nav`
   .navbar,
   .dropdown-menu {
     background: ${(props) => props.theme.colors.accent};
-    padding: 5px 0px;
+    padding: 10px 0px;
+
 
     .nav-link.no-active {
       border-bottom: none;
