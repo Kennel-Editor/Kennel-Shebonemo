@@ -65,12 +65,7 @@ export default {
           type: 'string',
           hidden: ({parent}) => parent?.isOwned === true,
         },
-        {
-          name: 'overrideInfo',
-          title: 'Skriv inn egen info?',
-          type: 'boolean',
-          hidden: ({parent}) => parent?.isOwned === false,
-        },
+
         {
           name: 'overrideImageButton',
           title: 'Bruk et annet bilde?',
@@ -187,12 +182,6 @@ export default {
           title: 'Registration Number',
           type: 'string',
           hidden: ({parent}) => parent?.isOwned === true,
-        },
-        {
-          name: 'overrideInfo',
-          title: 'Skriv inn egen info?',
-          type: 'boolean',
-          hidden: ({parent}) => parent?.isOwned === false,
         },
 
         {
