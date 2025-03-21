@@ -6,7 +6,7 @@ import HeroImage4 from "../assets/images/background-dogs-pink2.jpg";
 import HeroImage5 from "../assets/images/background-blue.jpg";
 import HeroImage6 from "../assets/images/background-dogs-pink.jpeg";
 import HeroImage7 from "../assets/images/background-red.jpg";
-import HeroImage8 from "../assets/images/background-orange.jpg";
+import HeroImage8 from "../assets/images/background-autumn.jpg";
 import HeroImage9 from "../assets/images/background-night.jpg";
 import HeroImage10 from "../assets/images/background-dogs-gray.jpg";
 import HeroImage11 from "../assets/images/background-tropical.jpg";
@@ -281,15 +281,15 @@ export const theme = {
     name: "Mørk Skog",
     colors: {
       primary: "#2F4F4F", // Mørkere grønn med litt mer dybde
-    secondary: "#6B8E23", // Lysere olivengrønn for en naturlig følelse
-    accent: "linear-gradient(135deg, #6B8E23, #2E8B57)", // Gradient fra olivengrønn til dyp grønn
-    accentTransparent: "rgba(107, 142, 35, 0.8)", // Transparent grønn for subtile aksenter
-    white: "#FFFFFF", // Hvit for tekst og elementer
-    background: "#3B4A33", // Dempet grønn for bakgrunnen, lettere enn før
-    text: "#E0E0E0", // Lysere tekstfarge for god kontrast
-    title: "#D0A058", // Mørk oransje-brun, for kontrast i overskrifter
-  },
-    
+      secondary: "#6B8E23", // Lysere olivengrønn for en naturlig følelse
+      accent: "linear-gradient(135deg, #6B8E23, #2E8B57)", // Gradient fra olivengrønn til dyp grønn
+      accentTransparent: "rgba(107, 142, 35, 0.8)", // Transparent grønn for subtile aksenter
+      white: "#FFFFFF", // Hvit for tekst og elementer
+      background: "#3B4A33", // Dempet grønn for bakgrunnen, lettere enn før
+      text: "#E0E0E0", // Lysere tekstfarge for god kontrast
+      title: "#D0A058", // Mørk oransje-brun, for kontrast i overskrifter
+    },
+
     fonts: {
       body: "Raleway, sans-serif",
       heading: "Merriweather, serif",
