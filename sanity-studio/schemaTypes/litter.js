@@ -41,6 +41,13 @@ export default {
           },
         },
         {
+          name: 'title',
+          title: 'Tittel',
+          type: 'string',
+          hidden: ({parent}) => parent?.isOwned === true,
+          description: 'Hundens offesielle titler',
+        },
+        {
           name: 'name',
           title: 'Navn',
           type: 'string',
@@ -51,6 +58,17 @@ export default {
           title: 'Kallenavn',
           type: 'string',
           hidden: ({parent}) => parent?.isOwned === true,
+        },
+        {
+          name: 'registrationNumber',
+          title: 'Registration Number',
+          type: 'string',
+        },
+        {
+          name: 'overrideInfo',
+          title: 'Skriv inn egen info?',
+          type: 'boolean',
+          hidden: ({parent}) => parent?.isOwned === false,
         },
         {
           name: 'overrideImageButton',
@@ -98,6 +116,12 @@ export default {
               ],
             },
           ],
+        },
+        {
+          name: 'additionalInfo',
+          title: 'Tilleggsinformasjon',
+          type: 'text',
+          description: 'Ekstra informasjon som ikke faller under helseresultatene.',
         },
       ],
     },
