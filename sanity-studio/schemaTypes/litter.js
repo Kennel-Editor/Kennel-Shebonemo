@@ -63,6 +63,7 @@ export default {
           name: 'registrationNumber',
           title: 'Registration Number',
           type: 'string',
+          hidden: ({parent}) => parent?.isOwned === true,
         },
         {
           name: 'overrideInfo',
@@ -185,6 +186,7 @@ export default {
           name: 'registrationNumber',
           title: 'Registration Number',
           type: 'string',
+          hidden: ({parent}) => parent?.isOwned === true,
         },
         {
           name: 'overrideInfo',
