@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from "../sanityClient";
+import { urlFor } from "../utils/sanityImage";
 import {
   ContactContainer,
   Title,
@@ -14,7 +15,7 @@ const Contact = () => {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "siteInfo"][0]{contactText,name, address, phoneNumber, email, extraInfo}`
+        `*[_type == "siteInfo"][0]{contactText,name, address, phoneNumber, email, extraInfo, contactImage}`
       )
       .then((data) => {
         setSiteInfo(data);
@@ -35,9 +36,16 @@ const Contact = () => {
         <ContactInfo>📍 Adresse: {siteInfo.address}</ContactInfo>
         <ContactInfo>📞 Telefon: {siteInfo.phoneNumber}</ContactInfo>
         <ContactInfo>📧 E-post: {siteInfo.email}</ContactInfo>
-        {siteInfo.extraInfo && (
-          <ContactInfo>Ekstra info: {siteInfo.extraInfo}</ContactInfo>
+        {siteInfo.contactImage && (
+          <img
+            className="my-4"
+            src={urlFor(siteInfo.contactImage)}
+            alt="Kontaktbilde"
+            style={{ maxWidth: "100%", borderRadius: "10px" }}
+          />
         )}
+
+        {siteInfo.extraInfo && <ContactInfo>{siteInfo.extraInfo}</ContactInfo>}
       </ContactInfoContainer>
     </ContactContainer>
   );
