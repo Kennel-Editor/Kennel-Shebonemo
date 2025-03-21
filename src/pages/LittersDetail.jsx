@@ -150,7 +150,7 @@ father {
       case "brown":
         return count > 1 ? "brune" : "brun";
       case "apricot":
-        return count > 1 ? "aprikoser" : "aprikos";
+        return count > 1 ? "aprikos" : "aprikos";
       case "red":
         return count > 1 ? "røde" : "rød";
       default:
