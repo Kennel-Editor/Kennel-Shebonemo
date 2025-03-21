@@ -2,7 +2,7 @@
 import HeroImage1 from "../assets/images/background-dogs-purple.jpg";
 import HeroImage2 from "../assets/images/background-pink.jpg";
 import HeroImage3 from "../assets/images/background-dogs-pastelle.jpg";
-import HeroImage4 from "../assets/images/background-pink&purple.jpg";
+import HeroImage4 from "../assets/images/background-dogs-pink2.jpg";
 import HeroImage5 from "../assets/images/background-blue.jpg";
 import HeroImage6 from "../assets/images/background-dogs-pink.jpeg";
 import HeroImage7 from "../assets/images/background-red.jpg";
@@ -28,7 +28,7 @@ export const theme = {
     fonts: {
       body: "Montserrat, sans-serif",
       heading: "Merriweather, serif",
-      accent: "'Great Vibes', cursive",
+      accent: "'Pinyon Script', cursive",
     },
     shadows: {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
@@ -64,13 +64,13 @@ export const theme = {
   version3: {
     name: "Myk Beige",
     colors: {
-      primary: "#705D56",
-      secondary: "#9E8B69",
+      primary: "#252015",
+      secondary: "#3e3e3e",
       accent: "#A68B6E",
       accentTransparent: "rgba(166, 139, 110, 0.8)",
       white: "#FFFFFF",
       background: "#F9F9F9",
-      text: "#333333",
+      text: "#3e3e3e",
       title: "#E07A5F",
     },
     fonts: {
@@ -90,7 +90,7 @@ export const theme = {
     colors: {
       primary: "#725A7A",
       secondary: "#9F7D94",
-      accent: "#B088A3",
+      accent: "#cc9fbd",
       accentTransparent: "rgba(176, 136, 163, 0.8)",
       white: "#FFFFFF",
       background: "#F9F9F9",
@@ -100,13 +100,13 @@ export const theme = {
     fonts: {
       body: "Raleway, sans-serif",
       heading: "Playfair Display, serif",
-      accent: "'Pinyon Script', cursive",
+      accent: "'Great Vibes', cursive",
     },
     shadows: {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-      textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
+      textShadow: "0px 0px 1px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: HeroImage4,
+    heroImage: HeroImage6,
   },
 
   version5: {
@@ -117,7 +117,7 @@ export const theme = {
       accent: "#98C1D9",
       accentTransparent: "rgba(152, 193, 217, 0.8)",
       white: "#FFFFFF",
-      background: "#F9F9F9",
+      background: "#dde6ed",
       text: "#293241",
       title: "#EE6C4D",
     },
@@ -134,7 +134,7 @@ export const theme = {
   },
 
   version6: {
-    name: "Vintage Blomster",
+    name: "Vintage rosa",
     colors: {
       primary: "#6C4F77",
       secondary: "#A8849F",
@@ -154,7 +154,7 @@ export const theme = {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
-    heroImage: HeroImage6,
+    heroImage: HeroImage4,
   },
 
   version7: {
@@ -166,7 +166,7 @@ export const theme = {
       accentTransparent: "rgba(211, 47, 47, 0.8)",
       white: "#FFFFFF",
       background: "#F9F9F9",
-      text: "#4B4B4B",
+      text: "#FF8080",
       title: "#B71C1C",
     },
     fonts: {
