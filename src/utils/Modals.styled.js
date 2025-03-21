@@ -24,7 +24,7 @@ export const CloseButton = styled.button`
   right: 10px;
   background: transparent;
   border: none;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
   font-size: 24px;
   cursor: pointer;
 `;
@@ -35,21 +35,24 @@ export const NavigationButton = styled.button`
   ${(props) => (props.direction === "left" ? "left: 10px;" : "right: 10px;")}
   background: transparent;
   border: none;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
   font-size: 30px;
   cursor: pointer;
   transform: translateY(-50%);
+  svg {
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
+  }
 `;
-
 
 export const Counter = styled.div`
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  color: white;
+  color: ${(props) => props.theme.colors.primary};
+
   font-size: 16px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: ${(props) => props.theme.colors.accentTransparent};
   padding: 5px 15px;
   border-radius: 25px;
 `;

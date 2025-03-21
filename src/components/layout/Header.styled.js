@@ -45,7 +45,7 @@ export const HeroText = styled.h1`
     font-size: 2rem;
   }
   a {
-    color: white;
+    color: ${(props) => props.theme.colors.white};
   }
 `;
 
@@ -80,7 +80,7 @@ export const NavContainer = styled.nav`
       display: inline-block;
       position: relative;
       &.nytt-kull {
-        color: ${(props) => props.theme.colors.white};
+        color: ${(props) => props.theme.colors.primary};
         @media (min-width: 992px) {
           color: ${(props) => props.theme.colors.accent};
         }
@@ -96,7 +96,7 @@ export const NavContainer = styled.nav`
 
       &.active {
         color: black;
-        border-bottom: 1px solid ${(props) => props.theme.colors.white};
+        border-bottom: 1px solid ${(props) => props.theme.colors.primary};
         display: inline-block;
         width: max-content;
         @media (min-width: 992px) {

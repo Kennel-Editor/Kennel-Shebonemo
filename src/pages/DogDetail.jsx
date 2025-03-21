@@ -285,7 +285,7 @@ const DogDetail = () => {
                     )}
 
                     {dog.breedingNotes && (
-                      <div className="breeding-notes">
+                      <div className="breeding-notes ms-1">
                         <p>{dog.breedingNotes}</p>
                       </div>
                     )}
@@ -314,8 +314,8 @@ const DogDetail = () => {
       </div>
 
       {dog.description && (
-        <DogInfo>
-          <strong>Beskrivelse:</strong> {dog.description}
+        <DogInfo className="col-10 m-auto">
+          {dog.description}
         </DogInfo>
       )}
 
