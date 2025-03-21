@@ -124,7 +124,7 @@ export const theme = {
     fonts: {
       body: "Muli, sans-serif",
       heading: "Roboto Slab, serif",
-      accent: "'Alex Brush', cursive",
+      accent: "'Parisienne', cursive",
     },
     shadows: {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
@@ -148,7 +148,7 @@ export const theme = {
     fonts: {
       body: "Lato, sans-serif",
       heading: "EB Garamond, serif",
-      accent: "'Parisienne', cursive",
+      accent: "'Alex Brush', cursive",
     },
     shadows: {
       boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",

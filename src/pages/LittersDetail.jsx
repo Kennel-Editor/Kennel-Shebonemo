@@ -146,7 +146,13 @@ father {
       case "gray":
         return count > 1 ? "grå" : "grå";
       case "black":
-        return count > 1 ? "sorte" : "svart";
+        return count > 1 ? "sorte" : "sort";
+      case "brown":
+        return count > 1 ? "brune" : "brun";
+      case "apricot":
+        return count > 1 ? "aprikoser" : "aprikos";
+      case "red":
+        return count > 1 ? "røde" : "rød";
       default:
         return color;
     }
