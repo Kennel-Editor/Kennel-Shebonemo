@@ -200,6 +200,7 @@ father {
       <>
         {displayImage && (
           <ParentImage
+            className="no-theme"
             src={urlFor(displayImage)}
             alt={displayName}
             onClick={() => openImageModal(urlFor(displayImage))}

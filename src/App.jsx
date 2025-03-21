@@ -18,7 +18,7 @@ import GalleryDetail from "./pages/GalleryDetail";
 
 const App = () => {
   // Starter med første tema som default
-  const [currentTheme, setCurrentTheme] = useState(theme.version4);
+  const [currentTheme, setCurrentTheme] = useState(theme.version1);
 
   return (
     <ThemeProvider theme={currentTheme}>

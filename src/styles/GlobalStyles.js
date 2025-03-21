@@ -24,4 +24,11 @@ root:
   p, h1, h2, h3, li, span, div {
     white-space: pre-line;
   }
+
+    img:not(.hero-image, .gallery-image, .no-theme) {
+    border-radius: ${(props) => props.theme?.imageStyles?.borderRadius || "0"};
+    border: ${(props) => props.theme?.imageStyles?.border || "none"};
+    box-shadow: ${(props) => props.theme?.imageStyles?.boxShadow || "none"};
+    object-fit: cover;
+  }
 `;

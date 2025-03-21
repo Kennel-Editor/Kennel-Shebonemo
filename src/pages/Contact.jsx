@@ -41,7 +41,6 @@ const Contact = () => {
             className="my-4"
             src={urlFor(siteInfo.contactImage)}
             alt="Kontaktbilde"
-            style={{ maxWidth: "100%", borderRadius: "10px" }}
           />
         )}
 

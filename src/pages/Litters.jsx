@@ -41,7 +41,7 @@ const LitterCardItem = ({ litter }) => {
               <img
                 src={motherImage}
                 alt={litter.mother.nickname || litter.mother.name}
-                className="img-fluid"
+                className="img-fluid no-theme"
                 style={{ marginRight: "1%" }}
               />
             )}
@@ -49,7 +49,7 @@ const LitterCardItem = ({ litter }) => {
               <img
                 src={fatherImage}
                 alt={litter.father.nickname || litter.father.name}
-                className="img-fluid"
+                className="img-fluid no-theme"
               />
             )}
           </div>

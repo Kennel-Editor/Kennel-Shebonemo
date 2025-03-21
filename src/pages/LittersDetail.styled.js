@@ -70,7 +70,7 @@ export const ParentImage = styled.img`
   height: auto;
   max-width: 100%;
   border-radius: 10px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   min-height: 200px;
   max-height: 500px;

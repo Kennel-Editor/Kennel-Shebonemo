@@ -59,6 +59,11 @@ export const theme = {
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
     heroImage: HeroImage2,
+    imageStyles: {
+      borderRadius: "5px",
+      border: "8px solid white", // Tykk hvit kant
+      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)", // Dyp skygge for løftet effekt
+    },
   },
 
   version3: {
@@ -83,6 +88,12 @@ export const theme = {
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
     heroImage: HeroImage3,
+    imageStyles: {
+      borderRadius: "0px", // Skarpe kanter
+      border: "4px solid #A68B6E", // Neon-grønn kant
+      filter: "grayscale(100%) contrast(1.4)", // Gir en pixelert retro-look
+      boxShadow: "0px 0px 8px rgba(166, 139, 110, 0.8)",
+    },
   },
 
   version4: {
@@ -131,6 +142,11 @@ export const theme = {
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
     heroImage: HeroImage5,
+    imageStyles: {
+      borderRadius: "50%", // Gjør bilder runde
+      border: "3px solid #98C1D9", // Gir en lilla kant rundt bildet
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Legger til en lett skygge
+    },
   },
 
   version6: {
@@ -155,6 +171,11 @@ export const theme = {
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4)",
     },
     heroImage: HeroImage4,
+    imageStyles: {
+      borderRadius: "20%", // Gjør bilder runde
+      border: "3px solid #D291BC", // Gir en lilla kant rundt bildet
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Legger til en lett skygge
+    },
   },
 
   version7: {

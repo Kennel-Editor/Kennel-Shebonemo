@@ -33,7 +33,6 @@ const About = () => {
         <img
           src={urlFor(siteInfo.aboutImage)}
           alt="Kontaktbilde"
-          style={{ maxWidth: "100%", borderRadius: "10px" }}
         />
       )}
       {siteInfo.aboutTitle3 && <h2>{siteInfo.aboutTitle3}</h2>}
