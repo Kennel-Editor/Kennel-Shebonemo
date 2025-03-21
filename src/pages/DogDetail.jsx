@@ -155,7 +155,7 @@ const DogDetail = () => {
       <div className="mb-5 mt-2 text-center">
         <DogName className="text-center">{dog.title}</DogName>
         <DogName className="text-center">{dog.name}</DogName>
-        <h4>"{dog.nickname}"</h4>
+        <h4 className="nickname">"{dog.nickname}"</h4>
       </div>
       <div className="row align-items-start mb-4">
         <div className="col-12 col-sm-8 col-md-5 col-lg-5 col-xl-4 d-flex justify-content-center flex-column m-auto">

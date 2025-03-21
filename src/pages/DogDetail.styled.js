@@ -6,6 +6,11 @@ export const DetailContainer = styled.section`
     color: ${(props) => props.theme.colors.accent};
     text-decoration: none !important;
   }
+  .nickname {
+    font-family: ${(props) => props.theme.fonts.accent};
+    font-size: 3rem;
+    color: ${(props) => props.theme.colors.accent};
+  }
 `;
 
 export const DogImage = styled.img`
