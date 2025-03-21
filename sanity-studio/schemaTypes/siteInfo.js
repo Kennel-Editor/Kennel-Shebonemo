@@ -65,6 +65,13 @@ export default {
       description: 'Tredje avsnitt av Om oss-seksjonen.',
     },
     {
+      name: 'aboutImage',
+      title: 'Om oss - Bilde',
+      type: 'image',
+      description: 'Bilde relatert til Om oss-seksjonen.',
+      options: {hotspot: true},
+    },
+    {
       name: 'name',
       title: 'Navn',
       type: 'string',
@@ -90,10 +97,31 @@ export default {
       validation: (Rule) => Rule.email().warning('Skriv inn en gyldig e-post.'),
     },
     {
+      name: 'contactImage',
+      title: 'Bilde under kontakt informasjon',
+      type: 'image',
+      description: 'Bilde under kontakt informasjon.',
+      options: {hotspot: true},
+    },
+    {
       name: 'extraInfo',
       title: 'Ekstra kontaktinformasjon',
       type: 'text',
       description: 'Ekstra informasjon som sosiale medier eller åpningstider.',
     },
   ],
+
+  preview: {
+    select: {
+      title: 'name',
+      media: 'headerImage',
+    },
+    prepare(selection) {
+      const {title, media} = selection
+      return {
+        title: title || 'Ingen kennelnavn definert',
+        media: media,
+      }
+    },
+  },
 }
