@@ -15,7 +15,7 @@ export const LitterContainer = styled.div`
 `;
 
 export const LitterCard = styled.div`
-  background: ${(props) => props.theme.colors.white};
+  background: ${(props) => props.theme.colors.background};
   border-radius: 8px;
   overflow: hidden;
   text-align: center;

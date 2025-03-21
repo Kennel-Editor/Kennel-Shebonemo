@@ -29,6 +29,11 @@ const Layout = ({ currentTheme, setCurrentTheme }) => {
           padding: "10px",
           borderRadius: "8px",
           backgroundColor: currentTheme?.colors?.accent || "#D6A7E3",
+          backgroundImage: currentTheme?.colors?.accent.includes(
+            "linear-gradient"
+          )
+            ? currentTheme.colors.accent
+            : undefined,
           color: "#fff",
           border: "none",
           cursor: "pointer",
@@ -57,6 +62,11 @@ const Layout = ({ currentTheme, setCurrentTheme }) => {
                 padding: "5px",
                 borderRadius: "8px",
                 backgroundColor: themeVersion.colors.accent,
+                backgroundImage: themeVersion.colors.accent.includes(
+                  "linear-gradient"
+                )
+                  ? themeVersion.colors.accent
+                  : undefined,
                 color: "#fff",
                 border: "none",
                 cursor: "pointer",

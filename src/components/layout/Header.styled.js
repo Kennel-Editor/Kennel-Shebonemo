@@ -144,9 +144,7 @@ export const NavContainer = styled.nav`
     background-color: transparent;
     border: none;
     margin-left: 20px;
-    &.active-dropdown {
-      background: red;
-    }
+
     @media (min-width: 992px) {
       background: ${(props) => props.theme.colors.background};
       top: 70%;
@@ -164,6 +162,7 @@ export const NavContainer = styled.nav`
     .navbar .show .dropdown-menu {
       display: block;
       padding-top: 200px;
+      background-color: transparent;
     }
   }
 `;
