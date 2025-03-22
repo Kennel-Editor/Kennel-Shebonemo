@@ -27,7 +27,7 @@ const Home = () => {
       <img
         src={siteInfo.introImage?.asset?.url}
         alt="Hero Image"
-        className="col-10 col-md-8"
+        className="col-10 col-md-8 col-lg-6 col-xl-4"
       />
       <Description className="col-10 col-md-8 col-lg-6 m-auto my-3">
         {siteInfo.introText}
