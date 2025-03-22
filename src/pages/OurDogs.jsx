@@ -28,17 +28,27 @@ const OurDogs = () => {
       )
       .then((data) => {
         const sortedDogs = data
-          .filter((dog) => dog.dateOfBirth)
-          .sort((a, b) => new Date(b.dateOfBirth) - new Date(a.dateOfBirth));
+          .sort((a, b) => {
+            if (a.dateOfBirth && b.dateOfBirth) {
+              return new Date(b.dateOfBirth) - new Date(a.dateOfBirth);
+            }
+            return 0;
+          });
         setDogs(sortedDogs);
       })
       .catch(console.error);
   }, []);
-
+  
   const filterAndSortDogs = (type) =>
     dogs
-      .filter((dog) => dog.dogType === type && dog.dateOfBirth)
-      .sort((a, b) => new Date(b.dateOfBirth) - new Date(a.dateOfBirth));
+      .filter((dog) => dog.dogType === type) 
+      .sort((a, b) => {
+        if (a.dateOfBirth && b.dateOfBirth) {
+          return new Date(b.dateOfBirth) - new Date(a.dateOfBirth);
+        }
+        return 0;
+      });
+  
 
   const currentDogs = filterAndSortDogs("current");
   const breedingDogs = filterAndSortDogs("breeding");
@@ -69,11 +79,14 @@ const OurDogs = () => {
         )}
       </div>
 
-        {breedingDogs.length > 0 && (
+      {breedingDogs.length > 0 && (
         <div id="breeding" className="row g-4 costum-border">
           <h2 className="mb-3 text-center">Avlshunder</h2>
           {breedingDogs.map((dog) => (
-            <div key={dog._id} className="col-12 col-sm-10 col-md-6 col-xl-4 mx-auto">
+            <div
+              key={dog._id}
+              className="col-12 col-sm-10 col-md-6 col-xl-4 mx-auto"
+            >
               <DogCard>
                 <Link to={`/dogs/${dog._id}`}>
                   <img src={urlFor(dog.image)} alt={dog.name} />
@@ -86,11 +99,14 @@ const OurDogs = () => {
         </div>
       )}
 
-{deceasedDogs.length > 0 && (
+      {deceasedDogs.length > 0 && (
         <div id="deceased" className="row g-4 costum-border">
           <h2 className="mb-3 text-center">Tidligere Hunder</h2>
           {deceasedDogs.map((dog) => (
-            <div key={dog._id} className="col-12 col-sm-10 col-md-6 col-xl-4 mx-auto">
+            <div
+              key={dog._id}
+              className="col-12 col-sm-10 col-md-6 col-xl-4 mx-auto"
+            >
               <DogCard>
                 <Link to={`/dogs/${dog._id}`}>
                   <img src={urlFor(dog.image)} alt={dog.name} />
@@ -105,5 +121,5 @@ const OurDogs = () => {
     </DogsContainer>
   );
 };
- 
+
 export default OurDogs;

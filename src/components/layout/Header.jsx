@@ -209,52 +209,67 @@ const Header = () => {
                   </NavLink>
                 )}
 
-                {activeDogs && (
-                  <div className="nav-item dropdown" ref={dropdownRef}>
-                    <NavLink
-                      to="#"
-                      className={`nav-link dropdown-toggle ${
-                        location.pathname === "/dogs" ? "active" : "no-active"
-                      }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setIsDropdownOpen(!isDropdownOpen);
-                      }}
-                    >
-                      Våre hunder
-                    </NavLink>
+{activeDogs && (
+  <div className="nav-item">
+    {breedingDogs.length === 0 && deceasedDogs.length === 0 ? (
+      <NavLink
+        to="/dogs"
+        onClick={() => handleLinkClick("våre-hunder")}
+        className={`nav-link ${
+          location.pathname === "/dogs" ? "active" : "no-active"
+        }`}
+      >
+        Våre hunder
+      </NavLink>
+    ) : (
+      <div className="dropdown" ref={dropdownRef}>
+        <NavLink
+          to="#"
+          className={`nav-link dropdown-toggle ${
+            location.pathname === "/dogs" ? "active" : "no-active"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setIsDropdownOpen(!isDropdownOpen);
+          }}
+        >
+          Våre hunder
+        </NavLink>
 
-                    {isDropdownOpen && (
-                      <div className="dropdown-menu show">
-                        <NavLink
-                          to="/dogs#current"
-                          onClick={() => handleDropdownClick("current")}
-                          className="nav-link no-active"
-                        >
-                          Alle hundene
-                        </NavLink>
-                        {breedingDogs.length > 0 && (
-                          <NavLink
-                            to="/dogs#breeding"
-                            onClick={() => handleDropdownClick("breeding")}
-                            className="nav-link no-active"
-                          >
-                            Avlshunder
-                          </NavLink>
-                        )}
-                        {deceasedDogs.length > 0 && (
-                          <NavLink
-                            to="/dogs#deceased"
-                            onClick={() => handleDropdownClick("deceased")}
-                            className="nav-link no-active"
-                          >
-                            Tidligere hunder
-                          </NavLink>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
+        {isDropdownOpen && (
+          <div className="dropdown-menu show">
+            <NavLink
+              to="/dogs#current"
+              onClick={() => handleDropdownClick("current")}
+              className="nav-link no-active"
+            >
+              Alle hundene
+            </NavLink>
+            {breedingDogs.length > 0 && (
+              <NavLink
+                to="/dogs#breeding"
+                onClick={() => handleDropdownClick("breeding")}
+                className="nav-link no-active"
+              >
+                Avlshunder
+              </NavLink>
+            )}
+            {deceasedDogs.length > 0 && (
+              <NavLink
+                to="/dogs#deceased"
+                onClick={() => handleDropdownClick("deceased")}
+                className="nav-link no-active"
+              >
+                Tidligere hunder
+              </NavLink>
+            )}
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+)}
+
 
                 <NavLink
                   to="/litters"
