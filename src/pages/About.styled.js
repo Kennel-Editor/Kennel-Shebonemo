@@ -18,5 +18,12 @@ export const Paragraph = styled.p`
   font-family: ${(props) => props.theme.fonts.body};
   color: ${(props) => props.theme.colors.text};
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
+`;
+export const SectionTitle = styled.h2`
+  font-size: 2rem; 
+  font-family: ${(props) => props.theme.fonts.accent};
+  color: ${(props) => props.theme.colors.title};
+  font-weight: 500;
+  margin-top: 0.8rem;
 `;
