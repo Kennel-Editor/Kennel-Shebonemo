@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { HeaderContainer, HeroText, NavContainer } from "./Header.styled";
-import heroImage from "../../assets/images/background-pink&purple.jpg";
+import backgroundImage from "../../assets/images/background-dogs-pink.jpeg";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import sanityClient from "../../sanityClient";
-import { theme } from "../../styles/theme";
 
-const Header = ({ currentTheme }) => {
+const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
@@ -163,9 +162,9 @@ const Header = ({ currentTheme }) => {
   return (
     <>
       <HeaderContainer>
-        <img
-          src={currentTheme.heroImage}
-          alt="Hero Image"
+      <img
+          src={backgroundImage}
+          alt="Hero Image of five poodles sitting in the grass"
           className="hero-image"
         />
         <HeroText className="col-12 m-auto text-center d-none d-lg-block py-2">

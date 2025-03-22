@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FooterContainer } from "./Footer.styled";
 import sanityClient from "../../sanityClient";
 
-const Footer = ({ currentTheme }) => {
+const Footer = () => {
   const [pageTitle, setpageTitle] = useState("");
 
   useEffect(() => {
