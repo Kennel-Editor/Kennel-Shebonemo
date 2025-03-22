@@ -1,0 +1,76 @@
+{
+  "hash": "94cfbf67",
+  "configHash": "49ecfbde",
+  "lockfileHash": "e7bc83ef",
+  "browserHash": "034bde83",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "d5a6fe13",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "571a66cd",
+      "needsInterop": true
+    },
+    "styled-components": {
+      "src": "../../node_modules/styled-components/dist/styled-components.browser.esm.js",
+      "file": "styled-components.js",
+      "fileHash": "f94a0893",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "9450dc21",
+      "needsInterop": false
+    },
+    "react-bootstrap": {
+      "src": "../../node_modules/react-bootstrap/esm/index.js",
+      "file": "react-bootstrap.js",
+      "fileHash": "5b5b1adc",
+      "needsInterop": false
+    },
+    "@sanity/image-url": {
+      "src": "../../node_modules/@sanity/image-url/lib/browser/image-url.umd.js",
+      "file": "@sanity_image-url.js",
+      "fileHash": "4046e353",
+      "needsInterop": true
+    },
+    "@sanity/client": {
+      "src": "../../node_modules/@sanity/client/dist/index.browser.js",
+      "file": "@sanity_client.js",
+      "fileHash": "380bea40",
+      "needsInterop": false
+    },
+    "react-icons/fa": {
+      "src": "../../node_modules/react-icons/fa/index.mjs",
+      "file": "react-icons_fa.js",
+      "fileHash": "83e41e7a",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "stegaEncodeSourceMap-4JTWHBJD": {
+      "file": "stegaEncodeSourceMap-4JTWHBJD.js"
+    },
+    "browser-6VX77IJR": {
+      "file": "browser-6VX77IJR.js"
+    },
+    "chunk-VVVK5NS7": {
+      "file": "chunk-VVVK5NS7.js"
+    },
+    "chunk-FCHXZQZU": {
+      "file": "chunk-FCHXZQZU.js"
+    },
+    "chunk-ONLGGST3": {
+      "file": "chunk-ONLGGST3.js"
+    },
+    "chunk-45IN2YCG": {
+      "file": "chunk-45IN2YCG.js"
+    }
+  }
+}
