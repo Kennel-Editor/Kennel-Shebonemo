@@ -16,7 +16,7 @@ export const HeaderContainer = styled.header`
     object-position: center;
     object-position: 50% 50%;
     @media (max-width: 762px) {
-      transform: scale(1.5);
+      transform: scale(1.3);
     }
   }
   @media (min-width: 992px) {
