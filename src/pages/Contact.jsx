@@ -28,23 +28,50 @@ const Contact = () => {
   }
 
   return (
-    <ContactContainer className="col-10 col-lg-8 mx-auto">
+    <ContactContainer className="col-10 col-lg-8 mx-auto text-center m-auto">
       <Title>Kontakt</Title>
-      <Paragraph className="mb-5">{siteInfo.contactText}</Paragraph>
-      <ContactInfoContainer className="mb-5">
-        <ContactInfo>Navn: {siteInfo.name}</ContactInfo>
-        <ContactInfo>📍 Adresse: {siteInfo.address}</ContactInfo>
-        <ContactInfo>📞 Telefon: {siteInfo.phoneNumber}</ContactInfo>
-        <ContactInfo>📧 E-post: {siteInfo.email}</ContactInfo>
+      {siteInfo.contactText && (
+        <Paragraph className="mb-5 ">{siteInfo.contactText}</Paragraph>
+      )}
+
+      <ContactInfoContainer className=" text-start text-sm-center col-10 m-auto">
+        {siteInfo.name && (
+          <ContactInfo className=" text-start text-sm-center ">
+            Navn: {siteInfo.name}
+          </ContactInfo>
+        )}
+
+        {siteInfo.address && (
+          <ContactInfo className=" text-start text-sm-center ">
+            📍 Adresse: {siteInfo.address}
+          </ContactInfo>
+        )}
+
+        {siteInfo.phoneNumber && (
+          <ContactInfo className=" text-start text-sm-center ">
+            📞 Telefon: {siteInfo.phoneNumber}
+          </ContactInfo>
+        )}
+
+        {siteInfo.email && (
+          <ContactInfo className=" text-start text-sm-center ">
+            📧 E-post: {siteInfo.email}
+          </ContactInfo>
+        )}
+
         {siteInfo.contactImage && (
           <img
-            className="my-4"
+            className="my-4 col-12 col-md-10 col-lg-8 m-auto"
             src={urlFor(siteInfo.contactImage)}
             alt="Kontaktbilde"
           />
         )}
 
-        {siteInfo.extraInfo && <ContactInfo>{siteInfo.extraInfo}</ContactInfo>}
+        {siteInfo.extraInfo && (
+          <ContactInfo className="col-12 col-sm-10 col-md-8 m-auto mt-2 text-start text-sm-center">
+            {siteInfo.extraInfo}
+          </ContactInfo>
+        )}
       </ContactInfoContainer>
     </ContactContainer>
   );
