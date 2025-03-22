@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { HeaderContainer, HeroText, NavContainer } from "./Header.styled";
-import backgroundImage from "../../assets/images/background-dogs-pink.jpeg";
+import backgroundImage from "../../assets/images/Shebenemo-header-5.jpg";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import sanityClient from "../../sanityClient";
