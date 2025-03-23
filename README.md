@@ -1,2 +1,1 @@
-# Kennel-Shebonemo
-Website for Kennel-Shebonemo
+# template for kennel websidtes
