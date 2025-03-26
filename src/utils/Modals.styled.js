@@ -16,6 +16,11 @@ export const ModalOverlay = styled.div`
 
 export const ModalContent = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 `;
 
 export const CloseButton = styled.button`
