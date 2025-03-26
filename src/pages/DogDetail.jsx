@@ -171,8 +171,8 @@ const DogDetail = () => {
 
         <div className=" col-10 col-md-6 mx-auto justify-content-center">
           <div className="row">
-            <div className="col-12 col-sm-7 col-lg-5 mx-auto">
-              <InfoWrapper className="m-auto mt-4">
+          <div className={`col-12 ${dog.healthResults?.length > 0 ? "col-sm-7 col-lg-6" : "col-sm-12 col-lg-12"} mx-auto`}>
+          <InfoWrapper className="m-auto mt-4">
                 {dog.registrationNumber && (
                   <DogInfo>
                     <strong>Reg Nr:</strong> {dog.registrationNumber}
@@ -212,7 +212,7 @@ const DogDetail = () => {
                               month: "2-digit",
                               year: "numeric",
                             }
-                          )}
+                          )}{" "}
                           -{" "}
                           {new Date(dog.dateOfDeath).toLocaleDateString(
                             "no-NO",
@@ -314,9 +314,7 @@ const DogDetail = () => {
       </div>
 
       {dog.description && (
-        <DogInfo className="col-10 m-auto">
-          {dog.description}
-        </DogInfo>
+        <DogInfo className="col-10 m-auto">{dog.description}</DogInfo>
       )}
 
       {dog.breedingDogsInfo && (
