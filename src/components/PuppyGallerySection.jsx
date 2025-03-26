@@ -87,7 +87,7 @@ const PuppyGalleryImages = ({ litterId }) => {
                   />
                 ))
               ) : (
-                <div>No images in this gallery.</div> // No image display, but still show the gallery
+                ""
               )}
             </div>
             {/* Render the description if it exists */}
