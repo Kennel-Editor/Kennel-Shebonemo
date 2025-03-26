@@ -69,7 +69,7 @@ const PuppyGalleryImages = ({ litterId }) => {
 
   return (
     <div>
-      {galleryData.length > 0 ? (
+      {galleryData.length > 0 &&
         galleryData.map((gallery, galleryIndex) => (
           <GalleryContainer key={galleryIndex} className="mb-4">
             <h4>{gallery.title}</h4>
@@ -86,10 +86,7 @@ const PuppyGalleryImages = ({ litterId }) => {
             </div>
             {gallery.text && <p className="mt-2">{gallery.text}</p>}
           </GalleryContainer>
-        ))
-      ) : (
-        <div>No gallery available for this litter.</div>
-      )}
+        ))}
 
       {isGalleryModalOpen && galleryData[currentGalleryIndex] && (
         <GalleryImageModal
