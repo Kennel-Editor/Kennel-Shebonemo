@@ -17,27 +17,45 @@ const GalleryImageModal = ({
 }) => {
   return (
     <ModalOverlay onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
-        <CloseButton onClick={onClose}>×</CloseButton>
+      {/* Dette onClick stopper bare klikk inne i bildet */}
+      <ModalContent>
+        <div
+          style={{ position: "relative" }}
+          onClick={(e) => e.stopPropagation()} /* Stopper kun klikk på bildet */
+        >
+          <CloseButton onClick={onClose}>×</CloseButton>
 
-        {/* Image Display */}
-        <img
-          src={images[currentImageIndex]}
-          alt={`Gallery image ${currentImageIndex + 1}`}
-          style={{
-            maxWidth: "90vw",
-            maxHeight: "90vh",
-            minWidth: "60vw",
-            minHeight: "60vh",
-            objectFit: "contain",
-          }}
-        />
+          {/* Image Display */}
+          <img
+            src={images[currentImageIndex]}
+            alt={`Gallery image ${currentImageIndex + 1}`}
+            style={{
+              maxWidth: "90vw",
+              maxHeight: "90vh",
+              minWidth: "60vw",
+              minHeight: "60vh",
+              objectFit: "contain",
+            }}
+          />
+        </div>
 
         {/* Navigation Arrows */}
-        <NavigationButton direction="left" onClick={onPrev}>
+        <NavigationButton
+          direction="left"
+          onClick={(e) => {
+            e.stopPropagation();
+            onPrev();
+          }}
+        >
           <FaAngleLeft />
         </NavigationButton>
-        <NavigationButton direction="right" onClick={onNext}>
+        <NavigationButton
+          direction="right"
+          onClick={(e) => {
+            e.stopPropagation();
+            onNext();
+          }}
+        >
           <FaAngleRight />
         </NavigationButton>
 

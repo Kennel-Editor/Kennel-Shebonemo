@@ -25,13 +25,14 @@ export const ModalContent = styled.div`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -50px;
+  right: 20px;
   background: transparent;
   border: none;
   color: ${(props) => props.theme.colors.white};
-  font-size: 24px;
+  font-size: 2rem;
   cursor: pointer;
+  z-index: 2;
 `;
 
 export const NavigationButton = styled.button`
@@ -39,6 +40,7 @@ export const NavigationButton = styled.button`
   top: 50%;
   ${(props) => (props.direction === "left" ? "left: 10px;" : "right: 10px;")}
   background: transparent;
+  padding: 3rem;
   border: none;
   color: ${(props) => props.theme.colors.white};
   font-size: 30px;
