@@ -27,8 +27,8 @@ const PuppyGalleryImages = ({ litterId }) => {
         const litter = data[0];
         if (litter.galleries) {
           const galleryData = litter.galleries.map((gallery, index) => ({
-            images: gallery.images,
-            text: gallery.description,
+            images: gallery.images || [], // Ensure images is an array, even if empty
+            text: gallery.description || "", // Ensure description is not null
             title: gallery.title || `Galleri ${index + 1}`,
           }));
           setGalleryData(galleryData);
@@ -72,18 +72,25 @@ const PuppyGalleryImages = ({ litterId }) => {
       {galleryData.length > 0 &&
         galleryData.map((gallery, galleryIndex) => (
           <GalleryContainer key={galleryIndex} className="mb-4">
-            <h4>{gallery.title}</h4>
+            {/* Always render the title if it exists */}
+            {gallery.title && <h4>{gallery.title}</h4>}
             <div className="row">
-              {gallery.images.map((image, imageIndex) => (
-                <GalleryImage
-                  key={imageIndex}
-                  src={image.asset ? urlFor(image.asset) : ""}
-                  alt={`Gallery Image ${imageIndex + 1}`}
-                  style={{ cursor: "pointer" }}
-                  onClick={() => openGalleryModal(galleryIndex, imageIndex)}
-                />
-              ))}
+              {/* Render images if they exist, otherwise just skip */}
+              {gallery.images && gallery.images.length > 0 ? (
+                gallery.images.map((image, imageIndex) => (
+                  <GalleryImage
+                    key={imageIndex}
+                    src={image.asset ? urlFor(image.asset) : ""}
+                    alt={`Gallery Image ${imageIndex + 1}`}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => openGalleryModal(galleryIndex, imageIndex)}
+                  />
+                ))
+              ) : (
+                <div>No images in this gallery.</div> // No image display, but still show the gallery
+              )}
             </div>
+            {/* Render the description if it exists */}
             {gallery.text && <p className="mt-2">{gallery.text}</p>}
           </GalleryContainer>
         ))}
