@@ -38,9 +38,10 @@ export const CloseButton = styled.button`
 export const NavigationButton = styled.button`
   position: absolute;
   top: 50%;
-  ${(props) => (props.direction === "left" ? "left: 10px;" : "right: 10px;")}
+  left: ${({ direction }) => (direction === "left" ? "0" : "auto")};
+  right: ${({ direction }) => (direction === "right" ? "0" : "auto")};
   background: transparent;
-  padding: 3rem;
+  padding: 2rem;
   border: none;
   color: ${(props) => props.theme.colors.white};
   font-size: 30px;
@@ -49,6 +50,14 @@ export const NavigationButton = styled.button`
   svg {
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
   }
+  @media (min-width: 1180px) {
+    left: ${({ direction }) => (direction === "left" ? "10vw" : "auto")};
+    right: ${({ direction }) => (direction === "right" ? "10vw" : "auto")};
+  }
+  @media (min-width: 1640px) {
+    left: ${({ direction }) => (direction === "left" ? "20vw" : "auto")};
+    right: ${({ direction }) => (direction === "right" ? "20vw" : "auto")};
+  }
 `;
 
 export const Counter = styled.div`
@@ -56,7 +65,7 @@ export const Counter = styled.div`
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.text};
 
   font-size: 16px;
   background-color: ${(props) => props.theme.colors.accentTransparent};

@@ -17,11 +17,10 @@ const GalleryImageModal = ({
 }) => {
   return (
     <ModalOverlay onClick={onClose}>
-      {/* Dette onClick stopper bare klikk inne i bildet */}
       <ModalContent>
         <div
           style={{ position: "relative" }}
-          onClick={(e) => e.stopPropagation()} /* Stopper kun klikk på bildet */
+          onClick={(e) => e.stopPropagation()}
         >
           <CloseButton onClick={onClose}>×</CloseButton>
 
@@ -30,13 +29,17 @@ const GalleryImageModal = ({
             src={images[currentImageIndex]}
             alt={`Gallery image ${currentImageIndex + 1}`}
             style={{
-              maxWidth: "90vw",
-              maxHeight: "90vh",
+              maxWidth: "80vw",
+              maxHeight: "80vh",
               minWidth: "60vw",
               minHeight: "60vh",
               objectFit: "contain",
             }}
           />
+
+          <Counter>
+            {currentImageIndex + 1} / {images.length}
+          </Counter>
         </div>
 
         {/* Navigation Arrows */}
@@ -58,11 +61,6 @@ const GalleryImageModal = ({
         >
           <FaAngleRight />
         </NavigationButton>
-
-        {/* Image Counter */}
-        <Counter>
-          {currentImageIndex + 1} / {images.length}
-        </Counter>
       </ModalContent>
     </ModalOverlay>
   );
