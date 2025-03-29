@@ -11,7 +11,7 @@ import {
   PuppiesContainer,
   MainImgContainer,
 } from "./LittersDetail.styled";
-import PuppyGalleryImages from "../components/PuppyGallerySection";
+import GalleryModal from "../components/GalleryModal";
 
 const LittersDetail = () => {
   const { id } = useParams();
@@ -333,7 +333,7 @@ father {
 
         {litter.galleries?.length > 0 && (
           <div className="container mt-5">
-            <PuppyGalleryImages litterId={id} />
+            <GalleryModal litterId={id} />
           </div>
         )}
 
