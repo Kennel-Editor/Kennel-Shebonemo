@@ -27,35 +27,33 @@ const OurDogs = () => {
       }`
       )
       .then((data) => {
-        const sortedDogs = data
-          .sort((a, b) => {
-            if (a.dateOfBirth && b.dateOfBirth) {
-              return new Date(b.dateOfBirth) - new Date(a.dateOfBirth);
-            }
-            return 0;
-          });
+        const sortedDogs = data.sort((a, b) => {
+          if (a.dateOfBirth && b.dateOfBirth) {
+            return new Date(b.dateOfBirth) - new Date(a.dateOfBirth);
+          }
+          return 0;
+        });
         setDogs(sortedDogs);
       })
       .catch(console.error);
   }, []);
-  
+
   const filterAndSortDogs = (type) =>
     dogs
-      .filter((dog) => dog.dogType === type) 
+      .filter((dog) => dog.dogType === type)
       .sort((a, b) => {
         if (a.dateOfBirth && b.dateOfBirth) {
           return new Date(b.dateOfBirth) - new Date(a.dateOfBirth);
         }
         return 0;
       });
-  
 
   const currentDogs = filterAndSortDogs("current");
   const breedingDogs = filterAndSortDogs("breeding");
   const deceasedDogs = filterAndSortDogs("deceased");
 
   return (
-    <DogsContainer className="container col-lg-10">
+    <DogsContainer className="container col-11 col-lg-10 m-auto">
       <h2 className="mb-3 text-center">Våre Hunder</h2>
 
       <div id="current" className="row g-4 costum-border pb-4">
