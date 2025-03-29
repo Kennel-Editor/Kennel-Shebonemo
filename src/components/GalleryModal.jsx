@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import sanityClient from "../sanityClient";
 import { urlFor } from "../utils/sanityImage";
 import GalleryImageModal from "../utils/GalleryImageModal";
-import { GalleryContainer, GalleryGrid, GalleryImage, VideoThumbnail } from "../styles/galleryImages.styled";
+import {
+  GalleryContainer,
+  GalleryGrid,
+  GalleryImage,
+  VideoThumbnail,
+} from "../styles/galleryImages.styled";
 import { FaPlayCircle } from "react-icons/fa";
 
 const GalleryModal = ({ litterId, dogId }) => {
@@ -44,13 +49,15 @@ const GalleryModal = ({ litterId, dogId }) => {
           }
         } else if (dogId) {
           const fetchedGallery = data[0]?.gallery || [];
-          const galleryData = [{
-            title: "Galleri",
-            images: fetchedGallery.map(image => ({
-              asset: image.asset,
-              type: "image",
-            }))
-          }];
+          const galleryData = [
+            {
+              title: "Galleri",
+              images: fetchedGallery.map((image) => ({
+                asset: image.asset,
+                type: "image",
+              })),
+            },
+          ];
           setGalleryData(galleryData);
         }
         setLoading(false);
@@ -101,35 +108,70 @@ const GalleryModal = ({ litterId, dogId }) => {
 
   return (
     <div>
-      {galleryData.length > 0 ? (
-        galleryData.map((gallery, galleryIndex) => (
-          <GalleryContainer key={galleryIndex} className="mb-4">
-            <h4>{gallery.title}</h4>
-            <GalleryGrid>
-              
-              {getMediaItems(gallery).map((mediaItem, mediaIndex) => (
-                <div className="" key={mediaIndex}>
-                  {mediaItem.type === "image" ? (
-                    <GalleryImage
-                      src={urlFor(mediaItem.asset)}
-                      alt={`Gallery Image ${mediaIndex + 1}`}
-                      onClick={() => openGalleryModal(galleryIndex, mediaIndex)}
-                    />
-                  ) : (
-                    <VideoThumbnail onClick={() => openGalleryModal(galleryIndex, mediaIndex)}>
-                      <FaPlayCircle size={50} />
-                    </VideoThumbnail>
-                  )}
-                </div>
-              ))}
-           </GalleryGrid>
-          </GalleryContainer>
-        ))
-      ) : (
-        <div>No gallery available.</div>
-      )}
+      {galleryData.length > 0
+        ? galleryData.map((gallery, galleryIndex) => (
+            <GalleryContainer key={galleryIndex} className="mb-4">
+              <h4>{gallery.title}</h4>
 
-      {isGalleryModalOpen && (
+              <GalleryGrid className="col-12 col-md-10 m-auto">
+                {getMediaItems(gallery).map((mediaItem, mediaIndex) => (
+                  <div
+                    className="col-10 mb-3"
+                    key={mediaIndex}
+                  >
+                    {mediaItem.type === "image" ? (
+                      <GalleryImage
+                        src={urlFor(mediaItem.asset)}
+                        alt={`Gallery Image ${mediaIndex + 1}`}
+                        style={{ cursor: "pointer" }}
+                        onClick={() =>
+                          openGalleryModal(galleryIndex, mediaIndex)
+                        }
+                      />
+                    ) : (
+                      <div className="row">
+                        <VideoThumbnail
+                          style={{
+                            cursor: "pointer",
+                            position: "relative",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                          onClick={() =>
+                            openGalleryModal(galleryIndex, mediaIndex)
+                          }
+                        >
+                          <video
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                            src={mediaItem.url}
+                            muted
+                          />
+                          <FaPlayCircle
+                            size={50}
+                            color="white"
+                            style={{
+                              position: "absolute",
+                              zIndex: 2,
+                              pointerEvents: "none",
+                            }}
+                          />
+                        </VideoThumbnail>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </GalleryGrid>
+              {gallery.text && <p className="mt-2">{gallery.text}</p>}
+            </GalleryContainer>
+          ))
+        : ""}
+
+      {isGalleryModalOpen && galleryData[currentGalleryIndex] && (
         <GalleryImageModal
           mediaItems={getMediaItems(galleryData[currentGalleryIndex])}
           currentMediaIndex={currentImageIndex}

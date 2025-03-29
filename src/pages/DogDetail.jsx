@@ -290,25 +290,8 @@ const DogDetail = () => {
         </DogInfo>
       )}
 
-      {/* Gallery Section */}
-      {dog.gallery && dog.gallery.length > 0 && (
-        <GalleryContainer className="mt-4">
-          <h4>Galleri</h4>
-          <div className="row">
-            {dog.gallery.map((image, index) =>
-              image.asset ? (
-                <GalleryImage
-                  key={index}
-                  src={urlFor(image)}
-                  alt={`Galleri bilde ${index + 1}`}
-                  onClick={() => openGalleryModal(index)}
-                />
-              ) : null
-            )}
-          </div>
-        </GalleryContainer>
-      )}
 
+ <GalleryModal dogId={id} />
       {/* Pedigree Section */}
       {dog.pedigreeUrl && (
         <div className="mt-5 text-center col-12 col-sm-8 m-auto">
@@ -325,7 +308,7 @@ const DogDetail = () => {
         </div>
       )}
 
-      <GalleryModal dogId={id} />
+     
 
       {isModalOpen && (
         <Modal imageUrl={currentImage} onClose={() => setIsModalOpen(false)} />

@@ -11,22 +11,21 @@ export const GalleryContainer = styled.div`
 
 export const GalleryGrid = styled.div`
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   justify-items: center;
-
-  @media (max-width: 500px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 `;
 
 export const GalleryImage = styled.img`
   width: 100%;
   max-width: 150px;
-  height: 150px;
+  height: auto;
+  max-height: 100px;
   border-radius: 10px;
   cursor: pointer;
+  object-position: 50% 30%;
   transition: transform 0.2s ease;
+  overflow: hidden;
   object-fit: cover;
 
   &:hover {
