@@ -373,7 +373,6 @@ export default {
       ],
       validation: (Rule) => Rule.max(10).error('Maks 10 gallerier'),
     },
-
     {
       name: 'freeText2',
       title: 'Fritekst 2',
