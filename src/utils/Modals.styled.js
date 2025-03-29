@@ -45,10 +45,10 @@ export const CloseButton = styled.button`
 `;
 
 export const NavigationButton = styled.button`
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: ${({ direction }) => (direction === "left" ? "-80px" : "auto")};
-  right: ${({ direction }) => (direction === "right" ? "-80px" : "auto")};
+  left: ${({ direction }) => (direction === "left" ? "0" : "auto")};
+  right: ${({ direction }) => (direction === "right" ? "0" : "auto")};
   background: transparent;
   padding: 2rem;
   border: none;
@@ -57,7 +57,10 @@ export const NavigationButton = styled.button`
   cursor: pointer;
   transform: translateY(-50%);
   z-index: 1001;
-
+  @media (min-width: 1100px) {
+    left: ${({ direction }) => (direction === "left" ? "5vw" : "auto")};
+    right: ${({ direction }) => (direction === "right" ? "5vw" : "auto")};
+  }
   svg {
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
   }
