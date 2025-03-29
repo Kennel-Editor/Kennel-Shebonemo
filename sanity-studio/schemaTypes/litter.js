@@ -343,18 +343,35 @@ export default {
               title: 'Bilder',
               type: 'array',
               of: [{type: 'image', options: {hotspot: true}}],
-              validation: (Rule) => Rule.max(8).warning('Maks 8 bilder per galleri'),
+              validation: (Rule) => Rule.max(8).error('Maks 8 bilder per galleri'),
               description: 'Legg til bilder fra valpens utvikling. Maks 8 bilder pr galleri',
             },
             {
-              name: 'description',
-              title: 'Tekst under Galleri',
-              type: 'text',
+              name: 'video',
+              title: 'Video',
+              type: 'file',
+              description: 'Legg til en video for dette galleriet. Maks 3 minutters video.',
+              options: {
+                accept: 'video/*',
+              },
+              validation: (Rule) =>
+                Rule.required().custom((file, context) => {
+                  const galleries = context.parent?.galleries || []
+
+                  // Sjekk at det kun finnes én video i galleriet
+                  const videoCount = galleries.filter((gallery) => gallery.video).length
+
+                  if (videoCount > 1) {
+                    return 'Maks én video per galleri'
+                  }
+
+                  return true
+                }),
             },
           ],
         },
       ],
-      validation: (Rule) => Rule.max(10).warning('Maks 10 gallerier'),
+      validation: (Rule) => Rule.max(10).error('Maks 10 gallerier'),
     },
 
     {
