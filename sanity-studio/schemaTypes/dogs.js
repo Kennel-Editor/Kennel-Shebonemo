@@ -5,27 +5,27 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Name',
+      title: 'Navn',
       type: 'string',
     },
     {
       name: 'nickname',
-      title: 'Nickname',
+      title: 'Kallenavn',
       type: 'string',
     },
     {
       name: 'breed',
-      title: 'Breed',
+      title: 'Rase',
       type: 'string',
     },
     {
       name: 'color',
-      title: 'Color',
+      title: 'Farge',
       type: 'string',
     },
     {
       name: 'gender',
-      title: 'Gender',
+      title: 'Kjønn',
       type: 'string',
       options: {
         list: [
@@ -36,7 +36,7 @@ export default {
     },
     {
       name: 'dogType',
-      title: 'Dog Type',
+      title: 'Hunde type',
       type: 'string',
       options: {
         list: [
@@ -48,7 +48,7 @@ export default {
     },
     {
       name: 'dateOfBirth',
-      title: 'Date of Birth',
+      title: 'Fødselsdato',
       type: 'date',
       options: {
         dateFormat: 'DD.MM.YYYY',
@@ -58,7 +58,7 @@ export default {
 
     {
       name: 'dateOfDeath',
-      title: 'Date of Death',
+      title: 'Døds dato',
       type: 'date',
       options: {
         dateFormat: 'DD.MM.YYYY',
@@ -67,19 +67,19 @@ export default {
     },
     {
       name: 'title',
-      title: 'Title',
+      title: 'Titler',
       type: 'string',
     },
     {
       name: 'registrationNumber',
-      title: 'Registration Number',
+      title: 'Registrerings Nummer',
       type: 'string',
     },
     {
       name: 'healthResults',
-      title: 'Helse Resultater',
+      title: 'Helse Resultater og info',
       type: 'array',
-      description: 'titel = AD, HD etc. Resultater = 0, A osv ',
+      description: 'titel = AD, HD, Høyde etc. Resultater = 0, A, 69cm osv ',
       of: [
         {
           type: 'object',
@@ -100,7 +100,7 @@ export default {
     },
     {
       name: 'image',
-      title: 'Image',
+      title: 'Bilde av hund',
       type: 'image',
       options: {
         hotspot: true,
@@ -108,20 +108,20 @@ export default {
     },
     {
       name: 'pedigree',
-      title: 'Pedigree',
+      title: 'Stamtavle',
       type: 'image',
       description: 'Pedigree-bilde av hunden (stamtavle).',
     },
     {
       name: 'gallery',
-      title: 'Gallery',
+      title: 'Galleri bilder',
       type: 'array',
       of: [{type: 'image', options: {hotspot: true}}],
       validation: (Rule) => Rule.max(5).warning('Maks 5 bilder i galleriet'),
     },
     {
       name: 'description',
-      title: 'Description',
+      title: 'Beskrivelse av hund (ekstra)',
       type: 'text',
     },
     {
@@ -129,7 +129,7 @@ export default {
       title: 'kull informasjon',
       type: 'text',
       options: {},
-      description: 'informasjon om tidligere valpekull',
+      description: 'informasjon om tidligere valpekull - Hentes automatisk om hunden er registrert på valpekull',
     },
 
     {
