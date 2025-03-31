@@ -1,3 +1,5 @@
+import CustomImageArrayInput from '../components/CustomImageArrayInput'
+
 export default {
   name: 'litter',
   title: 'Kull',
@@ -365,6 +367,7 @@ export default {
               title: 'Bilder',
               type: 'array',
               of: [{type: 'image', options: {hotspot: true}}],
+              inputComponent: CustomImageArrayInput,
               validation: (Rule) => Rule.max(8).error('Maks 8 bilder per galleri'),
               description: 'Legg til bilder fra valpens utvikling. Maks 8 bilder pr galleri',
             },

@@ -6,19 +6,22 @@ import { urlFor } from "../utils/sanityImage";
 
 // Helper function to get name
 const getDogName = (dog) => {
+  if (!dog) return 'Ukjent'
   return dog.dogReference
-    ? dog.dogReference.nickname || dog.dogReference.name
-    : dog.nickname || dog.name;
-};
+    ? dog.dogReference.nickname || dog.dogReference.name || 'Ukjent'
+    : dog.nickname || dog.name || 'Ukjent'
+}
 
-// Helper function to get image
 const getDogImage = (dog) => {
+  if (!dog) return null
   return dog.overrideImage?.asset
     ? urlFor(dog.overrideImage)
-    : dog.dogReference?.image
+    : dog.dogReference?.image?.asset
     ? urlFor(dog.dogReference.image)
-    : urlFor(dog.image);
-};
+    : dog.image?.asset
+    ? urlFor(dog.image)
+    : null
+}
 
 const LitterCardItem = ({ litter }) => {
   const motherName = getDogName(litter.mother);
