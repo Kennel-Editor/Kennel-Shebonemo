@@ -7,11 +7,15 @@ import App from "./App.jsx";
 import { getTheme } from "./styles/theme.js";
 import { GlobalStyles } from "./styles/GlobalStyles.js";
 import { ThemeProvider } from "styled-components";
+import { HelmetProvider } from "react-helmet-async";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider theme={getTheme}>
-      <GlobalStyles />
-      <App />
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider theme={getTheme}>
+        <GlobalStyles />
+        <App />
+      </ThemeProvider>
+    </HelmetProvider>
   </StrictMode>
 );
