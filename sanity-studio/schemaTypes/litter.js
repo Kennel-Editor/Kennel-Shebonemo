@@ -1,3 +1,5 @@
+import CustomImageArrayInput from '../components/CustomImageArrayInput'
+
 export default {
   name: 'litter',
   title: 'Kull',
@@ -94,6 +96,7 @@ export default {
           name: 'healthResults',
           title: 'Helse Resultater',
           type: 'array',
+          hidden: ({parent}) => parent?.isOwned === true,
           description: 'Resultater for helserelaterte tester, som AD, HD etc.',
           of: [
             {
@@ -109,6 +112,22 @@ export default {
                   title: 'Resultater',
                   type: 'text',
                 },
+              ],
+            },
+          ],
+        },
+        {
+          name: 'extraInfoList',
+          title: 'Tilleggsopplysninger (om vår hund)',
+          type: 'array',
+          hidden: ({parent}) => parent?.isOwned === false,
+          description: 'Ekstra info som høyde, eier, utstilling etc.',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {name: 'title', title: 'Tittel', type: 'string'},
+                {name: 'description', title: 'Beskrivelse', type: 'text'},
               ],
             },
           ],
@@ -212,7 +231,7 @@ export default {
           name: 'healthResults',
           title: 'Helse Resultater',
           type: 'array',
-          description: 'Resultater for helserelaterte tester, som AD, HD etc.',
+          description: 'informasjon og resultater for helserelaterte tester, som AD, HD etc.',
           of: [
             {
               type: 'object',
@@ -339,24 +358,46 @@ export default {
                 'Gi galleriet en passende tittel, f.eks. "Uke 1, uke2 osv (maks 10 gallerier)".',
             },
             {
-              name: 'images',
-              title: 'Bilder',
-              type: 'array',
-              of: [{type: 'image', options: {hotspot: true}}],
-              validation: (Rule) => Rule.max(8).warning('Maks 8 bilder per galleri'),
-              description: 'Legg til bilder fra valpens utvikling. Maks 8 bilder pr galleri',
-            },
-            {
               name: 'description',
               title: 'Tekst under Galleri',
               type: 'text',
             },
+            {
+              name: 'images',
+              title: 'Bilder',
+              type: 'array',
+              of: [{type: 'image', options: {hotspot: true}}],
+              inputComponent: CustomImageArrayInput,
+              validation: (Rule) => Rule.max(8).error('Maks 8 bilder per galleri'),
+              description: 'Legg til bilder fra valpens utvikling. Maks 8 bilder pr galleri',
+            },
+
+            {
+              name: 'video',
+              title: 'Video',
+              type: 'file',
+              description: 'Legg til en video for dette galleriet. Maks 3 minutters video.',
+              options: {
+                accept: 'video/*',
+              },
+              validation: (Rule) =>
+                Rule.custom((file, context) => {
+                  if (!file) return true
+                  const galleries = context.parent?.galleries || []
+                  const videoCount = galleries.filter((gallery) => gallery.video).length
+
+                  if (videoCount > 1) {
+                    return 'Maks én video per galleri'
+                  }
+
+                  return true
+                }),
+            },
           ],
         },
       ],
-      validation: (Rule) => Rule.max(10).warning('Maks 10 gallerier'),
+      validation: (Rule) => Rule.max(10).error('Maks 10 gallerier'),
     },
-
     {
       name: 'freeText2',
       title: 'Fritekst 2',

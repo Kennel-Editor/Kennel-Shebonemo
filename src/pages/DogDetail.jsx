@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import sanityClient from "../sanityClient";
 import Modal from "../utils/ImageModal";
-import GalleryImageModal from "../utils/GalleryImageModal";
+import GalleryModal from "../components/GalleryModal";
 import { urlFor } from "../utils/sanityImage";
 import {
   DetailContainer,
@@ -14,7 +14,6 @@ import {
   InfoWrapper,
   PedigreeImage,
 } from "./DogDetail.styled";
-import { GalleryContainer, GalleryImage } from "../styles/galleryImages.styled";
 
 const DogDetail = () => {
   const { id } = useParams();
@@ -22,9 +21,7 @@ const DogDetail = () => {
   const [litters, setLitters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
-  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
   const [totalPuppies, setTotalPuppies] = useState(0);
 
   useEffect(() => {
@@ -54,14 +51,6 @@ const DogDetail = () => {
             hotspot
           },
           "pedigreeUrl": pedigree.asset->url,
-          "gallery": gallery[] {
-            asset-> {
-              _id,
-              _ref
-            },
-            crop,
-            hotspot
-          },
           description,
           "mother": mother->{
             _id,
@@ -118,37 +107,9 @@ const DogDetail = () => {
       })
       .catch(console.error);
   }, [id]);
+
   if (loading) return <div>Laster...</div>;
   if (!dog) return <div>Fant ingen hund.</div>;
-
-  const openGalleryModal = (index) => {
-    setCurrentGalleryIndex(index);
-    setIsGalleryModalOpen(true);
-  };
-
-  const prevImage = () => {
-    setCurrentGalleryIndex((prevIndex) =>
-      prevIndex === 0 ? dog.gallery.length - 1 : prevIndex - 1
-    );
-  };
-
-  const nextImage = () => {
-    setCurrentGalleryIndex((prevIndex) =>
-      prevIndex === dog.gallery.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const renderInfoAsBulletPoints = (info) => {
-    return (
-      <ul>
-        {info.split("\n").map((item, index) => (
-          <li className="list-unstyled text-start" key={index}>
-            {item}
-          </li>
-        ))}
-      </ul>
-    );
-  };
 
   return (
     <DetailContainer className="col-10 col-xl-8">
@@ -171,8 +132,14 @@ const DogDetail = () => {
 
         <div className=" col-10 col-md-6 mx-auto justify-content-center">
           <div className="row">
-          <div className={`col-12 ${dog.healthResults?.length > 0 ? "col-sm-7 col-lg-6" : "col-sm-12 col-lg-12"} mx-auto`}>
-          <InfoWrapper className="m-auto mt-4">
+            <div
+              className={`col-12 ${
+                dog.healthResults?.length > 0
+                  ? "col-sm-7 col-lg-6"
+                  : "col-sm-12 col-lg-12"
+              } mx-auto`}
+            >
+              <InfoWrapper className="m-auto mt-4">
                 {dog.registrationNumber && (
                   <DogInfo>
                     <strong>Reg Nr:</strong> {dog.registrationNumber}
@@ -323,25 +290,8 @@ const DogDetail = () => {
         </DogInfo>
       )}
 
-      {/* Gallery Section */}
-      {dog.gallery && dog.gallery.length > 0 && (
-        <GalleryContainer className="mt-4">
-          <h4>Galleri</h4>
-          <div className="row">
-            {dog.gallery.map((image, index) =>
-              image.asset ? (
-                <GalleryImage
-                  key={index}
-                  src={urlFor(image)}
-                  alt={`Galleri bilde ${index + 1}`}
-                  onClick={() => openGalleryModal(index)}
-                />
-              ) : null
-            )}
-          </div>
-        </GalleryContainer>
-      )}
 
+ <GalleryModal dogId={id} />
       {/* Pedigree Section */}
       {dog.pedigreeUrl && (
         <div className="mt-5 text-center col-12 col-sm-8 m-auto">
@@ -358,19 +308,10 @@ const DogDetail = () => {
         </div>
       )}
 
-      {/* Modals */}
+     
+
       {isModalOpen && (
         <Modal imageUrl={currentImage} onClose={() => setIsModalOpen(false)} />
-      )}
-
-      {isGalleryModalOpen && (
-        <GalleryImageModal
-          images={dog.gallery.map((image) => urlFor(image))}
-          currentImageIndex={currentGalleryIndex}
-          onClose={() => setIsGalleryModalOpen(false)}
-          onPrev={prevImage}
-          onNext={nextImage}
-        />
       )}
     </DetailContainer>
   );

@@ -6,62 +6,78 @@ import {
   Counter,
   ModalContent,
   CloseButton,
+  ModalContainer,
 } from "./Modals.styled";
+import { urlFor, videoUrlFor } from "./sanityImage";
 
 const GalleryImageModal = ({
-  images,
-  currentImageIndex,
+  mediaItems,
+  currentMediaIndex,
   onClose,
   onPrev,
   onNext,
 }) => {
+  const currentMedia = mediaItems[currentMediaIndex];
+  const videoUrl =
+    currentMedia.type === "video" ? videoUrlFor(currentMedia.url) : null;
+
   return (
     <ModalOverlay onClick={onClose}>
-      <ModalContent>
-        <div
-          style={{ position: "relative" }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <CloseButton onClick={onClose}>×</CloseButton>
+      <ModalContainer onClick={onClose}>
+        <ModalContent onClick={(e) => e.stopPropagation()}>
+          <div style={{ position: "relative", display: "inline-block" }}>
+            {/* Close button inside the relative div */}
+            <CloseButton onClick={onClose}>×</CloseButton>
 
-          {/* Image Display */}
-          <img
-            src={images[currentImageIndex]}
-            alt={`Gallery image ${currentImageIndex + 1}`}
-            style={{
-              maxWidth: "80vw",
-              maxHeight: "80vh",
-              minWidth: "60vw",
-              minHeight: "60vh",
-              objectFit: "contain",
-            }}
-          />
+            {currentMedia.type === "image" ? (
+              <img
+                src={urlFor(currentMedia.asset)}
+                alt={`Gallery image ${currentMediaIndex + 1}`}
+                style={{
+                  maxWidth: "80vw",
+                  maxHeight: "80vh",
+                  objectFit: "contain",
+                }}
+              />
+            ) : (
+              <video
+                controls
+                playsInline
+                style={{
+                  maxWidth: "80vw",
+                  maxHeight: "80vh",
+                }}
+              >
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
 
-          <Counter>
-            {currentImageIndex + 1} / {images.length}
-          </Counter>
-        </div>
+            <Counter>
+              {currentMediaIndex + 1} / {mediaItems.length}
+            </Counter>
 
-        {/* Navigation Arrows */}
-        <NavigationButton
-          direction="left"
-          onClick={(e) => {
-            e.stopPropagation();
-            onPrev();
-          }}
-        >
-          <FaAngleLeft />
-        </NavigationButton>
-        <NavigationButton
-          direction="right"
-          onClick={(e) => {
-            e.stopPropagation();
-            onNext();
-          }}
-        >
-          <FaAngleRight />
-        </NavigationButton>
-      </ModalContent>
+            <NavigationButton
+              direction="left"
+              onClick={(e) => {
+                e.stopPropagation();
+                onPrev();
+              }}
+            >
+              <FaAngleLeft />
+            </NavigationButton>
+            <NavigationButton
+              direction="right"
+              onClick={(e) => {
+                e.stopPropagation();
+                onNext();
+              }}
+            >
+              <FaAngleRight />
+            </NavigationButton>
+          </div>
+        </ModalContent>
+      </ModalContainer>
     </ModalOverlay>
   );
 };

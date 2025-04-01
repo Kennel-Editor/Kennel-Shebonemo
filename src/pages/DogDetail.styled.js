@@ -18,6 +18,7 @@ export const DogImage = styled.img`
   height: auto;
   border-radius: 10px;
   object-fit: cover;
+  max-height: 50vh;
 `;
 
 export const DogName = styled.h2`
@@ -36,7 +37,7 @@ export const DogInfo = styled.p`
   font-size: 1rem;
   line-height: 1.5;
   display: flex;
-  strong {
+    strong {
     margin-right: 5px;
   }
 `;
