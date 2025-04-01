@@ -1,9 +1,11 @@
 // src/App.jsx
 import React from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/GlobalStyles";
-import { theme } from "./styles/theme";
+import sanityClient from "./sanityClient";
+import { getTheme } from "./styles/theme";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import OurDogs from "./pages/OurDogs";
@@ -14,8 +16,23 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
 import GalleryDetail from "./pages/GalleryDetail";
+import useSiteSettings from "./hooks/useSiteSettings";
 
 const App = () => {
+  const settings = useSiteSettings();
+  const [theme, setTheme] = useState(getTheme());
+  useEffect(() => {
+    sanityClient
+      .fetch(`*[_type == "siteSettings" && isActive == true][0]`)
+      .then((data) => {
+        setTheme(getTheme(data));
+      })
+      .catch((err) => {
+        console.error("Feil ved henting av tema:", err);
+        setTheme(getTheme());
+      });
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
