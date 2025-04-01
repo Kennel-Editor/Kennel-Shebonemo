@@ -7,31 +7,35 @@ export const GalleryContainer = styled.div`
   h4 {
     margin-bottom: 1rem;
   }
+    
 `;
 
 export const GalleryGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, max-content));
   gap: 1rem;
+  justify-content: center; 
   justify-items: center;
+  width: 100%;
+  max-width: 1000px; 
+  margin: 0 auto;
 `;
+
 
 export const GalleryImage = styled.img`
   width: 100%;
   max-width: 150px;
-  height: auto;
-  max-height: 100px;
+  height: 150px;
   border-radius: 10px;
   cursor: pointer;
-  object-position: 50% 30%;
-  transition: transform 0.2s ease;
-  overflow: hidden;
   object-fit: cover;
+  transition: transform 0.2s ease;
 
   &:hover {
     transform: scale(1.05);
   }
 `;
+
 
 export const VideoThumbnail = styled.div`
   position: relative;
