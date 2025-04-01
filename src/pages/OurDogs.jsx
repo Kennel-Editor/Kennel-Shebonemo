@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../sanityClient";
 import SEO from "../components/SEO";
+import LoadingSpinner from "../utils/LoadingSpinner";
 import { DogCard, DogsContainer } from "./OurDogs.styled";
 import { urlFor } from "../utils/sanityImage";
 
 const OurDogs = () => {
   const [dogs, setDogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     sanityClient
@@ -35,8 +37,10 @@ const OurDogs = () => {
           return 0;
         });
         setDogs(sortedDogs);
+        setLoading(false);
       })
       .catch(console.error);
+    setLoading(false);
   }, []);
 
   const filterAndSortDogs = (type) =>
@@ -52,6 +56,8 @@ const OurDogs = () => {
   const currentDogs = filterAndSortDogs("current");
   const breedingDogs = filterAndSortDogs("breeding");
   const deceasedDogs = filterAndSortDogs("deceased");
+
+  if (loading) return <LoadingSpinner />;
 
   return (
     <>

@@ -44,9 +44,9 @@ const DynamicBreadcrumbs = () => {
           .then((data) => {
             if (data && data.length > 0) {
               if (pathnames[0] === "gallery") {
-                setGalleryTitle(data[0].title); 
+                setGalleryTitle(data[0].title);
               } else {
-                setData(data[0]); 
+                setData(data[0]);
               }
             } else {
               console.error("No data found for ID:", id);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SEO from "../components/SEO";
+import LoadingSpinner from "../utils/LoadingSpinner";
 import { useParams } from "react-router-dom";
 import sanityClient from "../sanityClient";
 import { urlFor } from "../utils/sanityImage";
@@ -125,9 +126,8 @@ father {
   }, [id]);
 
   if (loading) {
-    return <div>Laster...</div>;
+    return <LoadingSpinner />;
   }
-
   if (!litter) {
     return <div>Fant ingen kull.</div>;
   }

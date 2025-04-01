@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SEO from "../components/SEO";
 import { useParams, Link } from "react-router-dom";
 import sanityClient from "../sanityClient";
+import LoadingSpinner from "../utils/LoadingSpinner";
 import Modal from "../utils/ImageModal";
 import GalleryModal from "../components/GalleryModal";
 import { urlFor } from "../utils/sanityImage";
@@ -109,7 +110,7 @@ const DogDetail = () => {
       .catch(console.error);
   }, [id]);
 
-  if (loading) return <div>Laster...</div>;
+  if (loading) return <LoadingSpinner />;
   if (!dog) return <div>Fant ingen hund.</div>;
 
   return (

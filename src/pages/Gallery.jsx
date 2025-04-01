@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import SEO from "../components/SEO";
+import LoadingSpinner from "../utils/LoadingSpinner";
 import {
   GalleryContainer,
   GalleryGrid,
@@ -12,6 +13,7 @@ import sanityClient from "../sanityClient";
 
 const Gallery = () => {
   const [galleries, setGalleries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     sanityClient
@@ -22,9 +24,17 @@ const Gallery = () => {
           "mainImageUrl": mainImage.asset->url
         }`
       )
-      .then((data) => setGalleries(data))
-      .catch(console.error);
+      .then((data) => {
+        setGalleries(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) return <LoadingSpinner />;
 
   return (
     <>
