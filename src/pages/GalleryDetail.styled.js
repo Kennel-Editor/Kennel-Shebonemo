@@ -30,14 +30,12 @@ export const ImageItem = styled.div`
 
 export const Image = styled.img`
   width: 100%;
-  max-width: 250px;
-  height: 150px;
+  max-width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
-
-  @media (max-width: 992px) {
-    width: ;
-  }
+  object-position: 50% 30%;
+   aspect-ratio: 1 / 1;
 `;
 
 export const CaptionContainer = styled.div`
