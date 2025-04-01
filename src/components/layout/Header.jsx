@@ -96,7 +96,6 @@ const Header = () => {
       .fetch(
         `*[_type == "siteInfo"][0]{
           pageTitle,
-        headerImage
       }`
       )
       .then((data) => {
@@ -106,6 +105,26 @@ const Header = () => {
         if (data && data.headerImage && data.headerImage.asset) {
           const sanityImageUrl = urlFor(data.headerImage.asset);
           setHeaderImageUrl(sanityImageUrl);
+        }
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "siteSettings" && isActive == true][0]{
+        headerImage {
+          asset-> {
+            _id,
+            url
+          }
+        }
+      }`
+      )
+      .then((theme) => {
+        if (theme?.headerImage?.asset?.url) {
+          setHeaderImageUrl(theme.headerImage.asset.url);
         }
       })
       .catch(console.error);

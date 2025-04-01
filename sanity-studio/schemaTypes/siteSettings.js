@@ -49,6 +49,14 @@ export default {
       options: {disableAlpha: true},
     },
     {
+      name: 'secondaryColor',
+      title: 'Sekundær farge',
+      type: 'color',
+      description:
+        'Brukes på svakere text - burde være noe lik primary eller text, men svakere',
+      options: {disableAlpha: true},
+    },
+    {
       name: 'titleColor',
       title: 'Farge for ekstra overskrifter',
       type: 'color',
@@ -63,14 +71,7 @@ export default {
         'Hovedbakgrunn for nettsiden. Bør være lys hvis tekst er mørk.',
       options: {disableAlpha: true},
     },
-    {
-      name: 'secondaryColor',
-      title: 'Sekundær bakgrunn',
-      type: 'color',
-      description:
-        'Brukes i seksjoner med kontrast, som cards, bokser eller footer.',
-      options: {disableAlpha: true},
-    },
+   
   ],
 
   preview: {
