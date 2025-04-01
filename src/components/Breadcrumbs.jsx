@@ -44,9 +44,9 @@ const DynamicBreadcrumbs = () => {
           .then((data) => {
             if (data && data.length > 0) {
               if (pathnames[0] === "gallery") {
-                setGalleryTitle(data[0].title); // If it's a gallery, set the gallery title
+                setGalleryTitle(data[0].title); 
               } else {
-                setData(data[0]); // Otherwise, set the dog or litter data
+                setData(data[0]); 
               }
             } else {
               console.error("No data found for ID:", id);
@@ -58,7 +58,7 @@ const DynamicBreadcrumbs = () => {
       }
     }
   }, [id, pathnames]);
-
+  if (location.pathname === "/") return null;
   return (
     <StyledBreadcrumb className="col-10 col-xl-9 m-auto">
       {location.pathname !== "/" && (

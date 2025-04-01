@@ -22,12 +22,17 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <Title>Velkommen til {siteInfo.pageTitle}</Title>
+      <Title className="col-10 m-auto mb-3">
+        Velkommen til
+        <span className="d-none d-md-inline"> </span>
+        <br className="d-md-none" />
+        {siteInfo.pageTitle}
+      </Title>
 
       <img
         src={siteInfo.introImage?.asset?.url}
         alt="Hero Image"
-        className="col-10 col-md-8 col-lg-6 col-xl-4"
+        className="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4"
       />
       <Description className="col-10 col-md-8 col-lg-6 m-auto my-3">
         {siteInfo.introText}
