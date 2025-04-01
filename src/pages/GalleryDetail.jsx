@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import sanityClient from "../sanityClient";
+import SEO from "../components/SEO";
 import {
   DetailContainer,
   GalleryGrid,
@@ -49,6 +50,12 @@ const GalleryDetail = () => {
   };
 
   return (
+    <>
+     <SEO
+        title={`${gallery.title} | Bildegalleri – Kennel Shebonemo`}
+        description={`Se bilder fra ${gallery.title} hos Kennel Shebonemo, tidligere kjent som Puddel Mona. Oppdrett av storpudler i Norge.`}
+        keywords={`bildegalleri, puddelbilder, ${gallery.title}, Mona Fegri, Puddel Mona, storpuddel, kennel shebonemo`}
+      />
     <DetailContainer>
       <Title id="title">{gallery.title}</Title>
 
@@ -69,6 +76,7 @@ const GalleryDetail = () => {
         ))}
       </GalleryGrid>
     </DetailContainer>
+    </>
   );
 };
 

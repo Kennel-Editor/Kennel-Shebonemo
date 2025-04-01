@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../sanityClient";
+import SEO from "../components/SEO";
 import { LitterCard, LitterContainer } from "./Litters.styled";
 import { urlFor } from "../utils/sanityImage";
 
 // Helper function to get name
 const getDogName = (dog) => {
-  if (!dog) return 'Ukjent'
+  if (!dog) return "Ukjent";
   return dog.dogReference
-    ? dog.dogReference.nickname || dog.dogReference.name || 'Ukjent'
-    : dog.nickname || dog.name || 'Ukjent'
-}
+    ? dog.dogReference.nickname || dog.dogReference.name || "Ukjent"
+    : dog.nickname || dog.name || "Ukjent";
+};
 
 const getDogImage = (dog) => {
-  if (!dog) return null
+  if (!dog) return null;
   return dog.overrideImage?.asset
     ? urlFor(dog.overrideImage)
     : dog.dogReference?.image?.asset
     ? urlFor(dog.dogReference.image)
     : dog.image?.asset
     ? urlFor(dog.image)
-    : null
-}
+    : null;
+};
 
 const LitterCardItem = ({ litter }) => {
   const motherName = getDogName(litter.mother);
@@ -30,63 +31,71 @@ const LitterCardItem = ({ litter }) => {
   const fatherImage = getDogImage(litter.father);
 
   return (
-    <div
-      key={litter._id}
-      className="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto mb-4"
-    >
-      <LitterCard>
-        <Link to={`/litters/${litter._id}`}>
-          <h3>
-            {motherName} & {fatherName}
-          </h3>
-          <div className="d-flex justify-content-center mb-2">
-            {motherImage && (
-              <img
-                src={motherImage}
-                alt={litter.mother.nickname || litter.mother.name}
-                className="img-fluid no-theme"
-                style={{ marginRight: "1%" }}
-              />
-            )}
-            {fatherImage && (
-              <img
-                src={fatherImage}
-                alt={litter.father.nickname || litter.father.name}
-                className="img-fluid no-theme"
-              />
-            )}
-          </div>
-          {litter.expectedPuppies && (
-            <p>Forventede valper: {litter.expectedPuppies}</p>
-          )}
-          {/* Display expected birth date only if no birth date is present */}
-          {!litter.dateOfBirth && litter.expectedDateOfBirth && (
-            <p>
-              Forventes:{" "}
-              {new Date(litter.expectedDateOfBirth).toLocaleDateString(
-                "no-NO",
-                {
-                  month: "long",
-                  year: "numeric",
-                }
+    <>
+      <SEO
+        title="Valpekull hos Kennel Shebonemo"
+        description="Se oversikt over tidligere, nåværende og kommende valpekull hos Kennel Shebonemo. Oppdrett av storpudler ved Mona Fegri."
+        keywords="valpekull, puddel valper, Kennel Shebonemo, Puddel Mona, Mona Fegri, storpuddel oppdrett"
+      />
+
+      <div
+        key={litter._id}
+        className="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto mb-4"
+      >
+        <LitterCard>
+          <Link to={`/litters/${litter._id}`}>
+            <h3>
+              {motherName} & {fatherName}
+            </h3>
+            <div className="d-flex justify-content-center mb-2">
+              {motherImage && (
+                <img
+                  src={motherImage}
+                  alt={litter.mother.nickname || litter.mother.name}
+                  className="img-fluid no-theme"
+                  style={{ marginRight: "1%" }}
+                />
               )}
-            </p>
-          )}
-          {/* Display actual birth date only if it exists */}
-          {litter.dateOfBirth && (
-            <p>
-              Dato født:{" "}
-              {new Date(litter.dateOfBirth).toLocaleDateString("no-NO", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-              })}
-            </p>
-          )}
-          {litter.puppyCount && <p>Antall valper: {litter.puppyCount}</p>}
-        </Link>
-      </LitterCard>
-    </div>
+              {fatherImage && (
+                <img
+                  src={fatherImage}
+                  alt={litter.father.nickname || litter.father.name}
+                  className="img-fluid no-theme"
+                />
+              )}
+            </div>
+            {litter.expectedPuppies && (
+              <p>Forventede valper: {litter.expectedPuppies}</p>
+            )}
+            {/* Display expected birth date only if no birth date is present */}
+            {!litter.dateOfBirth && litter.expectedDateOfBirth && (
+              <p>
+                Forventes:{" "}
+                {new Date(litter.expectedDateOfBirth).toLocaleDateString(
+                  "no-NO",
+                  {
+                    month: "long",
+                    year: "numeric",
+                  }
+                )}
+              </p>
+            )}
+            {/* Display actual birth date only if it exists */}
+            {litter.dateOfBirth && (
+              <p>
+                Dato født:{" "}
+                {new Date(litter.dateOfBirth).toLocaleDateString("no-NO", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
+              </p>
+            )}
+            {litter.puppyCount && <p>Antall valper: {litter.puppyCount}</p>}
+          </Link>
+        </LitterCard>
+      </div>
+    </>
   );
 };
 
