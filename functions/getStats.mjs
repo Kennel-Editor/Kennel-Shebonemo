@@ -15,7 +15,26 @@ export const handler = async (event) => {
       event.rawUrl ||
         `http://x${event.path}${event.rawQuery ? "?" + event.rawQuery : ""}`
     );
-    const slug = url.searchParams.get("slug");
+
+    const all = url.searchParams.get("all");
+    const slugParam = url.searchParams.get("slug");
+
+    if (all === "1" || slugParam === "__all") {
+      const docs = await client.fetch(
+        `*[_type == "pageStats"]{ page, sessionsTotal, sessionsToday, uniquesTotal }`
+      );
+      return json({
+        mode: "all",
+        rows: (docs || []).map((d) => ({
+          page: d?.page || "",
+          sessionsTotal: Number(d?.sessionsTotal || 0),
+          sessionsToday: Number(d?.sessionsToday || 0),
+          uniquesTotal: Number(d?.uniquesTotal || 0),
+        })),
+      });
+    }
+
+    const slug = slugParam;
     if (!slug) return json({ error: "Missing slug" }, 400);
 
     const docId = toStatsId(slug);
