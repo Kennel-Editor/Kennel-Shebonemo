@@ -70,8 +70,12 @@ export const Th = styled.th`
   background: ${({ theme }) => theme.colors.accentTransparent};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
+
   &:not(:first-child) {
     text-align: right;
+  }
+  @media (max-width: 400px) {
+    padding: 14px 10px;
   }
 `;
 
@@ -113,21 +117,25 @@ export const Btn = styled.button`
   }
 `;
 
-/* ========== RULLERENDE KORT GRID & STYLES ========== */
+/* ====== Rotating cards grid and styles====== */
 
 export const RangeGrid = styled.div`
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 8px;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 700px) {
     grid-template-columns: 1fr;
   }
 `;
 
 export const RangeSection = styled.div`
   display: grid;
+  text-align: center;
 `;
 
 export const RangeCardWrap = styled.div`
@@ -137,24 +145,20 @@ export const RangeCardWrap = styled.div`
   border: 1px solid #eee;
   padding: 16px;
   display: grid;
+  gap: 10px;
+`;
+
+export const RangeTop = styled.div`
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
   gap: 8px;
 `;
 
-export const RangeHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const RangeTitle = styled.div`
+export const RangeTitleCenter = styled.div`
+  text-align: center;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.primary};
-`;
-
-export const RangeNav = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
 `;
 
 export const BtnIcon = styled.button`
@@ -173,6 +177,7 @@ export const BtnIcon = styled.button`
 export const RangeLabel = styled.div`
   font-size: 14px;
   opacity: 0.75;
+  text-align: center;
 `;
 
 export const RangeMetrics = styled.div`

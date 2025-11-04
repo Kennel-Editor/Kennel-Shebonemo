@@ -153,15 +153,15 @@ export default function Admin() {
 
       <KPIGrid>
         <KPICard>
-          <KPIName>Besøk totalt</KPIName>
-          <KPIValue>{nf.format(totals.sessions)}</KPIValue>
-        </KPICard>
-
-        <KPICard>
           <KPIName>Besøk i dag</KPIName>
           <KPIValue>
             {nf.format(Number(dailyToday.sessionsTotal || 0))}
           </KPIValue>
+        </KPICard>
+
+        <KPICard>
+          <KPIName>Besøk totalt</KPIName>
+          <KPIValue>{nf.format(totals.sessions)}</KPIValue>
         </KPICard>
 
         <KPICard>
@@ -175,7 +175,7 @@ export default function Admin() {
           <thead>
             <tr>
               <Th>Side</Th>
-              <Th>Sessions total</Th>
+              <Th>besøk total</Th>
               <Th>I dag</Th>
               <Th>Unike</Th>
             </tr>
