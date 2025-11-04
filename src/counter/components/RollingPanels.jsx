@@ -7,7 +7,7 @@ import {
 } from "../utils/ranges";
 import { RangeSection } from "../../pages/Admin.styled";
 
-export default function RollingPanels() {
+export default function RollingPanels({ refreshKey = 0 }) {
   const days = buildLastNDays(7);
   const weeks = buildLastNWeeks(8);
   const months = buildLastNMonths(12);
@@ -16,16 +16,16 @@ export default function RollingPanels() {
   return (
     <>
       <RangeSection>
-        <RangeCard title="Dag" items={days} />
+        <RangeCard title="Dag" items={days} refreshKey={refreshKey} />
       </RangeSection>
       <RangeSection>
-        <RangeCard title="Uke" items={weeks} />
+        <RangeCard title="Uke" items={weeks} refreshKey={refreshKey} />
       </RangeSection>
       <RangeSection>
-        <RangeCard title="Måned" items={months} />
+        <RangeCard title="Måned" items={months} refreshKey={refreshKey} />
       </RangeSection>
       <RangeSection>
-        <RangeCard title="År" items={years} />
+        <RangeCard title="År" items={years} refreshKey={refreshKey} />
       </RangeSection>
     </>
   );

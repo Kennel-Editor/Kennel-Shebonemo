@@ -17,6 +17,7 @@ import {
   SectionTitle,
 } from "./Admin.styled";
 import RollingPanels from "../counter/components/RollingPanels";
+import { MiniPawSpinner } from "../utils/LoadingSpinner";
 
 const labels = {
   "/": "Hjem",
@@ -68,6 +69,18 @@ async function fetchDaily(date) {
   if (!r.ok) throw new Error("Kunne ikke hente daglig stats");
   return r.json();
 }
+async function fetchLifetime() {
+  const params = new URLSearchParams({
+    start: "2000-01-01",
+    end: ymdOslo(),
+  });
+  for (const s of slugs) params.append("slug", s);
+  const r = await fetch(
+    `/.netlify/functions/getRangeStats?${params.toString()}`
+  );
+  if (!r.ok) throw new Error("Kunne ikke hente livstid stats");
+  return r.json();
+}
 
 export default function Admin() {
   const [rows, setRows] = useState([]);
@@ -86,20 +99,31 @@ export default function Admin() {
     uniquesGlobal: 0,
     rows: [],
   });
+  const [lifetime, setLifetime] = useState({
+    sessionsTotal: 0,
+    uniquesGlobal: 0,
+  });
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
-        const [rowData, globalData, todayData] = await Promise.all([
-          Promise.all(slugs.map(fetchStats)),
-          fetchGlobal(),
-          fetchDaily(ymdOslo()),
-        ]);
+        const [rowData, globalData, todayData, lifetimeData] =
+          await Promise.all([
+            Promise.all(slugs.map(fetchStats)),
+            fetchGlobal(),
+            fetchDaily(ymdOslo()),
+            fetchLifetime(),
+          ]);
+
         if (!cancelled) {
           setRows(rowData);
           setGlobal(globalData);
           setDailyToday(todayData);
+          setLifetime({
+            sessionsTotal: Number(lifetimeData.sessionsTotal || 0),
+            uniquesGlobal: Number(lifetimeData.uniquesGlobal || 0),
+          });
         }
       } finally {
         if (!cancelled) {
@@ -113,26 +137,20 @@ export default function Admin() {
     };
   }, []);
 
-  const totals = useMemo(
-    () =>
-      rows.reduce(
-        (acc, r) => ({
-          sessions: acc.sessions + Number(r.sessionsTotal || 0),
-          today: acc.today + Number(r.sessionsToday || 0),
-        }),
-        { sessions: 0, today: 0 }
-      ),
-    [rows]
-  );
-
   async function reloadAll() {
     setReloading(true);
     try {
-      const [rowData, globalData, todayData] = await Promise.all([
+      const [rowData, globalData, todayData, lifetimeData] = await Promise.all([
         Promise.all(slugs.map(fetchStats)),
         fetchGlobal(),
         fetchDaily(ymdOslo()),
+        fetchLifetime(),
       ]);
+      setLifetime({
+        sessionsTotal: Number(lifetimeData.sessionsTotal || 0),
+        uniquesGlobal: Number(lifetimeData.uniquesGlobal || 0),
+      });
+
       setRows(rowData);
       setGlobal(globalData);
       setDailyToday(todayData);
@@ -148,7 +166,10 @@ export default function Admin() {
       <Sub>
         Sist oppdatert: {new Date(refTs).toLocaleString("no-NO")}{" "}
         <Badge>{loading ? "Laster…" : "Oppdatert"}</Badge>{" "}
-        <Btn onClick={reloadAll}>{reloading ? "Oppdaterer…" : "Oppdater"}</Btn>
+        <Btn onClick={reloadAll} disabled={reloading} aria-busy={reloading}>
+          {reloading ? <MiniPawSpinner style={{ marginRight: 8 }} /> : null}
+          {reloading ? "Oppdaterer…" : "Oppdater"}
+        </Btn>
       </Sub>
 
       <KPIGrid>
@@ -161,7 +182,7 @@ export default function Admin() {
 
         <KPICard>
           <KPIName>Besøk totalt</KPIName>
-          <KPIValue>{nf.format(totals.sessions)}</KPIValue>
+          <KPIValue>{nf.format(Number(lifetime.sessionsTotal || 0))}</KPIValue>
         </KPICard>
 
         <KPICard>
@@ -195,7 +216,7 @@ export default function Admin() {
 
       <SectionTitle>Rullerende oversikt</SectionTitle>
       <RangeGrid>
-        <RollingPanels />
+        <RollingPanels refreshKey={refTs} />
       </RangeGrid>
     </Wrap>
   );
