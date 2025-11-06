@@ -1,14 +1,24 @@
 import { client } from "./lib/_sanityClient.mjs";
-import { osloDateStr } from "./lib/_utils.mjs";
+
+function ymdOslo(d = new Date()) {
+  const p = new Intl.DateTimeFormat("no-NO", {
+    timeZone: "Europe/Oslo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(d);
+  const y = p.find((x) => x.type === "year")?.value;
+  const m = p.find((x) => x.type === "month")?.value;
+  const dd = p.find((x) => x.type === "day")?.value;
+  return `${y}-${m}-${dd}`;
+}
 
 export const handler = async () => {
   try {
-    const today = osloDateStr(new Date());
     const doc = await client.getDocument("stats.global");
-    const days = (doc && doc.days) || {};
-    const todayEntry = days[today] || {};
-    const sessionsToday = Number(todayEntry.sessions || 0);
+    const today = ymdOslo();
     const sessionsTotal = Number(doc?.sessionsTotal || 0);
+    const sessionsToday = Number(doc?.days?.[today]?.sessions || 0);
     const uniquesGlobal = Array.isArray(doc?.uniqueHashes)
       ? doc.uniqueHashes.length
       : 0;
@@ -19,7 +29,7 @@ export const handler = async () => {
         "Content-Type": "application/json",
         "Cache-Control": "no-store",
       },
-      body: JSON.stringify({ sessionsToday, sessionsTotal, uniquesGlobal }),
+      body: JSON.stringify({ sessionsTotal, sessionsToday, uniquesGlobal }),
     };
   } catch (e) {
     return {
