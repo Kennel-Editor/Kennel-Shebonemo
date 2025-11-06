@@ -108,6 +108,15 @@ export const handler = async (event) => {
       hashes: dnt ? dayHashes : dayHas ? dayHashes : [...dayHashes, vHash],
     };
     const nextDays = { ...days, [today]: nextDay };
+    function withKeysSessions(arr) {
+      return (arr || []).map((s) => {
+        const base = String(s?.hash || "");
+        const key = s?._key || `s_${base}`;
+        return { _key: key, hash: s.hash, lastSeen: s.lastSeen };
+      });
+    }
+
+    const sessionsWithKeys = withKeysSessions(cleanedSessions);
 
     try {
       await client
@@ -117,7 +126,8 @@ export const handler = async (event) => {
             page,
             sessionsTodayDate: nextSessionsTodayDate,
             uniqueHashes: nextUniqueHashes,
-            sessions: cleanedSessions,
+            sessions: sessionsWithKeys,
+
             sessionsTotal: nextSessionsTotal,
             sessionsToday: nextSessionsToday,
             uniquesTotal: nextUniquesTotal,
