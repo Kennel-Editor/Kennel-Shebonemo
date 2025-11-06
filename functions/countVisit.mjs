@@ -11,6 +11,7 @@ function toStatsId(slug) {
 }
 
 const SESSION_MS = 30 * 60 * 1000;
+const GLOBAL_ID = "stats.global";
 
 export const handler = async (event) => {
   if (event.httpMethod !== "POST")
@@ -30,129 +31,141 @@ export const handler = async (event) => {
   const page = String(body.page || "").slice(0, 256);
   const visitorId = String(body.visitorId || "").slice(0, 128);
   if (!page || !visitorId) return { statusCode: 400, body: "Missing fields" };
+  if (/^\/admin(\/|$)/i.test(page))
+    return json({ counted: false, reason: "ignore-admin" });
 
   const vHash = hashVisitorId(visitorId);
   const today = osloDateStr(new Date());
   const now = Date.now();
   const docId = toStatsId(page);
 
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const doc = await client.getDocument(docId);
-    if (!doc) {
-      await client.createIfNotExists({
-        _id: docId,
-        _type: "pageStats",
-        page,
-        sessionsTotal: 0,
-        sessionsToday: 0,
-        sessionsTodayDate: today,
-        uniquesTotal: 0,
-        uniqueHashes: [],
-        sessions: [],
-        days: {},
-      });
-    }
+  async function upsertAndCount(targetId, pageValue) {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const doc = await client.getDocument(targetId);
+      if (!doc) {
+        await client.createIfNotExists({
+          _id: targetId,
+          _type: "pageStats",
+          page: pageValue,
+          sessionsTotal: 0,
+          sessionsToday: 0,
+          sessionsTodayDate: today,
+          uniquesTotal: 0,
+          uniqueHashes: [],
+          sessions: [],
+          days: {},
+        });
+      }
 
-    const fresh = await client.getDocument(docId);
-    const sessionsTotal = Number(fresh.sessionsTotal || 0);
-    const sessionsToday = Number(fresh.sessionsToday || 0);
-    const sessionsTodayDate = fresh.sessionsTodayDate || today;
-    const uniqueHashes = Array.isArray(fresh.uniqueHashes)
-      ? fresh.uniqueHashes.slice(0, 50000)
-      : [];
-    const sessions = Array.isArray(fresh.sessions) ? fresh.sessions : [];
-    const days =
-      typeof fresh.days === "object" && fresh.days !== null ? fresh.days : {};
+      const fresh = await client.getDocument(targetId);
+      const sessions = Array.isArray(fresh.sessions) ? fresh.sessions : [];
+      const sessionsTotal = Number(fresh.sessionsTotal || 0);
+      const sessionsToday = Number(fresh.sessionsToday || 0);
+      const sessionsTodayDate = fresh.sessionsTodayDate || today;
+      const uniqueHashes = Array.isArray(fresh.uniqueHashes)
+        ? fresh.uniqueHashes
+        : [];
+      const days =
+        typeof fresh.days === "object" && fresh.days !== null ? fresh.days : {};
 
-    const cutoff = now - SESSION_MS;
-    const cleanedSessions = sessions.filter(
-      (s) => Number(s?.lastSeen) >= cutoff && s?.hash
-    );
+      const cutoff = now - SESSION_MS;
+      const cleaned = sessions.filter(
+        (s) => Number(s?.lastSeen) >= cutoff && s?.hash
+      );
+      const idx = cleaned.findIndex((s) => s.hash === vHash);
+      const alreadyActive = idx !== -1;
+      if (alreadyActive) cleaned[idx] = { hash: vHash, lastSeen: now };
+      else cleaned.push({ hash: vHash, lastSeen: now });
 
-    const idx = cleanedSessions.findIndex((s) => s.hash === vHash);
-    const alreadyActive = idx !== -1;
-    if (alreadyActive) cleanedSessions[idx] = { hash: vHash, lastSeen: now };
-    else cleanedSessions.push({ hash: vHash, lastSeen: now });
+      const counted = !alreadyActive;
 
-    const counted = !alreadyActive;
+      const nextSessionsTotal = sessionsTotal + (counted ? 1 : 0);
+      let nextSessionsTodayDate = sessionsTodayDate;
+      let nextSessionsToday = sessionsToday;
+      if (sessionsTodayDate === today) {
+        nextSessionsToday = sessionsToday + (counted ? 1 : 0);
+      } else {
+        nextSessionsTodayDate = today;
+        nextSessionsToday = counted ? 1 : 0;
+      }
 
-    let nextSessionsTotal = sessionsTotal + (counted ? 1 : 0);
-    let nextSessionsTodayDate = sessionsTodayDate;
-    let nextSessionsToday = sessionsToday;
-    if (sessionsTodayDate === today)
-      nextSessionsToday = sessionsToday + (counted ? 1 : 0);
-    else {
-      nextSessionsTodayDate = today;
-      nextSessionsToday = counted ? 1 : 0;
-    }
+      let nextUniquesTotal = Number(fresh.uniquesTotal || 0);
+      let nextUniqueHashes = uniqueHashes;
+      if (!dnt && !uniqueHashes.includes(vHash)) {
+        nextUniquesTotal += 1;
+        nextUniqueHashes =
+          uniqueHashes.length > 100000
+            ? uniqueHashes.slice(uniqueHashes.length - 100000)
+            : uniqueHashes;
+        nextUniqueHashes = [...nextUniqueHashes, vHash];
+      }
 
-    let nextUniquesTotal = Number(fresh.uniquesTotal || 0);
-    let nextUniqueHashes = uniqueHashes;
-    if (!dnt && !uniqueHashes.includes(vHash)) {
-      nextUniquesTotal += 1;
-      if (uniqueHashes.length > 100000)
-        nextUniqueHashes = uniqueHashes.slice(uniqueHashes.length - 100000);
-      nextUniqueHashes = [...nextUniqueHashes, vHash];
-    }
+      const dayEntry = days[today] || { sessions: 0, uniques: 0, hashes: [] };
+      const dayHashes = Array.isArray(dayEntry.hashes) ? dayEntry.hashes : [];
+      const dayHas = dayHashes.includes(vHash);
+      const daySessions = Number(dayEntry.sessions || 0) + (counted ? 1 : 0);
+      const dayUniques = dayHas
+        ? Number(dayEntry.uniques || 0)
+        : Number(dayEntry.uniques || 0) + (dnt ? 0 : 1);
+      const nextDay = {
+        sessions: daySessions,
+        uniques: dayUniques,
+        hashes: dnt ? dayHashes : dayHas ? dayHashes : [...dayHashes, vHash],
+      };
+      const nextDays = { ...days, [today]: nextDay };
 
-    const dayEntry = days[today] || { sessions: 0, uniques: 0, hashes: [] };
-    const dayHashes = Array.isArray(dayEntry.hashes) ? dayEntry.hashes : [];
-    const dayHas = dayHashes.includes(vHash);
-    const daySessions = Number(dayEntry.sessions || 0) + (counted ? 1 : 0);
-    const dayUniques = dayHas
-      ? Number(dayEntry.uniques || 0)
-      : Number(dayEntry.uniques || 0) + (dnt ? 0 : 1);
-    const nextDay = {
-      sessions: daySessions,
-      uniques: dayUniques,
-      hashes: dnt ? dayHashes : dayHas ? dayHashes : [...dayHashes, vHash],
-    };
-    const nextDays = { ...days, [today]: nextDay };
-    function withKeysSessions(arr) {
-      return (arr || []).map((s) => {
-        const base = String(s?.hash || "");
-        const key = s?._key || `s_${base}`;
-        return { _key: key, hash: s.hash, lastSeen: s.lastSeen };
-      });
-    }
+      const withKeys = (arr) =>
+        (arr || []).map((s) => {
+          const base = String(s?.hash || "");
+          const key = s?._key || `s_${base}`;
+          return { _key: key, hash: s.hash, lastSeen: s.lastSeen };
+        });
 
-    const sessionsWithKeys = withKeysSessions(cleanedSessions);
+      try {
+        await client
+          .transaction()
+          .patch(targetId, (p) =>
+            p.ifRevisionId(fresh._rev).set({
+              page: pageValue,
+              sessionsTodayDate: nextSessionsTodayDate,
+              uniqueHashes: nextUniqueHashes,
+              sessions: withKeys(cleaned),
+              sessionsTotal: nextSessionsTotal,
+              sessionsToday: nextSessionsToday,
+              uniquesTotal: nextUniquesTotal,
+              days: nextDays,
+            })
+          )
+          .commit({ visibility: "async" });
 
-    try {
-      await client
-        .transaction()
-        .patch(docId, (p) =>
-          p.ifRevisionId(fresh._rev).set({
-            page,
-            sessionsTodayDate: nextSessionsTodayDate,
-            uniqueHashes: nextUniqueHashes,
-            sessions: sessionsWithKeys,
-
+        return {
+          counted,
+          totals: {
             sessionsTotal: nextSessionsTotal,
             sessionsToday: nextSessionsToday,
             uniquesTotal: nextUniquesTotal,
-            days: nextDays,
-          })
-        )
-        .commit({ visibility: "async" });
-
-      return json({
-        counted,
-        page,
-        today,
-        totals: {
-          sessionsTotal: nextSessionsTotal,
-          sessionsToday: nextSessionsToday,
-          uniquesTotal: nextUniquesTotal,
-        },
-      });
-    } catch (e) {
-      if (e?.statusCode === 409) continue;
-      return { statusCode: 500, body: "Server Error" };
+          },
+        };
+      } catch (e) {
+        if (e?.statusCode === 409) continue;
+        return { error: true };
+      }
     }
+    return { error: true };
   }
 
-  return { statusCode: 500, body: "Conflict" };
+  const perPage = await upsertAndCount(docId, page);
+  const global = await upsertAndCount(GLOBAL_ID, "/");
+
+  if (perPage.error || global.error)
+    return { statusCode: 500, body: "Server Error" };
+
+  return json({
+    counted: { perPage: perPage.counted, global: global.counted },
+    page,
+    today,
+    totals: { perPage: perPage.totals, global: global.totals },
+  });
 };
 
 function json(obj) {

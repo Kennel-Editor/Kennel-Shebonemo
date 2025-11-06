@@ -11,9 +11,6 @@ import {
   MetricValue,
 } from "../../pages/Admin.styled";
 
-const SLUGS = ["/", "/dogs", "/litters", "/gallery", "/about", "/contact"];
-
-// Oslo helpers
 function ymdOslo(d = new Date()) {
   const p = new Intl.DateTimeFormat("no-NO", {
     timeZone: "Europe/Oslo",
@@ -63,20 +60,17 @@ export default function RangeCard({ title, items, refreshKey = 0 }) {
     if (title === "Dag") {
       if (start === todayYmd && end === todayYmd) return "I dag";
       if (start === yesterdayYmd && end === yesterdayYmd) return "I går";
-
       const startDate = parseYmd(start);
       const todayDate = parseYmd(todayYmd);
       const diffDays = Math.round(
         (todayDate.getTime() - startDate.getTime()) / (24 * 3600 * 1000)
       );
-
       if (diffDays <= 6 && diffDays >= 0) {
         const weekday = new Intl.DateTimeFormat("no-NO", {
           weekday: "long",
         }).format(startDate);
         return weekday.charAt(0).toUpperCase() + weekday.slice(1);
       }
-
       return new Intl.DateTimeFormat("no-NO").format(startDate);
     }
 
@@ -84,16 +78,13 @@ export default function RangeCard({ title, items, refreshKey = 0 }) {
       const now = parseYmd(todayYmd);
       const startDate = parseYmd(start);
       const endDate = parseYmd(end);
-
       const inThisWeek = +now >= +startDate && +now <= +endDate;
       if (inThisWeek) return "Denne uken";
-
       const lastWeekDate = new Date(now);
       lastWeekDate.setUTCDate(lastWeekDate.getUTCDate() - 7);
       const inLastWeek =
         +lastWeekDate >= +startDate && +lastWeekDate <= +endDate;
       if (inLastWeek) return "Forrige uke";
-
       const weekNo = getISOWeek(startDate);
       return `Uke ${weekNo}`;
     }
@@ -104,10 +95,7 @@ export default function RangeCard({ title, items, refreshKey = 0 }) {
   useEffect(() => {
     let cancelled = false;
     setIsLoading(true);
-
     const params = new URLSearchParams({ start: cur.start, end: cur.end });
-    for (const s of SLUGS) params.append("slug", s);
-
     fetch(`/.netlify/functions/getRangeStats?${params.toString()}`)
       .then((r) => r.json())
       .then((json) => {
@@ -121,7 +109,6 @@ export default function RangeCard({ title, items, refreshKey = 0 }) {
       .finally(() => {
         if (!cancelled) setIsLoading(false);
       });
-
     return () => {
       cancelled = true;
     };

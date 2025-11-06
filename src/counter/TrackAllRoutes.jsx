@@ -6,6 +6,7 @@ export default function TrackAllRoutes() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    if (pathname.startsWith("/admin")) return;
     const visitorId = getOrCreateVisitorId();
     fetch("/.netlify/functions/countVisit", {
       method: "POST",

@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
+import sanityClient from "../sanityClient";
 
-const slugs = ["/", "/dogs", "/litters", "/gallery", "/about", "/contact"];
+const TOP_SLUGS = ["/", "/dogs", "/litters", "/gallery", "/about", "/contact"];
 
+async function fetchGlobal() {
+  const r = await fetch(`/.netlify/functions/getGlobalStats`);
+  if (!r.ok) throw new Error("Kunne ikke hente global stats");
+  return r.json();
+}
 async function fetchStats(slug) {
   const r = await fetch(
     `/.netlify/functions/getStats?slug=${encodeURIComponent(slug)}`
@@ -9,48 +15,15 @@ async function fetchStats(slug) {
   if (!r.ok) throw new Error("Kunne ikke hente stats");
   return r.json();
 }
-async function fetchStatsAll() {
-  const r = await fetch(`/.netlify/functions/getStats?all=1`);
-  if (!r.ok) throw new Error("Kunne ikke hente alle stats");
-  const json = await r.json();
-  return Array.isArray(json?.rows) ? json.rows : [];
+
+async function dogIds() {
+  return sanityClient.fetch(`*[_type=="dog"]._id`);
 }
-async function fetchGlobal() {
-  const r = await fetch(`/.netlify/functions/getGlobalStats`);
-  if (!r.ok) throw new Error("Kunne ikke hente global stats");
-  return r.json();
+async function litterIds() {
+  return sanityClient.fetch(`*[_type=="litter"]._id`);
 }
-function ymdOslo(d = new Date()) {
-  const parts = new Intl.DateTimeFormat("no-NO", {
-    timeZone: "Europe/Oslo",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(d);
-  const y = parts.find((p) => p.type === "year")?.value || "";
-  const m = parts.find((p) => p.type === "month")?.value || "";
-  const dd = parts.find((p) => p.type === "day")?.value || "";
-  return `${y}-${m}-${dd}`;
-}
-async function fetchDaily(date) {
-  const params = new URLSearchParams({
-    date: String(date).replace(/[^\d-]/g, ""),
-  });
-  for (const s of slugs) params.append("slug", s);
-  const r = await fetch(
-    `/.netlify/functions/getDailyStats?${params.toString()}`
-  );
-  if (!r.ok) throw new Error("Kunne ikke hente daglig stats");
-  return r.json();
-}
-async function fetchLifetime() {
-  const params = new URLSearchParams({ start: "2000-01-01", end: ymdOslo() });
-  for (const s of slugs) params.append("slug", s);
-  const r = await fetch(
-    `/.netlify/functions/getRangeStats?${params.toString()}`
-  );
-  if (!r.ok) throw new Error("Kunne ikke hente livstid stats");
-  return r.json();
+async function galleryIds() {
+  return sanityClient.fetch(`*[_type=="gallery"]._id`);
 }
 
 export default function useAdminData() {
@@ -73,62 +46,48 @@ export default function useAdminData() {
   const [loading, setLoading] = useState(true);
   const [refTs, setRefTs] = useState(Date.now());
   const [reloading, setReloading] = useState(false);
-  const [dailyToday, setDailyToday] = useState({
-    date: ymdOslo(),
-    sessionsTotal: 0,
-    uniquesGlobal: 0,
-    rows: [],
-  });
-  const [lifetime, setLifetime] = useState({
-    sessionsTotal: 0,
-    uniquesGlobal: 0,
-  });
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
-        const [rowData, allRows, globalData, todayData, lifetimeData] =
-          await Promise.all([
-            Promise.all(slugs.map(fetchStats)),
-            fetchStatsAll(),
-            fetchGlobal(),
-            fetchDaily(ymdOslo()),
-            fetchLifetime(),
-          ]);
+        const globalData = await fetchGlobal();
+
+        const topRows = await Promise.all(TOP_SLUGS.map(fetchStats));
+
+        const [dogs, litters, galleries] = await Promise.all([
+          dogIds(),
+          litterIds(),
+          galleryIds(),
+        ]);
+
+        const dogRows = await Promise.all(
+          (dogs || []).map((id) => fetchStats(`/dogs/${id}`))
+        );
+        const litterRows = await Promise.all(
+          (litters || []).map((id) => fetchStats(`/litters/${id}`))
+        );
+        const galleryRows = await Promise.all(
+          (galleries || []).map((id) => fetchStats(`/gallery/${id}`))
+        );
+
         if (!cancelled) {
-          setRows(rowData);
-          const dogs = allRows
-            .filter(
-              (r) =>
-                (r.page || "").startsWith("/dogs/") &&
-                Number(r.sessionsTotal || 0) > 0
-            )
-            .sort((a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0));
-          const litters = allRows
-            .filter(
-              (r) =>
-                (r.page || "").startsWith("/litters/") &&
-                Number(r.sessionsTotal || 0) > 0
-            )
-            .sort((a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0));
-          const gallery = allRows
-            .filter(
-              (r) =>
-                (r.page || "").startsWith("/gallery/") &&
-                Number(r.sessionsTotal || 0) > 0
-            )
-            .sort((a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0));
+          setRows(topRows);
           setChildrenByGroup({
-            "/dogs": dogs,
-            "/litters": litters,
-            "/gallery": gallery,
+            "/dogs": dogRows.sort(
+              (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
+            ),
+            "/litters": litterRows.sort(
+              (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
+            ),
+            "/gallery": galleryRows.sort(
+              (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
+            ),
           });
-          setGlobal(globalData);
-          setDailyToday(todayData);
-          setLifetime({
-            sessionsTotal: Number(lifetimeData.sessionsTotal || 0),
-            uniquesGlobal: Number(lifetimeData.uniquesGlobal || 0),
+          setGlobal({
+            sessionsTotal: Number(globalData.sessionsTotal || 0),
+            sessionsToday: Number(globalData.sessionsToday || 0),
+            uniquesGlobal: Number(globalData.uniquesGlobal || 0),
           });
         }
       } finally {
@@ -146,46 +105,42 @@ export default function useAdminData() {
   async function reloadAll() {
     setReloading(true);
     try {
-      const [rowData, allRows, globalData, todayData, lifetimeData] =
-        await Promise.all([
-          Promise.all(slugs.map(fetchStats)),
-          fetchStatsAll(),
-          fetchGlobal(),
-          fetchDaily(ymdOslo()),
-          fetchLifetime(),
-        ]);
-      setRows(rowData);
-      const dogs = allRows
-        .filter(
-          (r) =>
-            (r.page || "").startsWith("/dogs/") &&
-            Number(r.sessionsTotal || 0) > 0
-        )
-        .sort((a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0));
-      const litters = allRows
-        .filter(
-          (r) =>
-            (r.page || "").startsWith("/litters/") &&
-            Number(r.sessionsTotal || 0) > 0
-        )
-        .sort((a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0));
-      const gallery = allRows
-        .filter(
-          (r) =>
-            (r.page || "").startsWith("/gallery/") &&
-            Number(r.sessionsTotal || 0) > 0
-        )
-        .sort((a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0));
+      const globalData = await fetchGlobal();
+
+      const topRows = await Promise.all(TOP_SLUGS.map(fetchStats));
+
+      const [dogs, litters, galleries] = await Promise.all([
+        dogIds(),
+        litterIds(),
+        galleryIds(),
+      ]);
+
+      const dogRows = await Promise.all(
+        (dogs || []).map((id) => fetchStats(`/dogs/${id}`))
+      );
+      const litterRows = await Promise.all(
+        (litters || []).map((id) => fetchStats(`/litters/${id}`))
+      );
+      const galleryRows = await Promise.all(
+        (galleries || []).map((id) => fetchStats(`/gallery/${id}`))
+      );
+
+      setRows(topRows);
       setChildrenByGroup({
-        "/dogs": dogs,
-        "/litters": litters,
-        "/gallery": gallery,
+        "/dogs": dogRows.sort(
+          (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
+        ),
+        "/litters": litterRows.sort(
+          (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
+        ),
+        "/gallery": galleryRows.sort(
+          (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
+        ),
       });
-      setGlobal(globalData);
-      setDailyToday(todayData);
-      setLifetime({
-        sessionsTotal: Number(lifetimeData.sessionsTotal || 0),
-        uniquesGlobal: Number(lifetimeData.uniquesGlobal || 0),
+      setGlobal({
+        sessionsTotal: Number(globalData.sessionsTotal || 0),
+        sessionsToday: Number(globalData.sessionsToday || 0),
+        uniquesGlobal: Number(globalData.uniquesGlobal || 0),
       });
       setRefTs(Date.now());
     } finally {
@@ -202,8 +157,11 @@ export default function useAdminData() {
     loading,
     refTs,
     reloading,
-    dailyToday,
-    lifetime,
+    dailyToday: { sessionsTotal: global.sessionsToday },
+    lifetime: {
+      sessionsTotal: global.sessionsTotal,
+      uniquesGlobal: global.uniquesGlobal,
+    },
     reloadAll,
   };
 }
