@@ -21,6 +21,13 @@ export const handler = async (event) => {
   const dnt = event.headers["dnt"] === "1";
   if (isLikelyBot(ua)) return json({ counted: false, reason: "bot" });
 
+  if (
+    process.env.URL?.includes("localhost") ||
+    process.env.NODE_ENV === "development"
+  ) {
+    return json({ counted: false, reason: "ignore-localhost" });
+  }
+
   let body;
   try {
     body = JSON.parse(event.body || "{}");
