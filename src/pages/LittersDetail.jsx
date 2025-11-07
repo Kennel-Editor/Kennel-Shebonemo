@@ -7,11 +7,10 @@ import { urlFor } from "../utils/sanityImage";
 import Modal from "../utils/ImageModal";
 import {
   LitterContainer,
-  ParentInfoContainer,
-  ParentInfo,
   ParentImage,
   PuppiesContainer,
   MainImgContainer,
+  ParentInfoContainer,
 } from "./LittersDetail.styled";
 import GalleryModal from "../components/GalleryModal";
 
@@ -31,33 +30,32 @@ const LittersDetail = () => {
       .fetch(
         `*[_type == "litter" && _id == $id]{
           _id,
-        mother {
-  isOwned,
-  "dogRef": dogReference->_id,
-  name,
-  nickname,
-  title,
-  registrationNumber,
-  "image": image { asset-> { _id, _ref }, crop, hotspot },
-   "overrideImage": overrideImage { asset-> { _id, _ref }, crop, hotspot },
-  info,
-  healthResults,
-  additionalInfo
-},
-father {
-  isOwned,
-  "dogRef": dogReference->_id,
-  name,
-  nickname,
-  title,
-  registrationNumber,
-  "image": image { asset-> { _id, _ref }, crop, hotspot },
-   "overrideImage": overrideImage { asset-> { _id, _ref }, crop, hotspot },
-  info,
-  healthResults,
-  additionalInfo
-},
-
+          mother {
+            isOwned,
+            "dogRef": dogReference->_id,
+            name,
+            nickname,
+            title,
+            registrationNumber,
+            "image": image { asset-> { _id, _ref }, crop, hotspot },
+            "overrideImage": overrideImage { asset-> { _id, _ref }, crop, hotspot },
+            info,
+            healthResults,
+            additionalInfo
+          },
+          father {
+            isOwned,
+            "dogRef": dogReference->_id,
+            name,
+            nickname,
+            title,
+            registrationNumber,
+            "image": image { asset-> { _id, _ref }, crop, hotspot },
+            "overrideImage": overrideImage { asset-> { _id, _ref }, crop, hotspot },
+            info,
+            healthResults,
+            additionalInfo
+          },
           puppyDetails,
           mainImage { asset-> { _id, _ref }, crop, hotspot },
           additionalImages[]{ asset-> { _id, _ref }, crop, hotspot },
@@ -79,17 +77,17 @@ father {
         return sanityClient
           .fetch(
             `*[_type == "dog" && _id in [$motherDogRef, $fatherDogRef]]{
-      _id,
-      name,
-      nickname,
-      title,
-      registrationNumber,
-      image { asset-> { _id, _ref }, crop, hotspot },
-      info,
-      healthResults,
-      additionalInfo,
-      overrideImage, 
-    }`,
+              _id,
+              name,
+              nickname,
+              title,
+              registrationNumber,
+              image { asset-> { _id, _ref }, crop, hotspot },
+              info,
+              healthResults,
+              additionalInfo,
+              overrideImage
+            }`,
             { motherDogRef, fatherDogRef }
           )
           .then((dogData) => {
@@ -103,14 +101,12 @@ father {
               overrideImage:
                 litterData.mother.overrideImage || motherDog.overrideImage,
             };
-
             litterData.father = {
               ...litterData.father,
               ...fatherDog,
               overrideImage:
                 litterData.father.overrideImage || fatherDog.overrideImage,
             };
-
             setLitter(litterData);
             setLoading(false);
           })
@@ -125,18 +121,11 @@ father {
       });
   }, [id]);
 
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-  if (!litter) {
-    return <div>Fant ingen kull.</div>;
-  }
+  if (loading) return <LoadingSpinner />;
+  if (!litter) return <div>Fant ingen kull.</div>;
 
-  const calculateTotalPuppies = () => {
-    return (
-      litter.puppyDetails?.reduce((total, puppy) => total + puppy.count, 0) || 0
-    );
-  };
+  const calculateTotalPuppies = () =>
+    litter.puppyDetails?.reduce((total, puppy) => total + puppy.count, 0) || 0;
 
   const totalPuppies = calculateTotalPuppies();
 
@@ -159,80 +148,65 @@ father {
     }
   };
 
-  const getGenderPlural = (gender, count) => {
-    return count > 1
+  const getGenderPlural = (gender, count) =>
+    count > 1
       ? gender === "male"
         ? "hanner"
         : "tisper"
       : gender === "male"
       ? "hann"
       : "tispe";
-  };
 
   const openImageModal = (image) => setSelectedImage(image);
-
   const closeImageModal = () => setSelectedImage(null);
 
-  const formatDate = (date) => {
-    return new Date(date).toLocaleDateString("no-NO", {
+  const formatDate = (date) =>
+    new Date(date).toLocaleDateString("no-NO", {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
     });
+
+  const getDisplayImage = (parent) => {
+    const displayName =
+      parent.isOwned && parent.dogReference
+        ? parent.dogReference.name
+        : parent.name;
+    const displayImage = parent.overrideImage?.asset
+      ? parent.overrideImage
+      : parent.image;
+    return { displayImage, displayName };
   };
 
-  const renderParentInfo = (parent) => {
-    const {
-      isOwned,
-      name,
-      nickname,
-      image,
-      dogReference,
-      healthResults,
-      additionalInfo,
-      overrideImage,
-    } = parent;
-    const displayName = isOwned && dogReference ? dogReference.name : name;
+  const renderParentDetails = (parent) => {
     const displayNickname =
-      isOwned && dogReference ? dogReference.nickname : nickname;
-    const displayImage = overrideImage?.asset ? overrideImage : image;
+      parent.isOwned && parent.dogReference
+        ? parent.dogReference.nickname
+        : parent.nickname;
 
     return (
-      <>
-        {displayImage && (
-          <ParentImage
-            className="no-theme"
-            src={urlFor(displayImage)}
-            alt={displayName}
-            onClick={() => openImageModal(urlFor(displayImage))}
-          />
+      <div className="mt-2">
+        {displayNickname && <h5>{displayNickname}</h5>}
+        {parent.registrationNumber && (
+          <p>
+            <strong>Reg.nr:</strong> {parent.registrationNumber}
+          </p>
         )}
-        <div className="mt-2">
-          {displayNickname && <h5>{displayNickname}</h5>}
-          {parent.registrationNumber && (
-            <p>
-              <strong>Reg.nr:</strong> {parent.registrationNumber}
-            </p>
+        {Array.isArray(parent.healthResults) &&
+          parent.healthResults.length > 0 && (
+            <ul className="list-unstyled mt-2">
+              {parent.healthResults.map((result, index) => (
+                <li key={index}>
+                  <strong>{result.title}: </strong>
+                  <span>{result.description}</span>
+                </li>
+              ))}
+            </ul>
           )}
-          {healthResults && healthResults.length > 0 && (
-            <div>
-              <ul className="list-unstyled mt-2">
-                {healthResults.map((result, index) => (
-                  <li key={index}>
-                    <strong>{result.title}: </strong>
-                    <span>{result.description}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {additionalInfo && (
-            <div className="mt-2">
-              <span>{additionalInfo}</span>
-            </div>
-          )}
-        </div>
-      </>
+        {parent.additionalInfo && (
+          <div className="mt-2">{parent.additionalInfo}</div>
+        )}
+      </div>
     );
   };
 
@@ -249,120 +223,177 @@ father {
         description={`Se informasjon om valpekull fra ${litter.mother.name} og ${litter.father.name} hos Kennel Shebonemo. Oppdrett av storpudler i Norge ved Mona Fegri, tidligere kjent som Puddel Mona.`}
         keywords={`valper, storpuddel valper, puddel oppdrett, puddelmona, Puddel Mona, Mona Fegri, Kennel Shebonemo, ${litter.mother.name}, ${litter.father.name}`}
       />
+      <ParentInfoContainer>
+        <LitterContainer className="col-10 m-auto">
+          <h2 className="text-center">Kull Detaljer</h2>
 
-      <LitterContainer className="col-10 m-auto">
-        <h2 className="text-center">Kull Detaljer</h2>
-        <ParentInfoContainer className="m-auto d-flex flex-row col-12 col-md-11 col-lg-9 col-xl-8 col-xxl-7 text-center">
-          <ParentInfo className="col-6 m-auto">
-            <div className="mt-3">
-              <h3>
-                <strong> Mor</strong>
-              </h3>
-              <p className="title-text">
-                {litter.mother.title && <span>{litter.mother.title}</span>}
-              </p>
-              <h3 className="litter-name">{litter.mother.name}</h3>
-            </div>
-            <div className="col-12">{renderParentInfo(litter.mother)}</div>
-          </ParentInfo>
-          <ParentInfo className="col-6">
-            <div className="mt-3">
-              <h3>
-                <strong> Far</strong>
-              </h3>
-              <p className="title-text">
-                {litter.father.title && <span>{litter.father.title}</span>}
-              </p>
-              <h3 className="litter-name">{litter.father.name}</h3>
-            </div>
-            <div className="col-12">{renderParentInfo(litter.father)}</div>
-          </ParentInfo>
-        </ParentInfoContainer>
-
-        <PuppiesContainer className="col-12 col-lg-10 m-auto">
-          <div className="d-flex align-items-baseline col-10 m-auto justify-content-center">
-            {litter.dateOfBirth ? (
-              <div className="date-container text-center">
-                <h3>Født:</h3>
-                <h4>{formatDate(litter.dateOfBirth)}</h4>
+          <div className="m-auto col-12 col-md-11 col-lg-9 col-xl-8 col-xxl-7 text-center">
+            <div className="row">
+              <div className="col-6">
+                <h3>
+                  <strong>Mor</strong>
+                </h3>
               </div>
-            ) : (
-              litter.expectedDateOfBirth && (
-                <h4>Valper ventes: {formatDate(litter.expectedDateOfBirth)}</h4>
-              )
-            )}
-          </div>
-
-          {litter.mainImage && (
-            <>
-              <MainImgContainer className="m-auto col-10 col-lg-8 col-xl-6 d-flex">
-                <img
-                  className="mb-2 rounded"
-                  src={urlFor(litter.mainImage)}
-                  alt={`Valpene til ${litter.mother.nickname} og ${litter.father.nickname}`}
-                  onClick={() => openImageModal(urlFor(litter.mainImage))}
-                />
-              </MainImgContainer>
-              <div className="mb-5 text-center">
-                {litter.textUnderMainImage && (
-                  <p>{litter.textUnderMainImage}</p>
-                )}
+              <div className="col-6">
+                <h3>
+                  <strong>Far</strong>
+                </h3>
               </div>
-            </>
-          )}
-
-          {litter.puppyDetails?.length > 0 && (
-            <>
-              <h4 className="text-center">
-                Det ble født {totalPuppies} valper!
-              </h4>
-              <h5 className="text-center">
-                {litter.puppyDetails
-                  .reduce((acc, puppy) => {
-                    const gender = puppy.gender;
-                    const color = puppy.color;
-                    const existing = acc.find(
-                      (item) => item.color === color && item.gender === gender
-                    );
-                    if (existing) {
-                      existing.count += puppy.count;
-                    } else {
-                      acc.push({ color, gender, count: puppy.count });
-                    }
-                    return acc;
-                  }, [])
-                  .map(
-                    (item) =>
-                      `${item.count} ${getColorPlural(
-                        item.color,
-                        item.count
-                      )} ${getGenderPlural(item.gender, item.count)}`
-                  )
-                  .join(", ")}
-              </h5>
-            </>
-          )}
-
-          {litter.freeText1 && (
-            <div className="mb-3 col-10 m-auto">
-              <h5 className="text-center">{litter.freeText1}</h5>
             </div>
-          )}
 
-          {litter.galleries?.length > 0 && <GalleryModal litterId={id} />}
-
-          <div>
-            {litter.freeText2 && (
-              <div className="container text-center my-5">
-                <p>{litter.freeText2}</p>
+            {(litter.mother.title || litter.father.title) && (
+              <div className="row align-items-start">
+                <div className="col-6">
+                  <p className="title-text">{litter.mother.title}</p>
+                </div>
+                <div className="col-6">
+                  <p className="title-text">{litter.father.title}</p>
+                </div>
               </div>
             )}
+
+            <div className="row align-items-start">
+              <div className="col-6">
+                <h3 className="litter-name">{litter.mother.name}</h3>
+              </div>
+              <div className="col-6">
+                <h3 className="litter-name">{litter.father.name}</h3>
+              </div>
+            </div>
+
+            <div className="row align-items-start">
+              <div className="col-6">
+                {(() => {
+                  const { displayImage, displayName } = getDisplayImage(
+                    litter.mother
+                  );
+                  return (
+                    displayImage && (
+                      <ParentImage
+                        className="no-theme"
+                        src={urlFor(displayImage)}
+                        alt={displayName}
+                        onClick={() => openImageModal(urlFor(displayImage))}
+                      />
+                    )
+                  );
+                })()}
+              </div>
+              <div className="col-6">
+                {(() => {
+                  const { displayImage, displayName } = getDisplayImage(
+                    litter.father
+                  );
+                  return (
+                    displayImage && (
+                      <ParentImage
+                        className="no-theme"
+                        src={urlFor(displayImage)}
+                        alt={displayName}
+                        onClick={() => openImageModal(urlFor(displayImage))}
+                      />
+                    )
+                  );
+                })()}
+              </div>
+            </div>
+
+            <div className="row align-items-start">
+              <div className="col-6">{renderParentDetails(litter.mother)}</div>
+              <div className="col-6">{renderParentDetails(litter.father)}</div>
+            </div>
           </div>
-        </PuppiesContainer>
-        {selectedImage && (
-          <Modal imageUrl={selectedImage} onClose={closeImageModal} />
-        )}
-      </LitterContainer>
+
+          <PuppiesContainer className="col-12 col-lg-10 m-auto">
+            <div className="d-flex align-items-baseline col-10 m-auto justify-content-center">
+              {litter.dateOfBirth ? (
+                <div className="date-container text-center">
+                  <h3>Født:</h3>
+                  <h4>{formatDate(litter.dateOfBirth)}</h4>
+                </div>
+              ) : (
+                litter.expectedDateOfBirth && (
+                  <h4>
+                    Valper ventes: {formatDate(litter.expectedDateOfBirth)}
+                  </h4>
+                )
+              )}
+            </div>
+
+            {litter.mainImage && (
+              <>
+                <MainImgContainer className="m-auto col-10 col-lg-8 col-xl-6 d-flex">
+                  <img
+                    className="mb-2 rounded"
+                    src={urlFor(litter.mainImage)}
+                    alt={`Valpene til ${
+                      litter.mother?.nickname || litter.mother?.name
+                    } og ${litter.father?.nickname || litter.father?.name}`}
+                    onClick={() => openImageModal(urlFor(litter.mainImage))}
+                  />
+                </MainImgContainer>
+                <div className="mb-5 text-center">
+                  {litter.textUnderMainImage && (
+                    <p>{litter.textUnderMainImage}</p>
+                  )}
+                </div>
+              </>
+            )}
+
+            {litter.puppyDetails?.length > 0 && (
+              <>
+                <h4 className="text-center">
+                  Det ble født {totalPuppies} valper!
+                </h4>
+                <h5 className="text-center">
+                  {litter.puppyDetails
+                    .reduce((acc, puppy) => {
+                      const gender = puppy.gender;
+                      const color = puppy.color;
+                      const existing = acc.find(
+                        (item) => item.color === color && item.gender === gender
+                      );
+                      if (existing) {
+                        existing.count += puppy.count;
+                      } else {
+                        acc.push({ color, gender, count: puppy.count });
+                      }
+                      return acc;
+                    }, [])
+                    .map(
+                      (item) =>
+                        `${item.count} ${getColorPlural(
+                          item.color,
+                          item.count
+                        )} ${getGenderPlural(item.gender, item.count)}`
+                    )
+                    .join(", ")}
+                </h5>
+              </>
+            )}
+
+            {litter.freeText1 && (
+              <div className="mb-3 col-10 m-auto">
+                <h5 className="text-center">{litter.freeText1}</h5>
+              </div>
+            )}
+
+            {litter.galleries?.length > 0 && <GalleryModal litterId={id} />}
+
+            <div>
+              {litter.freeText2 && (
+                <div className="container text-center my-5">
+                  <p>{litter.freeText2}</p>
+                </div>
+              )}
+            </div>
+          </PuppiesContainer>
+
+          {selectedImage && (
+            <Modal imageUrl={selectedImage} onClose={closeImageModal} />
+          )}
+        </LitterContainer>
+      </ParentInfoContainer>
     </>
   );
 };

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const AboutContainer = styled.div`
   text-align: center;
   border-radius: 8px;
+  padding: 0 2rem;
 `;
 
 export const Title = styled.h1`
@@ -19,6 +20,9 @@ export const Paragraph = styled.p`
   color: ${(props) => props.theme.colors.text};
   line-height: 1.6;
   margin-bottom: 4rem;
+  @media (max-width: 992px) {
+    font-size: 1rem;
+  }
 `;
 export const SectionTitle = styled.h2`
   font-size: 2rem;
