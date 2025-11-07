@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import SEO from "../components/SEO";
+import LoadingSpinner from "../utils/LoadingSpinner";
 import { useParams } from "react-router-dom";
 import sanityClient from "../sanityClient";
 import { urlFor } from "../utils/sanityImage";
@@ -11,7 +13,7 @@ import {
   PuppiesContainer,
   MainImgContainer,
 } from "./LittersDetail.styled";
-import PuppyGalleryImages from "../components/PuppyGallerySection";
+import GalleryModal from "../components/GalleryModal";
 
 const LittersDetail = () => {
   const { id } = useParams();
@@ -124,9 +126,8 @@ father {
   }, [id]);
 
   if (loading) {
-    return <div>Laster...</div>;
+    return <LoadingSpinner />;
   }
-
   if (!litter) {
     return <div>Fant ingen kull.</div>;
   }
@@ -146,7 +147,13 @@ father {
       case "gray":
         return count > 1 ? "grå" : "grå";
       case "black":
-        return count > 1 ? "sorte" : "svart";
+        return count > 1 ? "sorte" : "sort";
+      case "brown":
+        return count > 1 ? "brune" : "brun";
+      case "apricot":
+        return count > 1 ? "aprikos" : "aprikos";
+      case "red":
+        return count > 1 ? "røde" : "rød";
       default:
         return color;
     }
@@ -194,6 +201,7 @@ father {
       <>
         {displayImage && (
           <ParentImage
+            className="no-theme"
             src={urlFor(displayImage)}
             alt={displayName}
             onClick={() => openImageModal(urlFor(displayImage))}
@@ -229,118 +237,133 @@ father {
   };
 
   return (
-    <LitterContainer className="col-10 m-auto">
-      <h2 className="text-center">Kull Detaljer</h2>
-      <ParentInfoContainer className="m-auto d-flex flex-row col-12 col-md-11 col-lg-9 col-xl-8 col-xxl-7">
-        <ParentInfo className="col-6">
-          <div className="mt-3">
-            <h3>
-              <strong> Mor</strong>
-            </h3>
-            <p className="title-text">
-              {litter.mother.title && <span>{litter.mother.title}</span>}
-            </p>
-            <h3 className="litter-name">{litter.mother.name}</h3>
-          </div>
-          <div className="col-12">{renderParentInfo(litter.mother)}</div>
-        </ParentInfo>
-        <ParentInfo className="col-6">
-          <div className="mt-3">
-            <h3>
-              <strong> Far</strong>
-            </h3>
-            <p className="title-text">
-              {litter.father.title && <span>{litter.father.title}</span>}
-            </p>
-            <h3 className="litter-name">{litter.father.name}</h3>
-          </div>
-          <div className="col-12">{renderParentInfo(litter.father)}</div>
-        </ParentInfo>
-      </ParentInfoContainer>
+    <>
+      <SEO
+        title={
+          litter.dateOfBirth
+            ? `Valpekull født ${formatDate(litter.dateOfBirth)} – ${
+                litter.mother.name
+              } x ${litter.father.name} | Kennel Shebonemo`
+            : `Kommende kull – ${litter.mother.name} x ${litter.father.name} | Kennel Shebonemo`
+        }
+        description={`Se informasjon om valpekull fra ${litter.mother.name} og ${litter.father.name} hos Kennel Shebonemo. Oppdrett av storpudler i Norge ved Mona Fegri, tidligere kjent som Puddel Mona.`}
+        keywords={`valper, storpuddel valper, puddel oppdrett, puddelmona, Puddel Mona, Mona Fegri, Kennel Shebonemo, ${litter.mother.name}, ${litter.father.name}`}
+      />
 
-      <PuppiesContainer className="col-12 col-lg-10 m-auto">
-        <div className="d-flex align-items-baseline col-10 m-auto justify-content-center">
-          {litter.dateOfBirth ? (
-            <div className="date-container text-center">
-              <h3>Født:</h3>
-              <h4>{formatDate(litter.dateOfBirth)}</h4>
+      <LitterContainer className="col-10 m-auto">
+        <h2 className="text-center">Kull Detaljer</h2>
+        <ParentInfoContainer className="m-auto d-flex flex-row col-12 col-md-11 col-lg-9 col-xl-8 col-xxl-7 text-center">
+          <ParentInfo className="col-6 m-auto">
+            <div className="mt-3">
+              <h3>
+                <strong> Mor</strong>
+              </h3>
+              <p className="title-text">
+                {litter.mother.title && <span>{litter.mother.title}</span>}
+              </p>
+              <h3 className="litter-name">{litter.mother.name}</h3>
             </div>
-          ) : (
-            litter.expectedDateOfBirth && (
-              <h4>Valper ventes: {formatDate(litter.expectedDateOfBirth)}</h4>
-            )
+            <div className="col-12">{renderParentInfo(litter.mother)}</div>
+          </ParentInfo>
+          <ParentInfo className="col-6">
+            <div className="mt-3">
+              <h3>
+                <strong> Far</strong>
+              </h3>
+              <p className="title-text">
+                {litter.father.title && <span>{litter.father.title}</span>}
+              </p>
+              <h3 className="litter-name">{litter.father.name}</h3>
+            </div>
+            <div className="col-12">{renderParentInfo(litter.father)}</div>
+          </ParentInfo>
+        </ParentInfoContainer>
+
+        <PuppiesContainer className="col-12 col-lg-10 m-auto">
+          <div className="d-flex align-items-baseline col-10 m-auto justify-content-center">
+            {litter.dateOfBirth ? (
+              <div className="date-container text-center">
+                <h3>Født:</h3>
+                <h4>{formatDate(litter.dateOfBirth)}</h4>
+              </div>
+            ) : (
+              litter.expectedDateOfBirth && (
+                <h4>Valper ventes: {formatDate(litter.expectedDateOfBirth)}</h4>
+              )
+            )}
+          </div>
+
+          {litter.mainImage && (
+            <>
+              <MainImgContainer className="m-auto col-10 col-lg-8 col-xl-6 d-flex">
+                <img
+                  className="mb-2 rounded"
+                  src={urlFor(litter.mainImage)}
+                  alt={`Valpene til ${litter.mother.nickname} og ${litter.father.nickname}`}
+                  onClick={() => openImageModal(urlFor(litter.mainImage))}
+                />
+              </MainImgContainer>
+              <div className="mb-5 text-center">
+                {litter.textUnderMainImage && (
+                  <p>{litter.textUnderMainImage}</p>
+                )}
+              </div>
+            </>
           )}
-        </div>
 
-        {litter.mainImage && (
-          <>
-            <MainImgContainer className="m-auto col-10 col-lg-8 col-xl-6 d-flex">
-              <img
-                className="mb-2 rounded"
-                src={urlFor(litter.mainImage)}
-                alt={`Valpene til ${litter.mother.nickname} og ${litter.father.nickname}`}
-                onClick={() => openImageModal(urlFor(litter.mainImage))}
-              />
-            </MainImgContainer>
-            <div className="mb-5 text-center">
-              {litter.textUnderMainImage && <p>{litter.textUnderMainImage}</p>}
+          {litter.puppyDetails?.length > 0 && (
+            <>
+              <h4 className="text-center">
+                Det ble født {totalPuppies} valper!
+              </h4>
+              <h5 className="text-center">
+                {litter.puppyDetails
+                  .reduce((acc, puppy) => {
+                    const gender = puppy.gender;
+                    const color = puppy.color;
+                    const existing = acc.find(
+                      (item) => item.color === color && item.gender === gender
+                    );
+                    if (existing) {
+                      existing.count += puppy.count;
+                    } else {
+                      acc.push({ color, gender, count: puppy.count });
+                    }
+                    return acc;
+                  }, [])
+                  .map(
+                    (item) =>
+                      `${item.count} ${getColorPlural(
+                        item.color,
+                        item.count
+                      )} ${getGenderPlural(item.gender, item.count)}`
+                  )
+                  .join(", ")}
+              </h5>
+            </>
+          )}
+
+          {litter.freeText1 && (
+            <div className="mb-3 col-10 m-auto">
+              <h5 className="text-center">{litter.freeText1}</h5>
             </div>
-          </>
-        )}
+          )}
 
-        {litter.puppyDetails?.length > 0 && (
-          <>
-            <h4 className="text-center">Det ble født {totalPuppies} valper!</h4>
-            <h5 className="text-center">
-              {litter.puppyDetails
-                .reduce((acc, puppy) => {
-                  const gender = puppy.gender;
-                  const color = puppy.color;
-                  const existing = acc.find(
-                    (item) => item.color === color && item.gender === gender
-                  );
-                  if (existing) {
-                    existing.count += puppy.count;
-                  } else {
-                    acc.push({ color, gender, count: puppy.count });
-                  }
-                  return acc;
-                }, [])
-                .map(
-                  (item) =>
-                    `${item.count} ${getColorPlural(
-                      item.color,
-                      item.count
-                    )} ${getGenderPlural(item.gender, item.count)}`
-                )
-                .join(", ")}
-            </h5>
-          </>
-        )}
+          {litter.galleries?.length > 0 && <GalleryModal litterId={id} />}
 
-        {litter.freeText1 && (
-          <div className="mb-3 col-10 m-auto">
-            <h5 className="text-center">{litter.freeText1}</h5>
+          <div>
+            {litter.freeText2 && (
+              <div className="container text-center my-5">
+                <p>{litter.freeText2}</p>
+              </div>
+            )}
           </div>
+        </PuppiesContainer>
+        {selectedImage && (
+          <Modal imageUrl={selectedImage} onClose={closeImageModal} />
         )}
-
-        {litter.galleries?.length > 0 && (
-          <div className="container mt-5">
-            <PuppyGalleryImages litterId={id} />
-          </div>
-        )}
-
-        {litter.freeText2 && (
-          <div className="container text-center my-5">
-            <p>{litter.freeText2}</p>
-          </div>
-        )}
-      </PuppiesContainer>
-
-      {selectedImage && (
-        <Modal imageUrl={selectedImage} onClose={closeImageModal} />
-      )}
-    </LitterContainer>
+      </LitterContainer>
+    </>
   );
 };
 

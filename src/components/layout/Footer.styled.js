@@ -2,8 +2,8 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
-  background-color: ${(props) => props.theme.colors.accent};
-  color: white;
+  background: ${(props) => props.theme.colors.accentTransparent};
+  color: ${(props) => props.theme.colors.white};
   padding: 1rem;
   text-align: center;
   margin-top: 20px;

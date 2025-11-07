@@ -17,6 +17,7 @@ export const GalleryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
+
   @media (max-width: 992px) {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
@@ -29,12 +30,12 @@ export const ImageItem = styled.div`
 
 export const Image = styled.img`
   width: 100%;
-  height: 150px;
+  max-width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
-  @media (max-width: 992px){
-  width:
-  }
+  object-position: 50% 30%;
+   aspect-ratio: 1 / 1;
 `;
 
 export const CaptionContainer = styled.div`

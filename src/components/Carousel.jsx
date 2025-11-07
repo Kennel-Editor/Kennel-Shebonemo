@@ -26,7 +26,7 @@ const Carousel = ({ images, currentIndex, setCurrentImageIndex }) => {
       <CarouselImageContainer className="col-lg-10 col-xl-8 col-xxl-6 mx-auto">
         <CarouselNav onClick={prevImage}>❮</CarouselNav>
 
-        <CarouselImage src={imageUrl} alt={caption} />
+        <CarouselImage className="gallery-image" src={imageUrl} alt={caption} />
 
         <PositionIndicator>
           <span>

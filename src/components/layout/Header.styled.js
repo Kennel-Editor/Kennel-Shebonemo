@@ -7,6 +7,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   .hero-image {
     width: 100%;
@@ -14,6 +15,12 @@ export const HeaderContainer = styled.header`
     object-fit: cover;
     object-position: center;
     object-position: 50% 50%;
+    @media (max-width: 762px) {
+      transform: scale(1.3);
+    }
+  }
+  @media (min-width: 992px) {
+    height: 40vh;
   }
 `;
 
@@ -41,7 +48,7 @@ export const HeroText = styled.h1`
     font-size: 2rem;
   }
   a {
-    color: white;
+    color: ${(props) => props.theme.colors.white};
   }
 `;
 
@@ -63,7 +70,6 @@ export const NavContainer = styled.nav`
     background: ${(props) => props.theme.colors.accent};
     padding: 10px 0px;
 
-
     .nav-link.no-active {
       border-bottom: none;
       color: ${(props) => props.theme.colors.text};
@@ -77,7 +83,7 @@ export const NavContainer = styled.nav`
       display: inline-block;
       position: relative;
       &.nytt-kull {
-        color: ${(props) => props.theme.colors.white};
+        color: ${(props) => props.theme.colors.primary};
         @media (min-width: 992px) {
           color: ${(props) => props.theme.colors.accent};
         }
@@ -93,7 +99,7 @@ export const NavContainer = styled.nav`
 
       &.active {
         color: black;
-        border-bottom: 1px solid ${(props) => props.theme.colors.white};
+        border-bottom: 1px solid ${(props) => props.theme.colors.primary};
         display: inline-block;
         width: max-content;
         @media (min-width: 992px) {
@@ -141,9 +147,7 @@ export const NavContainer = styled.nav`
     background-color: transparent;
     border: none;
     margin-left: 20px;
-    &.active-dropdown {
-      background: red;
-    }
+
     @media (min-width: 992px) {
       background: ${(props) => props.theme.colors.background};
       top: 70%;
@@ -161,6 +165,7 @@ export const NavContainer = styled.nav`
     .navbar .show .dropdown-menu {
       display: block;
       padding-top: 200px;
+      background-color: transparent;
     }
   }
 `;

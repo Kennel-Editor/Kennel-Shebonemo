@@ -20,7 +20,7 @@ export const DogsGrid = styled.section`
 `;
 
 export const DogCard = styled.div`
-  background: ${(props) => props.theme.colors.white};
+  background: ${(props) => props.theme.colors.background};
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
@@ -33,10 +33,10 @@ export const DogCard = styled.div`
 
   img {
     width: 100%;
-    height: 50vh;
+    height: 40vh;
     object-fit: cover;
     object-position: center;
-    object-position: 40% 15%;
+    object-position: 60% 50%;
   }
 
   h3 {

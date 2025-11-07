@@ -1,12 +1,32 @@
-// src/components/Footer.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FooterContainer } from "./Footer.styled";
+import sanityClient from "../../sanityClient";
 
 const Footer = () => {
+  const [pageTitle, setpageTitle] = useState("");
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "siteInfo"][0]{
+          pageTitle
+        }`
+      )
+      .then((data) => {
+        if (data && data.pageTitle) {
+          setpageTitle(data.pageTitle);
+        }
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <FooterContainer>
-      <p>© Kennel Shirkus - ALL RIGHTS RESERVED</p>
-      <p className="made-by">Nettside laget av Kristine Tyrholm</p>
+      <p>© {pageTitle} - ALL RIGHTS RESERVED</p>
+      <p className="made-by">
+        Nettside laget av Kristine Tyrholm <br />
+        kennel.editor@gmail.com
+      </p>
     </FooterContainer>
   );
 };
