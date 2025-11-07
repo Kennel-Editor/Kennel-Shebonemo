@@ -37,9 +37,8 @@ export default function Admin() {
   return (
     <Wrap>
       <Title>Kontrollpanel</Title>
+      <Sub>besøkstall f.o.m 07.11.2025</Sub>
       <Sub>
-        Sist oppdatert: {new Date(refTs).toLocaleString("no-NO")}{" "}
-        <Badge>{loading ? "Laster…" : "Oppdatert"}</Badge>{" "}
         <Btn onClick={reloadAll} disabled={reloading} aria-busy={reloading}>
           {reloading ? <MiniPawSpinner style={{ marginRight: 8 }} /> : null}
           {reloading ? "Oppdaterer…" : "Oppdater"}
