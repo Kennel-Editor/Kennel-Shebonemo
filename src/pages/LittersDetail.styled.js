@@ -7,6 +7,7 @@ export const LitterContainer = styled.div`
     font-family: ${(props) => props.theme.fonts.accent};
     color: ${(props) => props.theme.colors.accent};
     font-weight: 900;
+    margin-bottom: 1rem;
   }
   .costum-border {
     border-bottom: 1px solid ${(props) => props.theme.colors.accent};
@@ -23,33 +24,32 @@ export const ParentInfoContainer = styled.div`
   align-items: flex-start;
   h3 {
     font-size: 1.5rem;
+    margin-bottom:2px
     
   }
   .title-text {
-    height: 1.5rem;
     font-size: 1rem;
-    marign: 0px;
+    margin: 5px 0px ;
     padding: 0px;
     font-weight: 600;
      @media (max-width: 667px){
-      min-height: 2.5rem;
+   
      }
     @media (max-width: 400px) {
       font-size: 0.8rem;
-      min-height: 2rem;
-    }
-       @media (min-width: 1280){
-       
-       }
+      }
+      .title-text:empty {
+  display: none;  
+}
+     
   }
   .litter-name {
-    min-height: 3.5rem;
-    marign: 0px;
-    padding: 0px 0px 0px 10px;
+    margin: 0px;
+    padding: 0px 0px 10px 0px;
     
 
     @media (max-width: 400px) {
-      min-height: 1rem;
+ 
       font-size: 1.1rem;
     }
       
@@ -58,11 +58,6 @@ export const ParentInfoContainer = styled.div`
     }
   }
   }
-`;
-
-export const ParentInfo = styled.div`
-  margin-bottom: 2rem;
-  padding: 0.1rem;
 `;
 
 export const ParentImage = styled.img`

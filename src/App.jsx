@@ -16,6 +16,8 @@ import Gallery from "./pages/Gallery";
 import GalleryDetail from "./pages/GalleryDetail";
 import useSiteSettings from "./hooks/useSiteSettings";
 import PageSkeleton from "./components/skeletons/PageSkeleton";
+import Admin from "./pages/Admin";
+import TrackAllRoutes from "./counter/TrackAllRoutes";
 
 const App = () => {
   const settings = useSiteSettings();
@@ -40,6 +42,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
+        <TrackAllRoutes />
         {isLoading ? (
           <PageSkeleton />
         ) : (
@@ -54,6 +57,7 @@ const App = () => {
               <Route path="contact" element={<Contact />} />
               <Route path="gallery" element={<Gallery />} />
               <Route path="gallery/:id" element={<GalleryDetail />} />
+              <Route path="/admin" element={<Admin />} />
             </Route>
           </Routes>
         )}

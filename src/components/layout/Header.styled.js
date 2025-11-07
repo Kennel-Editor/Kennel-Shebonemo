@@ -42,7 +42,7 @@ export const HeroText = styled.h1`
     text-shadow: ${(props) => props.theme.shadows.textShadow};
   }
   @media (max-width: 600px) {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
   @media (max-width: 350px) {
     font-size: 2rem;
