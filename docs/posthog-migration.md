@@ -118,8 +118,10 @@ Referanse for PostHogs sesjonsdefinisjon: https://posthog.com/docs/data/sessions
 - `src/counter/utils/posthogStats.js`, `src/hooks/useAdminData.js`: henting og eksisterende sidegruppering.
 - `src/pages/Admin.jsx`, `src/counter/components/StatsTable.jsx`, `src/counter/components/RangeCard.jsx`: samlede unike og tydelige feil.
 - `tests/posthog-stats.test.mjs`, `tests/posthog-tracking.test.mjs`, `tests/posthog-client.test.mjs`: regresjonstester.
-- `sanity-studio/components/GlobalTotalField.jsx`, `sanity-studio/schemaTypes/stats.js`:
-  den eksisterende skrivebeskyttede visningen er merket som Sanity-arkiv.
+- `sanity-studio/schemaTypes/stats.js`, `sanity-studio/components/AdminLinkField.jsx`:
+  «Besøkstall» beholdes som en skrivebeskyttet lenke til `/admin`, som i Shirkus.
+- Fjernet ubrukte `sanity-studio/components/GlobalTotalField.jsx`,
+  `sanity-studio/schemaTypes/pageStats.js` og gammel `sanity-studio/.babelrc`.
 - `docs/posthog-migration.md`: denne veiledningen.
 
 JSON-filen og NDJSON-eksporten fra brukeren er ikke endret.
@@ -145,8 +147,8 @@ Ingen reell PostHog-forespørsel med hemmelig nøkkel, nettlesertest eller deplo
 Den nye koden skriver ingen besøksdata til Sanity. De fem gamle endepunktene
 beholdes med HTTP 410 for gamle klienter; de skal ikke gjeninnføres. Sletting
 av ubrukte hjelpere påvirker ikke lagrede Sanity-dokumenter, eksportfiler,
-innholdsskjemaer eller eksisterende innholdshenting. Studio-tallet viser fortsatt
-bare Sanity-arkivet; det rekonstruerte snapshotet og PostHog vises på `/admin`.
+innholdsskjemaer eller eksisterende innholdshenting. Studio viser bare en lenke
+til kontrollpanelet; det rekonstruerte snapshotet og PostHog vises på `/admin`.
 
 `TrackAllRoutes` står inne i `BrowserRouter`, over alle rutene. Det dekker hjem,
 hundeliste/detalj, kulliste/detalj, galleri/detalj, om oss og kontakt. Admin utelates.

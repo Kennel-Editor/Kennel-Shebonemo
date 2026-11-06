@@ -1,31 +1,23 @@
 import AdminLinkField from '../components/AdminLinkField.jsx'
-import GlobalTotalField from '../components/GlobalTotalField.jsx'
 
 export default {
   name: 'visitorStats',
-  title: 'besøkstall',
+  title: 'Besøkstall',
   type: 'document',
   fields: [
     {
       name: 'adminLink',
-      title: 'Admin panel (besøksteller)',
+      title: 'Åpne besøksstatistikk',
       type: 'url',
       initialValue: 'https://shebonemo.no/admin',
+      readOnly: true,
       components: {field: AdminLinkField},
-    },
-    {
-      name: 'globalTotalVisits',
-      title: 'Besøk totalt (hele nettsiden)',
-      type: 'string',
-
-      components: {field: GlobalTotalField},
-      description: 'Historisk Sanity-arkiv. Rekonstruert historikk og nye PostHog-tall vises i adminpanelet.',
+      description: 'Klikk på lenken for å åpne kontrollpanelet med besøkstall.',
     },
   ],
   preview: {
-    select: {adminLink: 'adminLink'},
-    prepare({adminLink}) {
-      return {title: 'Besøkstall', subtitle: adminLink || 'Ikke satt'}
+    prepare() {
+      return {title: 'Besøkstall', subtitle: 'Åpne kontrollpanelet'}
     },
   },
 }
