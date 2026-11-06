@@ -19,7 +19,7 @@ export default {
       type: 'string',
 
       components: {field: GlobalTotalField},
-      description: 'Summeres fra alle pageStats-dokumenter',
+      description: 'Historisk Sanity-arkiv. Rekonstruert historikk og nye PostHog-tall vises i adminpanelet.',
     },
   ],
   preview: {

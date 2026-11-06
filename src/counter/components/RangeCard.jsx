@@ -1,3 +1,4 @@
+import { fetchPosthogStats } from "../utils/posthogStats";
 import { useEffect, useState, useMemo } from "react";
 import {
   RangeCardWrap,
@@ -47,7 +48,8 @@ function getISOWeek(date) {
 export default function RangeCard({ title, items, refreshKey = 0 }) {
   const [idx, setIdx] = useState(0);
   const cur = items[idx];
-  const [data, setData] = useState({ sessionsTotal: 0, uniquesGlobal: 0 });
+  const [data, setData] = useState({ sessionsTotal: 0, historicalUniques: 0, posthogUniques: 0 });
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const todayYmd = useMemo(() => ymdOslo(), []);
@@ -95,17 +97,14 @@ export default function RangeCard({ title, items, refreshKey = 0 }) {
   useEffect(() => {
     let cancelled = false;
     setIsLoading(true);
-    const params = new URLSearchParams({ start: cur.start, end: cur.end });
-    fetch(`/.netlify/functions/getRangeStats?${params.toString()}`)
-      .then((r) => r.json())
+    setError("");
+    fetchPosthogStats({ start: cur.start, end: cur.end })
       .then((json) => {
-        if (cancelled) return;
-        setData({
-          sessionsTotal: json.sessionsTotal || 0,
-          uniquesGlobal: json.uniquesGlobal || 0,
-        });
+        if (!cancelled) setData(json);
       })
-      .catch(() => {})
+      .catch((err) => {
+        if (!cancelled) setError(err.message);
+      })
       .finally(() => {
         if (!cancelled) setIsLoading(false);
       });
@@ -134,6 +133,7 @@ export default function RangeCard({ title, items, refreshKey = 0 }) {
       </RangeTop>
 
       <RangeLabel>{smartLabel}</RangeLabel>
+      {error && <RangeLabel role="alert">{error}</RangeLabel>}
 
       <RangeMetrics>
         <Metric>
@@ -141,15 +141,15 @@ export default function RangeCard({ title, items, refreshKey = 0 }) {
           <MetricValue>
             {isLoading
               ? "…"
-              : new Intl.NumberFormat("no-NO").format(data.sessionsTotal || 0)}
+              : error ? "—" : new Intl.NumberFormat("no-NO").format(data.sessionsTotal || 0)}
           </MetricValue>
         </Metric>
         <Metric>
           <MetricName>Unike</MetricName>
-          <MetricValue>
+          <MetricValue title={data.uniquesEstimated ? "Historiske unike for flere dager er et anslag basert på dagsverdier." : undefined}>
             {isLoading
               ? "…"
-              : new Intl.NumberFormat("no-NO").format(data.uniquesGlobal || 0)}
+              : error ? "—" : new Intl.NumberFormat("no-NO").format(data.uniquesTotal || 0)}
           </MetricValue>
         </Metric>
       </RangeMetrics>

@@ -9,13 +9,13 @@ import {
   TableWrap,
   RangeGrid,
   SectionTitle,
-  Badge,
   Btn,
 } from "./Admin.styled";
 import RollingPanels from "../counter/components/RollingPanels";
 import { MiniPawSpinner } from "../utils/LoadingSpinner";
 import useAdminData from "../hooks/useAdminData";
 import StatsTable from "../counter/components/StatsTable";
+import TrafficOverview from "../counter/components/TrafficOverview";
 
 const nf = new Intl.NumberFormat("no-NO");
 
@@ -27,6 +27,7 @@ export default function Admin() {
     setExpanded,
     global,
     loading,
+    error,
     refTs,
     reloading,
     dailyToday,
@@ -39,26 +40,28 @@ export default function Admin() {
       <Title>Kontrollpanel</Title>
       <Sub>besøkstall f.o.m 07.11.2025</Sub>
       <Sub>
-        <Btn onClick={reloadAll} disabled={reloading} aria-busy={reloading}>
+        <Btn onClick={reloadAll} disabled={loading || reloading} aria-busy={reloading}>
           {reloading ? <MiniPawSpinner style={{ marginRight: 8 }} /> : null}
           {reloading ? "Oppdaterer…" : "Oppdater"}
         </Btn>
       </Sub>
 
+      {error && <Sub role="alert">{error}. Eventuelle viste tall er fra siste vellykkede henting.</Sub>}
+      {loading && <Sub role="status">Henter besøksstatistikk…</Sub>}
       <KPIGrid>
         <KPICard>
           <KPIName>Besøk i dag</KPIName>
           <KPIValue>
-            {nf.format(Number(dailyToday.sessionsTotal || 0))}
+            {loading || (error && !global.period) ? "—" : nf.format(Number(dailyToday.sessionsTotal || 0))}
           </KPIValue>
         </KPICard>
         <KPICard>
           <KPIName>Besøk totalt</KPIName>
-          <KPIValue>{nf.format(Number(lifetime.sessionsTotal || 0))}</KPIValue>
+          <KPIValue>{loading || (error && !global.period) ? "—" : nf.format(Number(lifetime.sessionsTotal || 0))}</KPIValue>
         </KPICard>
         <KPICard>
           <KPIName>Unike besøkere (alle tider)</KPIName>
-          <KPIValue>{nf.format(global.uniquesGlobal)}</KPIValue>
+          <KPIValue>{loading || (error && !global.period) ? "—" : nf.format(global.uniquesTotal || 0)}</KPIValue>
         </KPICard>
       </KPIGrid>
 
@@ -75,6 +78,7 @@ export default function Admin() {
       <RangeGrid>
         <RollingPanels refreshKey={refTs} />
       </RangeGrid>
+      <TrafficOverview refreshKey={refTs} />
     </Wrap>
   );
 }

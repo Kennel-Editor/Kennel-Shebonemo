@@ -255,3 +255,38 @@ export const Arrow = styled.span`
     opacity: 0.9;
   }
 `;
+
+export const TrafficGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 400px));
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 12px;
+  @media (max-width: 700px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+`;
+
+export const TrafficColumn = styled.div`
+  display: grid;
+  gap: 16px;
+  align-content: start;
+`;
+
+export const TrafficCard = styled(KPICard)`
+  text-align: center;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  ${KPIName} { color: ${({ theme }) => theme.colors.text}; }
+  ${BtnIcon}:disabled { opacity: 0.35; cursor: default; }
+`;
+
+export const TrafficList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.65;
+  color: ${({ theme }) => theme.colors.text};
+`;

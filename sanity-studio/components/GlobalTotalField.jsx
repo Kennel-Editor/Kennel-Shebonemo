@@ -57,7 +57,10 @@ export default function GlobalTotalField() {
         textAlign: 'center',
       }}
     >
-      <div style={{fontWeight: 600}}>Besøk på siden</div>
+      <div style={{fontWeight: 600}}>Historiske besøk (Sanity-arkiv)</div>
+      <div style={{fontSize: 12, opacity: 0.7}}>
+        Dette er lagrede Sanity-tall. Se adminpanelet for rekonstruert historikk og nye PostHog-tall.
+      </div>
 
       {err ? (
         <div style={{color: '#b91c1c', fontSize: 12}}>Feil: {err}</div>

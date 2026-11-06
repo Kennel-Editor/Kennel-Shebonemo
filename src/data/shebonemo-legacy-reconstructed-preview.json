@@ -1,0 +1,4230 @@
+{
+  "source": "Kennel-Shebonemo Sanity dataset export (reconstructed preview)",
+  "note": "Reconstructed historical preview, NOT final cutover snapshot. Post-2026-09-02 global sessions are conservative estimates based on per-day maximum of distinct per-page visitor hashes and the largest page session count; true global sessions may be higher. Historical unique total uses union of saved global hashes and later page hashes. No hashes or identifiers included in this output.",
+  "global": {
+    "page": "/",
+    "sessionsTotal": 486,
+    "uniquesTotal": 353,
+    "days": {
+      "2025-11-07": {
+        "sessions": 3,
+        "uniques": 2
+      },
+      "2025-11-08": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-11-10": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-11-11": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-11-12": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-11-15": {
+        "sessions": 3,
+        "uniques": 1
+      },
+      "2025-11-16": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2025-11-17": {
+        "sessions": 2,
+        "uniques": 1
+      },
+      "2025-11-18": {
+        "sessions": 5,
+        "uniques": 3
+      },
+      "2025-11-19": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2025-11-20": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2025-11-21": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-11-22": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-11-23": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2025-11-24": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2025-11-25": {
+        "sessions": 1,
+        "uniques": 0
+      },
+      "2025-11-29": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-01": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-02": {
+        "sessions": 4,
+        "uniques": 2
+      },
+      "2025-12-03": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2025-12-04": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-06": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2025-12-08": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2025-12-10": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-11": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2025-12-12": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2025-12-15": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-16": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-18": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2025-12-19": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-20": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-21": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2025-12-25": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-26": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-27": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2025-12-30": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-01-02": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-01-03": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-01-08": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-01-09": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-01-11": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-01-12": {
+        "sessions": 3,
+        "uniques": 1
+      },
+      "2026-01-13": {
+        "sessions": 3,
+        "uniques": 2
+      },
+      "2026-01-14": {
+        "sessions": 5,
+        "uniques": 4
+      },
+      "2026-01-16": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-01-17": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-01-18": {
+        "sessions": 4,
+        "uniques": 3
+      },
+      "2026-01-19": {
+        "sessions": 6,
+        "uniques": 3
+      },
+      "2026-01-20": {
+        "sessions": 3,
+        "uniques": 1
+      },
+      "2026-01-21": {
+        "sessions": 2,
+        "uniques": 1
+      },
+      "2026-01-22": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-01-23": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-01-24": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-01-26": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-01-27": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-01-28": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2026-01-29": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-02-01": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-02": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-04": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-05": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-02-06": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-08": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-10": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-11": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-02-12": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-13": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-16": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-18": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-02-19": {
+        "sessions": 2,
+        "uniques": 1
+      },
+      "2026-02-21": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2026-02-22": {
+        "sessions": 2,
+        "uniques": 3
+      },
+      "2026-02-23": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-02-27": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-02-28": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-03-02": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-03": {
+        "sessions": 3,
+        "uniques": 2
+      },
+      "2026-03-04": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-05": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-06": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-03-07": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-08": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-03-10": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-12": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-03-13": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-03-14": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-03-15": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-03-16": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-03-17": {
+        "sessions": 2,
+        "uniques": 1
+      },
+      "2026-03-18": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-21": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-22": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-23": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-24": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-03-25": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-03-26": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-29": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-03-31": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-04-03": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-04-06": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-04-07": {
+        "sessions": 5,
+        "uniques": 4
+      },
+      "2026-04-09": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-04-10": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-04-11": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-04-12": {
+        "sessions": 3,
+        "uniques": 1
+      },
+      "2026-04-13": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-04-14": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-04-18": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-04-19": {
+        "sessions": 2,
+        "uniques": 1
+      },
+      "2026-04-21": {
+        "sessions": 4,
+        "uniques": 3
+      },
+      "2026-04-22": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-04-23": {
+        "sessions": 3,
+        "uniques": 2
+      },
+      "2026-04-25": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-04-26": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-04-27": {
+        "sessions": 2,
+        "uniques": 1
+      },
+      "2026-04-28": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-04-29": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-04-30": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-05-04": {
+        "sessions": 6,
+        "uniques": 4
+      },
+      "2026-05-05": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-05-07": {
+        "sessions": 5,
+        "uniques": 5
+      },
+      "2026-05-10": {
+        "sessions": 4,
+        "uniques": 3
+      },
+      "2026-05-11": {
+        "sessions": 3,
+        "uniques": 2
+      },
+      "2026-05-12": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-05-15": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-05-16": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-05-19": {
+        "sessions": 4,
+        "uniques": 2
+      },
+      "2026-05-20": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-05-21": {
+        "sessions": 9,
+        "uniques": 9
+      },
+      "2026-05-22": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2026-05-25": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-05-27": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-05-30": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-05-31": {
+        "sessions": 2,
+        "uniques": 1
+      },
+      "2026-06-02": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-06-03": {
+        "sessions": 5,
+        "uniques": 4
+      },
+      "2026-06-04": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-06-05": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-06-06": {
+        "sessions": 1,
+        "uniques": 0
+      },
+      "2026-06-07": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-06-11": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-06-12": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-06-13": {
+        "sessions": 3,
+        "uniques": 2
+      },
+      "2026-06-14": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-06-16": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-06-17": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-06-19": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-06-20": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-06-21": {
+        "sessions": 3,
+        "uniques": 2
+      },
+      "2026-06-22": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-06-23": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-06-24": {
+        "sessions": 2,
+        "uniques": 1
+      },
+      "2026-06-25": {
+        "sessions": 1,
+        "uniques": 0
+      },
+      "2026-06-26": {
+        "sessions": 3,
+        "uniques": 2
+      },
+      "2026-06-28": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-06-29": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-06-30": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-07-01": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-07-02": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-07-03": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-07-04": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-07-05": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-07-07": {
+        "sessions": 4,
+        "uniques": 3
+      },
+      "2026-07-08": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-07-09": {
+        "sessions": 4,
+        "uniques": 3
+      },
+      "2026-07-10": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-07-12": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-07-14": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-07-15": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-07-16": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-07-19": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-07-22": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-07-23": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-07-25": {
+        "sessions": 6,
+        "uniques": 6
+      },
+      "2026-07-26": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2026-07-27": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-07-28": {
+        "sessions": 1,
+        "uniques": 0
+      },
+      "2026-07-29": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-07-31": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-01": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-02": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-03": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-05": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2026-08-06": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2026-08-07": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-08-10": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-11": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-15": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-18": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-22": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-25": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-08-26": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-27": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-29": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-08-30": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-09-01": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-09-02": {
+        "sessions": 4,
+        "uniques": 2
+      },
+      "2026-09-04": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-09-06": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-09-07": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-09-08": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-09-09": {
+        "sessions": 2,
+        "uniques": 1
+      },
+      "2026-09-10": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-09-12": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-09-14": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-09-15": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-09-16": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2026-09-17": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-09-18": {
+        "sessions": 4,
+        "uniques": 4
+      },
+      "2026-09-19": {
+        "sessions": 6,
+        "uniques": 6
+      },
+      "2026-09-21": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-09-22": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-09-23": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-09-24": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-09-25": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-09-26": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-09-29": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-10-01": {
+        "sessions": 1,
+        "uniques": 0
+      },
+      "2026-10-02": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-10-03": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-10-04": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-10-05": {
+        "sessions": 6,
+        "uniques": 6
+      },
+      "2026-10-10": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-10-11": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-10-13": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-10-21": {
+        "sessions": 7,
+        "uniques": 3
+      },
+      "2026-10-23": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-10-24": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-10-25": {
+        "sessions": 5,
+        "uniques": 5
+      },
+      "2026-10-26": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-10-29": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-10-30": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-10-31": {
+        "sessions": 2,
+        "uniques": 2
+      },
+      "2026-11-01": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-11-02": {
+        "sessions": 3,
+        "uniques": 3
+      },
+      "2026-11-03": {
+        "sessions": 1,
+        "uniques": 1
+      },
+      "2026-11-04": {
+        "sessions": 2,
+        "uniques": 2
+      }
+    }
+  },
+  "pages": [
+    {
+      "page": "/",
+      "sessionsTotal": 340,
+      "uniquesTotal": 270,
+      "days": {
+        "2025-11-07": {
+          "sessions": 3,
+          "uniques": 2
+        },
+        "2025-11-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-17": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2025-11-18": {
+          "sessions": 3,
+          "uniques": 2
+        },
+        "2025-11-19": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2025-11-20": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-11-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-23": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2025-11-24": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-11-25": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2025-11-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-01": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-06": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2025-12-08": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-12-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-11": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-18": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2025-12-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-20": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-12-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-02": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-09": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-11": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-12": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-01-14": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-17": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-18": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-22": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-01-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-27": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-28": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-29": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-02-01": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-05": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-02-06": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-11": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-02-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-02-21": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-02-22": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-02-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-28": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-03-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-03": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-03-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-06": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-03-08": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-03-12": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-03-15": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-03-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-25": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-03-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-03": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-04-06": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-04-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-09": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-11": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-04-12": {
+          "sessions": 3,
+          "uniques": 1
+        },
+        "2026-04-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-21": {
+          "sessions": 4,
+          "uniques": 3
+        },
+        "2026-04-22": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-04-23": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-04-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-04": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-05-07": {
+          "sessions": 4,
+          "uniques": 4
+        },
+        "2026-05-10": {
+          "sessions": 4,
+          "uniques": 3
+        },
+        "2026-05-11": {
+          "sessions": 3,
+          "uniques": 2
+        },
+        "2026-05-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-15": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-05-16": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-05-19": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-05-20": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-05-21": {
+          "sessions": 9,
+          "uniques": 9
+        },
+        "2026-05-22": {
+          "sessions": 4,
+          "uniques": 4
+        },
+        "2026-05-25": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-05-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-02": {
+          "sessions": 3,
+          "uniques": 2
+        },
+        "2026-06-03": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-06-06": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-06-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-12": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-06-13": {
+          "sessions": 3,
+          "uniques": 2
+        },
+        "2026-06-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-17": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-06-19": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-06-20": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-22": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-06-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-25": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-06-26": {
+          "sessions": 3,
+          "uniques": 2
+        },
+        "2026-06-28": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-30": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-07-01": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-02": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-07-03": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-07-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-05": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-07-07": {
+          "sessions": 4,
+          "uniques": 3
+        },
+        "2026-07-08": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-07-09": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-07-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-14": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-07-15": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-07-19": {
+          "sessions": 3,
+          "uniques": 2
+        },
+        "2026-07-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-23": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-07-25": {
+          "sessions": 6,
+          "uniques": 6
+        },
+        "2026-07-26": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-07-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-28": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-29": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-08-01": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-05": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-08-06": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-08-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-25": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-08-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-30": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-09-02": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-09-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-06": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-07": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-09-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-09": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-09-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-16": {
+          "sessions": 4,
+          "uniques": 4
+        },
+        "2026-09-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-18": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-09-19": {
+          "sessions": 4,
+          "uniques": 3
+        },
+        "2026-09-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-24": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-09-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-01": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-10-02": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-10-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-05": {
+          "sessions": 6,
+          "uniques": 6
+        },
+        "2026-10-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-11": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/about",
+      "sessionsTotal": 83,
+      "uniquesTotal": 65,
+      "days": {
+        "2025-11-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-03": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-12-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-17": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-21": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-02-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-11": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-05-19": {
+          "sessions": 4,
+          "uniques": 2
+        },
+        "2026-06-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-06": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-06-21": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-06-28": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-07": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-07-08": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-07-09": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-05": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-08-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-02": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-09-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-06": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-05": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-10-21": {
+          "sessions": 7,
+          "uniques": 1
+        },
+        "2026-10-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-25": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-10-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-31": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-11-01": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-11-02": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-11-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-11-04": {
+          "sessions": 1,
+          "uniques": 0
+        }
+      }
+    },
+    {
+      "page": "/contact",
+      "sessionsTotal": 72,
+      "uniquesTotal": 56,
+      "days": {
+        "2025-11-07": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2025-11-17": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2025-11-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-03": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-12-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-19": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-21": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-02-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-24": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-04-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-23": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-19": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-06-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-06": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-06": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-14": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-09-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-05": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-10-21": {
+          "sessions": 7,
+          "uniques": 1
+        },
+        "2026-10-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-25": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-10-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-31": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-11-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-11-03": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-11-04": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/dogs",
+      "sessionsTotal": 111,
+      "uniquesTotal": 75,
+      "days": {
+        "2025-11-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-17": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2025-11-18": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2025-11-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-08": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-12-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-20": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-14": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-22": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-16": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-03-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-06": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-07": {
+          "sessions": 5,
+          "uniques": 4
+        },
+        "2026-04-12": {
+          "sessions": 3,
+          "uniques": 1
+        },
+        "2026-04-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-19": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-04-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-27": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-04-28": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-04": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-05-10": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-05-19": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-06-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-13": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-06-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-24": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-06-28": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-01": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-07": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-09": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-28": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-08-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-19": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-24": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-09-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-05": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-10-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-11-01": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/dogs/53c02fca-1398-4162-b426-b5f25b9ec7a0",
+      "sessionsTotal": 6,
+      "uniquesTotal": 5,
+      "days": {
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/dogs/65c7f3fa-7041-4276-b3aa-ac7ccf3ce296",
+      "sessionsTotal": 8,
+      "uniquesTotal": 5,
+      "days": {
+        "2025-12-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/dogs/a3a1d3db-fd01-4d6d-8af9-a5462235e269",
+      "sessionsTotal": 28,
+      "uniquesTotal": 21,
+      "days": {
+        "2025-12-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-14": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-22": {
+          "sessions": 1,
+          "uniques": 2
+        },
+        "2026-03-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-12": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-07": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-28": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-09-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-30": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/dogs/b65c68af-18ae-4dff-8106-468868feeecd",
+      "sessionsTotal": 33,
+      "uniquesTotal": 23,
+      "days": {
+        "2025-11-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-31": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-12": {
+          "sessions": 2,
+          "uniques": 0
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-10": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-06-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-07": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-28": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-09-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/dogs/e1379a96-ce2a-41a7-bc33-d5f19ba09ce6",
+      "sessionsTotal": 29,
+      "uniquesTotal": 18,
+      "days": {
+        "2025-11-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-08": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-12-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-03": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-03-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-12": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-03": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-06-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-07": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-28": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-09-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-25": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/gallery",
+      "sessionsTotal": 43,
+      "uniquesTotal": 32,
+      "days": {
+        "2025-11-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-18": {
+          "sessions": 3,
+          "uniques": 1
+        },
+        "2025-12-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-19": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-06-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-09": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-05": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-08-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-21": {
+          "sessions": 7,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-11-01": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/gallery/0baee561-62dd-4387-a069-9fe578c3507c",
+      "sessionsTotal": 11,
+      "uniquesTotal": 8,
+      "days": {
+        "2025-11-18": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-19": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-06-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-21": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/gallery/0deb065d-78ff-4dec-81e9-6af98ab42de2",
+      "sessionsTotal": 9,
+      "uniquesTotal": 7,
+      "days": {
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-09": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-21": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/gallery/3a6de487-af06-487b-ae4d-0c6d8b1790d4",
+      "sessionsTotal": 9,
+      "uniquesTotal": 9,
+      "days": {
+        "2025-11-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/gallery/e66ead0d-15d8-4c7c-ae3c-4cfa734acbfc",
+      "sessionsTotal": 8,
+      "uniquesTotal": 8,
+      "days": {
+        "2025-11-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/kontakt",
+      "sessionsTotal": 2,
+      "uniquesTotal": 2,
+      "days": {
+        "2026-07-31": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-01": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/litters",
+      "sessionsTotal": 152,
+      "uniquesTotal": 102,
+      "days": {
+        "2025-11-07": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2025-11-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-15": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2025-11-16": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-11-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-18": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2025-11-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-03": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-12-08": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2025-12-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-12": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-01-13": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-01-14": {
+          "sessions": 3,
+          "uniques": 2
+        },
+        "2026-01-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-17": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-01-18": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-01-19": {
+          "sessions": 5,
+          "uniques": 3
+        },
+        "2026-01-20": {
+          "sessions": 3,
+          "uniques": 1
+        },
+        "2026-01-21": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-01-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-28": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-02-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-06": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-10": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-05-11": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-05-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-15": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-05-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-31": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-06-02": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-06-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-13": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-06-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-25": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-06-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-30": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-01": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-02": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-07-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-07": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-07-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-09": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-07-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-19": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-07-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-28": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-06": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-08-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-25": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-29": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-05": {
+          "sessions": 3,
+          "uniques": 3
+        },
+        "2026-10-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-21": {
+          "sessions": 6,
+          "uniques": 0
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-25": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-11-01": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-11-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-11-04": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/litters/04440d0f-3ffc-4765-bc6f-a0a7fb0b2402",
+      "sessionsTotal": 18,
+      "uniquesTotal": 13,
+      "days": {
+        "2025-11-15": {
+          "sessions": 3,
+          "uniques": 1
+        },
+        "2025-11-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-02": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-19": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-02-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-25": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/litters/28697f17-91ab-4f6c-8575-1483ee9acca8",
+      "sessionsTotal": 19,
+      "uniquesTotal": 14,
+      "days": {
+        "2025-11-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-02": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-28": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-03-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-17": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-03-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-26": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-25": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-19": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-09-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        }
+      }
+    },
+    {
+      "page": "/litters/ac6c3335-d24d-4148-a428-9e867540434e",
+      "sessionsTotal": 53,
+      "uniquesTotal": 41,
+      "days": {
+        "2025-11-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-11-17": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-08": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2025-12-15": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-14": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-01-27": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-02-19": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-02-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-04": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-03-13": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-03-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-03": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-12": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-18": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-04-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-04": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-05-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-07": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-11": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-05-15": {
+          "sessions": 2,
+          "uniques": 2
+        },
+        "2026-06-13": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-06-25": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-02": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-07": {
+          "sessions": 1,
+          "uniques": 0
+        },
+        "2026-07-09": {
+          "sessions": 2,
+          "uniques": 1
+        },
+        "2026-07-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-07-19": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-10": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-08-22": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-16": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-21": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-09-24": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-05": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-23": {
+          "sessions": 1,
+          "uniques": 1
+        },
+        "2026-10-25": {
+          "sessions": 2,
+          "uniques": 1
+        }
+      }
+    }
+  ],
+  "reconstruction": {
+    "status": "estimated_not_final",
+    "originalGlobalLastDate": "2026-09-02",
+    "originalGlobalSessionsTotal": 401,
+    "originalGlobalUniquesTotal": 281,
+    "reconstructedFrom": "per-page days hashes and sessions in data.ndjson",
+    "reconstructedThrough": "2026-11-04",
+    "reconstructedDayCount": 40,
+    "reconstructedSessionsAdded": 85,
+    "observedPageSessionsAfterGlobalStopped": 186,
+    "distinctNewVisitorHashesAfterGlobalStopped": 72,
+    "globalSessionsMethod": "For each missing global day: max(distinct visitor hashes across pages, maximum sessions recorded on one page). Sum daily minima. This is an estimate/lower bound, not deduplicated global sessions.",
+    "globalUniqueMethod": "Historical global unique hashes union new hashes observed on pages after last global date. Hashes excluded from output.",
+    "reconstructedDates": [
+      "2026-09-04",
+      "2026-09-06",
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-12",
+      "2026-09-14",
+      "2026-09-15",
+      "2026-09-16",
+      "2026-09-17",
+      "2026-09-18",
+      "2026-09-19",
+      "2026-09-21",
+      "2026-09-22",
+      "2026-09-23",
+      "2026-09-24",
+      "2026-09-25",
+      "2026-09-26",
+      "2026-09-29",
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-03",
+      "2026-10-04",
+      "2026-10-05",
+      "2026-10-10",
+      "2026-10-11",
+      "2026-10-13",
+      "2026-10-21",
+      "2026-10-23",
+      "2026-10-24",
+      "2026-10-25",
+      "2026-10-26",
+      "2026-10-29",
+      "2026-10-30",
+      "2026-10-31",
+      "2026-11-01",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04"
+    ],
+    "monthlySummary": {
+      "2026-09": {
+        "pageSessions": 75,
+        "estimatedSessions": 42,
+        "dailyUniques": 41,
+        "days": 20
+      },
+      "2026-10": {
+        "pageSessions": 98,
+        "estimatedSessions": 36,
+        "dailyUniques": 31,
+        "days": 16
+      },
+      "2026-11": {
+        "pageSessions": 13,
+        "estimatedSessions": 7,
+        "dailyUniques": 7,
+        "days": 4
+      }
+    },
+    "warnings": [
+      "A session can visit multiple pages; sum of page sessions overcounts global sessions.",
+      "Visitor hashes can span several sessions and DNT users have no hashes; hash count alone can undercount sessions.",
+      "Days without any per-page data cannot be recovered.",
+      "This export stops at 2026-11-04; take fresh snapshot at cutover and repeat reconstruction.",
+      "Daily uniques may not sum to global unique total.",
+      "Code should label reconstructed data as estimated and must not assume totals are exact."
+    ]
+  }
+}

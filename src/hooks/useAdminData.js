@@ -1,167 +1,95 @@
 import { useEffect, useState } from "react";
+import { fetchPosthogStats } from "../counter/utils/posthogStats";
 import sanityClient from "../sanityClient";
 
 const TOP_SLUGS = ["/", "/dogs", "/litters", "/gallery", "/about", "/contact"];
+const empty = { sessionsTotal: 0, historicalUniques: 0, posthogUniques: 0, rows: [] };
 
-async function fetchGlobal() {
-  const r = await fetch(`/.netlify/functions/getGlobalStats`);
-  if (!r.ok) throw new Error("Kunne ikke hente global stats");
-  return r.json();
-}
-async function fetchStats(slug) {
-  const r = await fetch(
-    `/.netlify/functions/getStats?slug=${encodeURIComponent(slug)}`
-  );
-  if (!r.ok) throw new Error("Kunne ikke hente stats");
-  return r.json();
-}
-
-async function dogIds() {
-  return sanityClient.fetch(`*[_type=="dog"]._id`);
-}
-async function litterIds() {
-  return sanityClient.fetch(`*[_type=="litter"]._id`);
-}
-async function galleryIds() {
-  return sanityClient.fetch(`*[_type=="gallery"]._id`);
+// Preserve the existing content lookups so unvisited detail pages still appear.
+// These queries fetch content IDs, never visit statistics.
+async function fetchContentPaths() {
+  const [dogs, litters, galleries] = await Promise.all([
+    sanityClient.fetch('*[_type=="dog"]._id'),
+    sanityClient.fetch('*[_type=="litter"]._id'),
+    sanityClient.fetch('*[_type=="gallery"]._id'),
+  ]);
+  return [
+    ...(dogs || []).map((id) => `/dogs/${id}`),
+    ...(litters || []).map((id) => `/litters/${id}`),
+    ...(galleries || []).map((id) => `/gallery/${id}`),
+  ];
 }
 
 export default function useAdminData() {
-  const [rows, setRows] = useState([]);
-  const [childrenByGroup, setChildrenByGroup] = useState({
-    "/dogs": [],
-    "/litters": [],
-    "/gallery": [],
-  });
-  const [expanded, setExpanded] = useState({
-    "/dogs": false,
-    "/litters": false,
-    "/gallery": false,
-  });
-  const [global, setGlobal] = useState({
-    sessionsTotal: 0,
-    sessionsToday: 0,
-    uniquesGlobal: 0,
-  });
+  const [all, setAll] = useState(empty);
+  const [today, setToday] = useState(empty);
+  const [contentPaths, setContentPaths] = useState([]);
+  const [expanded, setExpanded] = useState({ "/dogs": false, "/litters": false, "/gallery": false });
   const [loading, setLoading] = useState(true);
-  const [refTs, setRefTs] = useState(Date.now());
   const [reloading, setReloading] = useState(false);
+  const [error, setError] = useState("");
+  const [refTs, setRefTs] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
-    (async () => {
-      try {
-        const globalData = await fetchGlobal();
-
-        const topRows = await Promise.all(TOP_SLUGS.map(fetchStats));
-
-        const [dogs, litters, galleries] = await Promise.all([
-          dogIds(),
-          litterIds(),
-          galleryIds(),
-        ]);
-
-        const dogRows = await Promise.all(
-          (dogs || []).map((id) => fetchStats(`/dogs/${id}`))
-        );
-        const litterRows = await Promise.all(
-          (litters || []).map((id) => fetchStats(`/litters/${id}`))
-        );
-        const galleryRows = await Promise.all(
-          (galleries || []).map((id) => fetchStats(`/gallery/${id}`))
-        );
-
-        if (!cancelled) {
-          setRows(topRows);
-          setChildrenByGroup({
-            "/dogs": dogRows.sort(
-              (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
-            ),
-            "/litters": litterRows.sort(
-              (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
-            ),
-            "/gallery": galleryRows.sort(
-              (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
-            ),
-          });
-          setGlobal({
-            sessionsTotal: Number(globalData.sessionsTotal || 0),
-            sessionsToday: Number(globalData.sessionsToday || 0),
-            uniquesGlobal: Number(globalData.uniquesGlobal || 0),
-          });
-        }
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-          setRefTs(Date.now());
-        }
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
+    Promise.all([
+      fetchPosthogStats({ range: "all" }),
+      fetchPosthogStats({ range: "today" }),
+      fetchContentPaths(),
+    ]).then(([total, day, paths]) => {
+      if (cancelled) return;
+      setAll(total);
+      setToday(day);
+      setContentPaths(paths);
+      setError("");
+    }).catch((err) => {
+      if (!cancelled) setError(err.message);
+    }).finally(() => {
+      if (!cancelled) setLoading(false);
+    });
+    return () => { cancelled = true; };
   }, []);
 
   async function reloadAll() {
     setReloading(true);
     try {
-      const globalData = await fetchGlobal();
-
-      const topRows = await Promise.all(TOP_SLUGS.map(fetchStats));
-
-      const [dogs, litters, galleries] = await Promise.all([
-        dogIds(),
-        litterIds(),
-        galleryIds(),
+      const [total, day, paths] = await Promise.all([
+        fetchPosthogStats({ range: "all" }), fetchPosthogStats({ range: "today" }),
+        fetchContentPaths(),
       ]);
-
-      const dogRows = await Promise.all(
-        (dogs || []).map((id) => fetchStats(`/dogs/${id}`))
-      );
-      const litterRows = await Promise.all(
-        (litters || []).map((id) => fetchStats(`/litters/${id}`))
-      );
-      const galleryRows = await Promise.all(
-        (galleries || []).map((id) => fetchStats(`/gallery/${id}`))
-      );
-
-      setRows(topRows);
-      setChildrenByGroup({
-        "/dogs": dogRows.sort(
-          (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
-        ),
-        "/litters": litterRows.sort(
-          (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
-        ),
-        "/gallery": galleryRows.sort(
-          (a, b) => (b.sessionsTotal || 0) - (a.sessionsTotal || 0)
-        ),
-      });
-      setGlobal({
-        sessionsTotal: Number(globalData.sessionsTotal || 0),
-        sessionsToday: Number(globalData.sessionsToday || 0),
-        uniquesGlobal: Number(globalData.uniquesGlobal || 0),
-      });
-      setRefTs(Date.now());
+      setAll(total);
+      setToday(day);
+      setContentPaths(paths);
+      setError("");
+    } catch (err) {
+      setError(err.message);
     } finally {
+      setRefTs(Date.now());
       setReloading(false);
     }
   }
 
+  const dayMap = new Map(today.rows.map((row) => [row.page, row]));
+  const rowsByPage = new Map(all.rows.map((row) => [row.page, {
+    ...row, sessionsToday: dayMap.get(row.page)?.sessionsTotal || 0,
+  }]));
+  for (const page of contentPaths) {
+    if (!rowsByPage.has(page)) rowsByPage.set(page, {
+      page, sessionsTotal: 0, sessionsToday: 0, historicalUniques: 0, posthogUniques: 0,
+    });
+  }
+  const rows = TOP_SLUGS.map((page) => rowsByPage.get(page) || {
+    page, sessionsTotal: 0, sessionsToday: 0, historicalUniques: 0, posthogUniques: 0,
+  });
+  const childrenByGroup = Object.fromEntries(["/dogs", "/litters", "/gallery"].map((group) => [
+    group, [...rowsByPage.values()].filter((row) => row.page.startsWith(`${group}/`))
+      .sort((a, b) => b.sessionsTotal - a.sessionsTotal),
+  ]));
+
   return {
-    rows,
-    childrenByGroup,
-    expanded,
-    setExpanded,
-    global,
-    loading,
-    refTs,
-    reloading,
-    dailyToday: { sessionsTotal: global.sessionsToday },
-    lifetime: {
-      sessionsTotal: global.sessionsTotal,
-      uniquesGlobal: global.uniquesGlobal,
-    },
-    reloadAll,
+    rows, childrenByGroup, expanded, setExpanded, loading, reloading, error, refTs, reloadAll,
+    global: all,
+    dailyToday: { sessionsTotal: today.sessionsTotal },
+    lifetime: { sessionsTotal: all.sessionsTotal },
   };
 }
