@@ -117,7 +117,7 @@ export default {
       title: 'Galleri bilder',
       type: 'array',
       of: [{type: 'image', options: {hotspot: true}}],
-      validation: (Rule) => Rule.max(5).warning('Maks 5 bilder i galleriet'),
+      validation: (Rule) => Rule.max(15).error('Maks 15 bilder i galleriet'),
     },
     {
       name: 'description',

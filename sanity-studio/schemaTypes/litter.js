@@ -1,4 +1,3 @@
-import CustomImageArrayInput from '../components/CustomImageArrayInput'
 
 export default {
   name: 'litter',
@@ -355,7 +354,7 @@ export default {
               title: 'Tittel for Galleri',
               type: 'string',
               description:
-                'Gi galleriet en passende tittel, f.eks. "Uke 1, uke2 osv (maks 10 gallerier)".',
+                'Gi galleriet en passende tittel, f.eks. "Uke 1, uke2 osv (maks 15 gallerier)".',
             },
             {
               name: 'description',
@@ -367,36 +366,29 @@ export default {
               title: 'Bilder',
               type: 'array',
               of: [{type: 'image', options: {hotspot: true}}],
-              inputComponent: CustomImageArrayInput,
-              validation: (Rule) => Rule.max(8).error('Maks 8 bilder per galleri'),
-              description: 'Legg til bilder fra valpens utvikling. Maks 8 bilder pr galleri',
+              validation: (Rule) => Rule.max(20).error('Maks 20 bilder per galleri'),
+              description: 'Legg til bilder fra valpens utvikling. Maks 20 bilder pr galleri',
             },
 
             {
+              name: 'videos',
+              title: 'Videoer',
+              type: 'array',
+              of: [{type: 'file', options: {accept: 'video/*'}}],
+              validation: (Rule) => Rule.max(3).error('Maks 3 videoer per galleri'),
+              description: 'Legg til opptil 3 videoer fra mobil eller PC.',
+            },
+            {
               name: 'video',
-              title: 'Video',
+              title: 'Tidligere video (bevart sikkerhetskopi)',
               type: 'file',
-              description: 'Legg til en video for dette galleriet. Maks 3 minutters video.',
-              options: {
-                accept: 'video/*',
-              },
-              validation: (Rule) =>
-                Rule.custom((file, context) => {
-                  if (!file) return true
-                  const galleries = context.parent?.galleries || []
-                  const videoCount = galleries.filter((gallery) => gallery.video).length
-
-                  if (videoCount > 1) {
-                    return 'Maks én video per galleri'
-                  }
-
-                  return true
-                }),
+              hidden: true,
+              readOnly: true,
             },
           ],
         },
       ],
-      validation: (Rule) => Rule.max(10).error('Maks 10 gallerier'),
+      validation: (Rule) => Rule.max(15).error('Maks 15 gallerier'),
     },
     {
       name: 'freeText2',

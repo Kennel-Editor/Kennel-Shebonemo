@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import sanityClient from "../sanityClient";
 import SEO from "../components/SEO";
 import LoadingSpinner from "../utils/LoadingSpinner";
-import { urlFor } from "../utils/sanityImage";
+import { imageProps } from "../utils/sanityImage";
 import { AboutContainer, Title, Paragraph, SectionTitle } from "./About.styled";
 
 const About = () => {
@@ -43,7 +43,7 @@ const About = () => {
         )}
         {siteInfo.aboutText2 && <Paragraph>{siteInfo.aboutText2}</Paragraph>}
         {siteInfo.aboutImage && (
-          <img src={urlFor(siteInfo.aboutImage)} alt="Kontaktbilde" />
+          <img {...imageProps(siteInfo.aboutImage, {width: 1200, sizes: "(min-width: 992px) 50vw, 95vw"})} alt="Kontaktbilde" />
         )}
         {siteInfo.aboutTitle3 && (
           <SectionTitle>{siteInfo.aboutTitle3}</SectionTitle>

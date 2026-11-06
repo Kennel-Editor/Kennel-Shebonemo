@@ -3,7 +3,7 @@ import SEO from "../components/SEO";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import { useParams } from "react-router-dom";
 import sanityClient from "../sanityClient";
-import { urlFor } from "../utils/sanityImage";
+import { urlFor, imageProps } from "../utils/sanityImage";
 import Modal from "../utils/ImageModal";
 import {
   LitterContainer,
@@ -271,9 +271,9 @@ const LittersDetail = () => {
                     displayImage && (
                       <ParentImage
                         className="no-theme"
-                        src={urlFor(displayImage)}
+                        {...imageProps(displayImage, {width: 1200, sizes: "(min-width: 992px) 50vw, 95vw"})}
                         alt={displayName}
-                        onClick={() => openImageModal(urlFor(displayImage))}
+                        onClick={() => openImageModal(urlFor(displayImage, undefined, 1920))}
                       />
                     )
                   );
@@ -288,9 +288,9 @@ const LittersDetail = () => {
                     displayImage && (
                       <ParentImage
                         className="no-theme"
-                        src={urlFor(displayImage)}
+                        {...imageProps(displayImage, {width: 1200, sizes: "(min-width: 992px) 50vw, 95vw"})}
                         alt={displayName}
-                        onClick={() => openImageModal(urlFor(displayImage))}
+                        onClick={() => openImageModal(urlFor(displayImage, undefined, 1920))}
                       />
                     )
                   );
@@ -325,11 +325,11 @@ const LittersDetail = () => {
                 <MainImgContainer className="m-auto col-10 col-lg-8 col-xl-6 d-flex">
                   <img
                     className="mb-2 rounded"
-                    src={urlFor(litter.mainImage)}
+                    {...imageProps(litter.mainImage, {width: 1200, sizes: "(min-width: 992px) 50vw, 95vw"})}
                     alt={`Valpene til ${
                       litter.mother?.nickname || litter.mother?.name
                     } og ${litter.father?.nickname || litter.father?.name}`}
-                    onClick={() => openImageModal(urlFor(litter.mainImage))}
+                    onClick={() => openImageModal(urlFor(litter.mainImage, undefined, 1920))}
                   />
                 </MainImgContainer>
                 <div className="mb-5 text-center">

@@ -38,6 +38,10 @@ export const GalleryImage = styled.img`
 
 
 export const VideoThumbnail = styled.div`
+  background: #554653;
+  border: 0;
+  min-width: 140px;
+  min-height: 100px;
   position: relative;
   width: 100%;
   max-width: 150px;

@@ -4,7 +4,7 @@ import sanityClient from "../sanityClient";
 import SEO from "../components/SEO";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import { DogCard, DogsContainer } from "./OurDogs.styled";
-import { urlFor } from "../utils/sanityImage";
+import { imageProps } from "../utils/sanityImage";
 
 const OurDogs = () => {
   const [dogs, setDogs] = useState([]);
@@ -79,7 +79,7 @@ const OurDogs = () => {
               >
                 <DogCard>
                   <Link to={`/dogs/${dog._id}`}>
-                    <img src={urlFor(dog.image)} alt={dog.name} />
+                    <img {...imageProps(dog.image, {width: 1200, sizes: "(min-width: 992px) 50vw, 95vw"})} alt={dog.name} />
                     <h3>{dog.nickname}</h3>
                     <h4>{dog.name}</h4>
                   </Link>
@@ -101,7 +101,7 @@ const OurDogs = () => {
               >
                 <DogCard>
                   <Link to={`/dogs/${dog._id}`}>
-                    <img src={urlFor(dog.image)} alt={dog.name} />
+                    <img {...imageProps(dog.image, {width: 1200, sizes: "(min-width: 992px) 50vw, 95vw"})} alt={dog.name} />
                     <h3>{dog.nickname}</h3>
                     <h4>{dog.name}</h4>
                   </Link>
@@ -121,7 +121,7 @@ const OurDogs = () => {
               >
                 <DogCard>
                   <Link to={`/dogs/${dog._id}`}>
-                    <img src={urlFor(dog.image)} alt={dog.name} />
+                    <img {...imageProps(dog.image, {width: 1200, sizes: "(min-width: 992px) 50vw, 95vw"})} alt={dog.name} />
                     <h3>{dog.nickname}</h3>
                     <h4>{dog.name}</h4>
                   </Link>

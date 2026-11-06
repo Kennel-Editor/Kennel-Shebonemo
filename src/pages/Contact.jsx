@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import sanityClient from "../sanityClient";
 import SEO from "../components/SEO";
 import LoadingSpinner from "../utils/LoadingSpinner";
-import { urlFor } from "../utils/sanityImage";
+import { imageProps } from "../utils/sanityImage";
 import {
   ContactContainer,
   Title,
@@ -71,7 +71,7 @@ const Contact = () => {
           {siteInfo.contactImage && (
             <img
               className="my-4 col-12 col-md-10 col-lg-8 m-auto"
-              src={urlFor(siteInfo.contactImage)}
+              {...imageProps(siteInfo.contactImage, {width: 1200, sizes: "(min-width: 992px) 50vw, 95vw"})}
               alt="Kontaktbilde"
             />
           )}

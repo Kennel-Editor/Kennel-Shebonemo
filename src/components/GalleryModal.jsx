@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import sanityClient from "../sanityClient";
-import { urlFor } from "../utils/sanityImage";
+import { imageProps } from "../utils/sanityImage";
+import { galleryVideos } from "../utils/media";
 import GalleryImageModal from "../utils/GalleryImageModal";
 import {
   GalleryContainer,
@@ -25,7 +26,8 @@ const GalleryModal = ({ litterId, dogId }) => {
           galleries[] {
             title,
             images[] { asset-> { _id, _ref }, crop, hotspot },
-            video { asset-> { _id, url } },
+            videos[] { _key, asset-> { _id, url, mimeType } },
+            video { asset-> { _id, url, mimeType } },
             description
           }
         }`
@@ -41,7 +43,7 @@ const GalleryModal = ({ litterId, dogId }) => {
           if (fetchedData?.galleries) {
             const galleryData = fetchedData.galleries.map((gallery, index) => ({
               images: gallery.images || [],
-              video: gallery.video?.asset?.url || null,
+              videos: galleryVideos(gallery),
               text: gallery.description,
               title: gallery.title || `Galleri ${index + 1}`,
             }));
@@ -53,7 +55,7 @@ const GalleryModal = ({ litterId, dogId }) => {
             {
               title: "Galleri",
               images: fetchedGallery.map((image) => ({
-                asset: image.asset,
+                ...image,
                 type: "image",
               })),
             },
@@ -93,14 +95,11 @@ const GalleryModal = ({ litterId, dogId }) => {
   const getMediaItems = (gallery) => {
     const mediaItems = gallery.images.map((image) => ({
       type: "image",
-      asset: image.asset,
+      asset: image,
     }));
 
-    if (gallery.video) {
-      mediaItems.push({
-        type: "video",
-        url: gallery.video,
-      });
+    for (const video of gallery.videos || []) {
+      mediaItems.push({type: "video", url: video.asset.url, mimeType: video.asset.mimeType});
     }
 
     return mediaItems;
@@ -121,7 +120,7 @@ const GalleryModal = ({ litterId, dogId }) => {
                   >
                     {mediaItem.type === "image" ? (
                       <GalleryImage
-                        src={urlFor(mediaItem.asset)}
+                        {...imageProps(mediaItem.asset, {width: 320, sizes: "150px"})}
                         alt={`Gallery Image ${mediaIndex + 1}`}
                         style={{ cursor: "pointer" }}
                         onClick={() =>
@@ -131,6 +130,9 @@ const GalleryModal = ({ litterId, dogId }) => {
                     ) : (
                       <div className="row">
                         <VideoThumbnail
+                          as="button"
+                          type="button"
+                          aria-label={`Spill av video ${mediaIndex + 1}`}
                           style={{
                             cursor: "pointer",
                             position: "relative",
@@ -142,15 +144,6 @@ const GalleryModal = ({ litterId, dogId }) => {
                             openGalleryModal(galleryIndex, mediaIndex)
                           }
                         >
-                          <video
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover",
-                            }}
-                            src={mediaItem.url}
-                            muted
-                          />
                           <FaPlayCircle
                             size={50}
                             color="white"

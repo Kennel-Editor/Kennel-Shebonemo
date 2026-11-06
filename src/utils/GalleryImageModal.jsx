@@ -8,7 +8,7 @@ import {
   CloseButton,
   ModalContainer,
 } from "./Modals.styled";
-import { urlFor, videoUrlFor } from "./sanityImage";
+import { imageProps, videoUrlFor } from "./sanityImage";
 
 const GalleryImageModal = ({
   mediaItems,
@@ -31,7 +31,7 @@ const GalleryImageModal = ({
 
             {currentMedia.type === "image" ? (
               <img
-                src={urlFor(currentMedia.asset)}
+                {...imageProps(currentMedia.asset, {width: 1920, sizes: "80vw", lazy: false})}
                 alt={`Gallery image ${currentMediaIndex + 1}`}
                 style={{
                   maxWidth: "80vw",
@@ -41,6 +41,9 @@ const GalleryImageModal = ({
               />
             ) : (
               <video
+                key={videoUrl}
+                src={videoUrl}
+                preload="metadata"
                 controls
                 playsInline
                 style={{
@@ -48,7 +51,6 @@ const GalleryImageModal = ({
                   maxHeight: "80vh",
                 }}
               >
-                <source src={videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             )}

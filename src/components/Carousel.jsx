@@ -1,3 +1,4 @@
+import { imageProps } from "../utils/sanityImage";
 import React from "react";
 import {
   CarouselImageContainer,
@@ -9,7 +10,8 @@ import {
 } from "./Carousel.styled";
 
 const Carousel = ({ images, currentIndex, setCurrentImageIndex }) => {
-  const { imageUrl, caption } = images[currentIndex];
+  const image = images[currentIndex];
+  const { caption } = image;
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -26,7 +28,7 @@ const Carousel = ({ images, currentIndex, setCurrentImageIndex }) => {
       <CarouselImageContainer className="col-lg-10 col-xl-8 col-xxl-6 mx-auto">
         <CarouselNav onClick={prevImage}>❮</CarouselNav>
 
-        <CarouselImage className="gallery-image" src={imageUrl} alt={caption} />
+        <CarouselImage className="gallery-image" {...imageProps(image, {width: 1920, sizes: "(min-width: 992px) 65vw, 95vw", lazy: false})} alt={caption} />
 
         <PositionIndicator>
           <span>

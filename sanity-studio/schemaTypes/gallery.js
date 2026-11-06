@@ -47,7 +47,7 @@ export default {
           ],
         },
       ],
-      validation: (Rule) => Rule.max(20), // Begrensning på 20 bilder per galleri
+      validation: (Rule) => Rule.max(40).error('Maks 40 bilder i tillegg til hovedbildet'),
     },
     {
       name: 'createdAt',

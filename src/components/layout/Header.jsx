@@ -103,7 +103,7 @@ const Header = () => {
           setPageTitle(data.pageTitle);
         }
         if (data && data.headerImage && data.headerImage.asset) {
-          const sanityImageUrl = urlFor(data.headerImage.asset);
+          const sanityImageUrl = urlFor(data.headerImage, undefined, 1920);
           setHeaderImageUrl(sanityImageUrl);
         }
       })

@@ -17,11 +17,11 @@ const getDogName = (dog) => {
 const getDogImage = (dog) => {
   if (!dog) return null;
   return dog.overrideImage?.asset
-    ? urlFor(dog.overrideImage)
+    ? urlFor(dog.overrideImage, undefined, 640)
     : dog.dogReference?.image?.asset
-    ? urlFor(dog.dogReference.image)
+    ? urlFor(dog.dogReference.image, undefined, 640)
     : dog.image?.asset
-    ? urlFor(dog.image)
+    ? urlFor(dog.image, undefined, 640)
     : null;
 };
 
@@ -51,6 +51,8 @@ const LitterCardItem = ({ litter }) => {
             <div className="d-flex justify-content-center mb-2">
               {motherImage && (
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src={motherImage}
                   alt={litter.mother.nickname || litter.mother.name}
                   className="img-fluid no-theme"
@@ -59,6 +61,8 @@ const LitterCardItem = ({ litter }) => {
               )}
               {fatherImage && (
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src={fatherImage}
                   alt={litter.father.nickname || litter.father.name}
                   className="img-fluid no-theme"

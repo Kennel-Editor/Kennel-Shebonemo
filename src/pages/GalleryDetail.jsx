@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import sanityClient from "../sanityClient";
+import { imageProps } from "../utils/sanityImage";
 import SEO from "../components/SEO";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import {
@@ -23,10 +24,10 @@ const GalleryDetail = () => {
       .fetch(
         `*[_type == "gallery" && _id == $id]{
           title,
-          "mainImageUrl": mainImage.asset->url,
+          mainImage,
           mainImageCaption,
           images[]{
-            "imageUrl": asset->url,
+            asset, crop, hotspot,
             caption
           }
         }[0]`,
@@ -46,7 +47,7 @@ const GalleryDetail = () => {
   if (loading) return <LoadingSpinner />;
 
   const allImages = [
-    { imageUrl: gallery.mainImageUrl, caption: gallery.mainImageCaption || "" },
+    { ...gallery.mainImage, caption: gallery.mainImageCaption || "" },
     ...gallery.images,
   ];
   const handleImageClick = (index) => {
@@ -76,11 +77,11 @@ const GalleryDetail = () => {
 
         <GalleryGrid className="col-12 col-sm-10 col-lg-8 m-auto">
           {[
-            { imageUrl: gallery.mainImageUrl, caption: "Hovedbilde" },
+            { ...gallery.mainImage, caption: "Hovedbilde" },
             ...gallery.images,
           ].map((img, index) => (
             <ImageItem key={index} onClick={() => handleImageClick(index)}>
-              <Image src={img.imageUrl} alt={img.caption || "Bilde"} />
+              <Image {...imageProps(img, {width: 640, sizes: "(min-width: 768px) 25vw, 45vw"})} alt={img.caption || "Bilde"} />
             </ImageItem>
           ))}
         </GalleryGrid>

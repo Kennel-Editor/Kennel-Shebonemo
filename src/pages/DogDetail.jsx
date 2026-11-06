@@ -5,7 +5,7 @@ import sanityClient from "../sanityClient";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import Modal from "../utils/ImageModal";
 import GalleryModal from "../components/GalleryModal";
-import { urlFor } from "../utils/sanityImage";
+import { urlFor, imageProps } from "../utils/sanityImage";
 import {
   DetailContainer,
   DogImage,
@@ -52,7 +52,7 @@ const DogDetail = () => {
             crop,
             hotspot
           },
-          "pedigreeUrl": pedigree.asset->url,
+          pedigree,
           description,
           "mother": mother->{
             _id,
@@ -132,10 +132,10 @@ const DogDetail = () => {
         <div className="row align-items-start mb-4">
           <div className="col-12 col-sm-8 col-md-5 col-lg-5 col-xl-4 d-flex justify-content-center flex-column m-auto">
             <DogImage
-              src={urlFor(dog.image)}
+              {...imageProps(dog.image, {width: 1200, sizes: "(min-width: 992px) 50vw, 95vw"})}
               alt={dog.name}
               onClick={() => {
-                setCurrentImage(urlFor(dog.image));
+                setCurrentImage(urlFor(dog.image, undefined, 1920));
                 setIsModalOpen(true);
               }}
             />
@@ -310,14 +310,14 @@ const DogDetail = () => {
 
         <GalleryModal dogId={id} />
         {/* Pedigree Section */}
-        {dog.pedigreeUrl && (
+        {dog.pedigree && (
           <div className="mt-5 text-center col-12 col-sm-8 m-auto">
             <h4>Stamtavle</h4>
             <PedigreeImage
-              src={dog.pedigreeUrl}
+              {...imageProps(dog.pedigree, {width: 1200, sizes: "(min-width: 768px) 65vw, 95vw"})}
               alt="Stamtavle"
               onClick={() => {
-                setCurrentImage(dog.pedigreeUrl);
+                setCurrentImage(urlFor(dog.pedigree, undefined, 1920));
                 setIsModalOpen(true);
               }}
               style={{ cursor: "pointer" }}

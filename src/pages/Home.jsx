@@ -1,3 +1,4 @@
+import { imageProps } from "../utils/sanityImage";
 import React, { useEffect, useState } from "react";
 import sanityClient from "../sanityClient";
 import { HomeContainer, Description, Title } from "./Home.styled";
@@ -10,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "siteInfo"][0]{introText, pageTitle, introImage {asset->{url}}}`
+        `*[_type == "siteInfo"][0]{introText, pageTitle, introImage}`
       )
       .then((data) => {
         setSiteInfo(data);
@@ -38,7 +39,7 @@ const Home = () => {
         </Title>
 
         <img
-          src={siteInfo.introImage?.asset?.url}
+          {...imageProps(siteInfo.introImage, {width: 1200, sizes: "(min-width: 992px) 40vw, 90vw", lazy: false})}
           alt="Hero Image"
           className="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4"
         />

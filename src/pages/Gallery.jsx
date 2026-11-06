@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { imageProps } from "../utils/sanityImage";
 import SEO from "../components/SEO";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import {
@@ -21,7 +22,7 @@ const Gallery = () => {
         `*[_type == "gallery"]{
           _id,
           title,
-          "mainImageUrl": mainImage.asset->url
+          mainImage
         }`
       )
       .then((data) => {
@@ -54,7 +55,7 @@ const Gallery = () => {
               >
                 <NavLink to={`/gallery/${gallery._id}`}>
                   <GalleryItem>
-                    <Image src={gallery.mainImageUrl} alt={gallery.title} />
+                    <Image {...imageProps(gallery.mainImage, {width: 960, sizes: "(min-width: 1200px) 30vw, 90vw"})} alt={gallery.title} />
                     <Title>{gallery.title}</Title>
                   </GalleryItem>
                 </NavLink>
