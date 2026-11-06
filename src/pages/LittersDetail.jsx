@@ -12,6 +12,8 @@ import {
   MainImgContainer,
   ParentInfoContainer,
 } from "./LittersDetail.styled";
+import { getLitterParentImage } from "../utils/litterParentImage";
+import LitterAdditionalInfo, { getLegacyParentInfo } from "../components/LitterAdditionalInfo";
 import GalleryModal from "../components/GalleryModal";
 
 const LittersDetail = () => {
@@ -32,6 +34,8 @@ const LittersDetail = () => {
           _id,
           mother {
             isOwned,
+            overrideImageButton,
+            imageSelectionVersion,
             "dogRef": dogReference->_id,
             name,
             nickname,
@@ -40,11 +44,14 @@ const LittersDetail = () => {
             "image": image { asset-> { _id, _ref }, crop, hotspot },
             "overrideImage": overrideImage { asset-> { _id, _ref }, crop, hotspot },
             info,
+            extraInfoList,
             healthResults,
             additionalInfo
           },
           father {
             isOwned,
+            overrideImageButton,
+            imageSelectionVersion,
             "dogRef": dogReference->_id,
             name,
             nickname,
@@ -53,6 +60,7 @@ const LittersDetail = () => {
             "image": image { asset-> { _id, _ref }, crop, hotspot },
             "overrideImage": overrideImage { asset-> { _id, _ref }, crop, hotspot },
             info,
+            extraInfoList,
             healthResults,
             additionalInfo
           },
@@ -92,20 +100,22 @@ const LittersDetail = () => {
           )
           .then((dogData) => {
             const motherDog =
-              dogData.find((dog) => dog._id === motherDogRef) || {};
+              dogData.find((dog) => dog._id === motherDogRef);
             const fatherDog =
-              dogData.find((dog) => dog._id === fatherDogRef) || {};
+              dogData.find((dog) => dog._id === fatherDogRef);
             litterData.mother = {
               ...litterData.mother,
               ...motherDog,
+              legacyInfoTexts: getLegacyParentInfo(litterData.mother, motherDog),
               overrideImage:
-                litterData.mother.overrideImage || motherDog.overrideImage,
+                getLitterParentImage(litterData.mother, motherDog, "detail"),
             };
             litterData.father = {
               ...litterData.father,
               ...fatherDog,
+              legacyInfoTexts: getLegacyParentInfo(litterData.father, fatherDog),
               overrideImage:
-                litterData.father.overrideImage || fatherDog.overrideImage,
+                getLitterParentImage(litterData.father, fatherDog, "detail"),
             };
             setLitter(litterData);
             setLoading(false);
@@ -203,9 +213,7 @@ const LittersDetail = () => {
               ))}
             </ul>
           )}
-        {parent.additionalInfo && (
-          <div className="mt-2">{parent.additionalInfo}</div>
-        )}
+        <LitterAdditionalInfo parent={parent} />
       </div>
     );
   };

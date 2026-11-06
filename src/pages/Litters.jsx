@@ -4,6 +4,7 @@ import sanityClient from "../sanityClient";
 import SEO from "../components/SEO";
 import { LitterCard, LitterContainer } from "./Litters.styled";
 import { urlFor } from "../utils/sanityImage";
+import { getLitterParentImage } from "../utils/litterParentImage";
 import LoadingSpinner from "../utils/LoadingSpinner";
 
 // Helper function to get name
@@ -16,13 +17,8 @@ const getDogName = (dog) => {
 
 const getDogImage = (dog) => {
   if (!dog) return null;
-  return dog.overrideImage?.asset
-    ? urlFor(dog.overrideImage, undefined, 640)
-    : dog.dogReference?.image?.asset
-    ? urlFor(dog.dogReference.image, undefined, 640)
-    : dog.image?.asset
-    ? urlFor(dog.image, undefined, 640)
-    : null;
+  const image = getLitterParentImage(dog, dog.dogReference);
+  return image ? urlFor(image, undefined, 640) : null;
 };
 
 const LitterCardItem = ({ litter }) => {
@@ -126,6 +122,8 @@ const Litters = () => {
           mother {
             name,
             nickname,
+            overrideImageButton,
+            imageSelectionVersion,
             image { asset-> { _id, _ref }, crop, hotspot },
             overrideImage { asset-> { _id, _ref }, crop, hotspot },
             dogReference->{name, nickname, image, isOwned}
@@ -133,6 +131,8 @@ const Litters = () => {
           father {
             name,
             nickname,
+            overrideImageButton,
+            imageSelectionVersion,
             image { asset-> { _id, _ref }, crop, hotspot },
             overrideImage { asset-> { _id, _ref }, crop, hotspot },
             dogReference->{name, nickname, image, isOwned}

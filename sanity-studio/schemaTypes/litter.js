@@ -1,3 +1,14 @@
+import ParentImageInput from '../components/ParentImageInput'
+
+const legacyInfoField = {
+  name: 'info',
+  title: 'Tidligere registrerte opplysninger',
+  type: 'text',
+  readOnly: true,
+  hidden: ({value}) => !value,
+  description:
+    'Bevart tekst fra eldre kull. Kontroller at alle detaljer, inkludert datoer, er tatt vare på før eventuell senere opprydding. Nye opplysninger registreres i feltene over.',
+}
 
 export default {
   name: 'litter',
@@ -8,6 +19,7 @@ export default {
       name: 'mother',
       title: 'Mor',
       type: 'object',
+      components: {input: ParentImageInput},
       fields: [
         {
           name: 'isOwned',
@@ -22,24 +34,6 @@ export default {
           type: 'reference',
           to: [{type: 'dog'}],
           hidden: ({parent}) => parent?.isOwned === false,
-          resolve: async (reference) => {
-            if (reference) {
-              const dog = await reference.get()
-              return {
-                name: dog?.name || '',
-                nickname: dog?.nickname || '',
-                image: dog?.image || null,
-                healthResults: dog?.healthResults || [],
-                additionalInfo: dog?.additionalInfo || '',
-                overrideImageButton:
-                  typeof litter?.overrideImageButton === 'boolean'
-                    ? dog.overrideImageButton
-                    : false,
-                overrideImage: litter?.overrideImage || null,
-              }
-            }
-            return {}
-          },
         },
         {
           name: 'title',
@@ -68,27 +62,37 @@ export default {
         },
 
         {
+          name: 'imageSelectionVersion',
+          type: 'number',
+          hidden: true,
+        },
+        {
           name: 'overrideImageButton',
-          title: 'Bruk et annet bilde?',
+          title: 'Bruk eget bilde for dette kullet',
           type: 'boolean',
-          description: 'Mor burde se til høyere.',
-          hidden: ({parent}) => parent?.isOwned === false,
+          description: 'Standardbildet hentes fra valgt hund. Mor skal se mot høyre. Eldre bildevalg beholdes til du endrer denne bryteren.',
+          hidden: ({parent}) => !parent?.dogReference?._ref && !parent?.overrideImage?.asset,
         },
         {
           name: 'overrideImage',
-          title: 'Bruk et annet bilde',
+          title: 'Eget bilde for kullet',
           type: 'image',
           options: {hotspot: true},
-          description: 'Velg et bilde for å overstyre referansebildet.',
-          hidden: ({parent}) => !parent?.overrideImageButton,
+          description: 'Mor skal se mot høyre. Et eksisterende bilde beholdes også når bryteren slås av.',
+          hidden: ({parent}) => parent?.imageSelectionVersion === 1
+            ? parent?.overrideImageButton !== true
+            : !parent?.overrideImage?.asset && parent?.overrideImageButton !== true,
         },
         {
           name: 'image',
-          title: 'Bilde',
+          title: 'Bilde (manuell hund / eldre lagret bilde)',
           type: 'image',
           options: {hotspot: true},
-          description: 'Mor burde se til høyere.',
-          hidden: ({parent}) => parent?.isOwned === true && parent?.overrideImageButton !== true,
+          readOnly: ({parent}) => Boolean(parent?.dogReference?._ref || parent?.overrideImage?.asset || parent?.overrideImageButton === true),
+          description: 'Mor skal se mot høyre. For valgt hund brukes «Eget bilde for kullet» til nye bildevalg. Eldre bilder beholdes her uten å endre nettsiden.',
+          hidden: ({parent}) => parent?.dogReference?._ref || parent?.overrideImage?.asset || parent?.overrideImageButton === true
+            ? !parent?.image?.asset
+            : false,
         },
 
         {
@@ -137,12 +141,14 @@ export default {
           type: 'text',
           description: 'Ekstra informasjon som ikke faller under helseresultatene.',
         },
+        legacyInfoField,
       ],
     },
     {
       name: 'father',
       title: 'Far',
       type: 'object',
+      components: {input: ParentImageInput},
       fields: [
         {
           name: 'isOwned',
@@ -157,24 +163,6 @@ export default {
           type: 'reference',
           to: [{type: 'dog'}],
           hidden: ({parent}) => parent?.isOwned === false,
-          resolve: async (reference) => {
-            if (reference) {
-              const dog = await reference.get()
-              return {
-                name: dog?.name || '',
-                nickname: dog?.nickname || '',
-                image: dog?.image || null,
-                healthResults: dog?.healthResults || [],
-                additionalInfo: dog?.additionalInfo || '',
-                overrideImageButton:
-                  typeof litter?.overrideImageButton === 'boolean'
-                    ? dog.overrideImageButton
-                    : false,
-                overrideImage: litter?.overrideImage || null,
-              }
-            }
-            return {}
-          },
         },
         {
           name: 'title',
@@ -203,27 +191,37 @@ export default {
         },
 
         {
+          name: 'imageSelectionVersion',
+          type: 'number',
+          hidden: true,
+        },
+        {
           name: 'overrideImageButton',
-          title: 'Bruk et annet bilde?',
+          title: 'Bruk eget bilde for dette kullet',
           type: 'boolean',
-          description: 'Far burde se til høyere.',
-          hidden: ({parent}) => parent?.isOwned === false,
+          description: 'Standardbildet hentes fra valgt hund. Far skal se mot venstre. Eldre bildevalg beholdes til du endrer denne bryteren.',
+          hidden: ({parent}) => !parent?.dogReference?._ref && !parent?.overrideImage?.asset,
         },
         {
           name: 'overrideImage',
-          title: 'Bruk et annet bilde',
+          title: 'Eget bilde for kullet',
           type: 'image',
           options: {hotspot: true},
-          description: 'Velg et bilde for å overstyre referansebildet.',
-          hidden: ({parent}) => parent?.isOwned === false || parent?.overrideImageButton !== true,
+          description: 'Far skal se mot venstre. Et eksisterende bilde beholdes også når bryteren slås av.',
+          hidden: ({parent}) => parent?.imageSelectionVersion === 1
+            ? parent?.overrideImageButton !== true
+            : !parent?.overrideImage?.asset && parent?.overrideImageButton !== true,
         },
         {
           name: 'image',
-          title: 'Bilde',
+          title: 'Bilde (manuell hund / eldre lagret bilde)',
           type: 'image',
           options: {hotspot: true},
-          description: 'Far burde se til høyere.',
-          hidden: ({parent}) => parent?.isOwned === true && parent?.overrideImageButton !== true,
+          readOnly: ({parent}) => Boolean(parent?.dogReference?._ref || parent?.overrideImage?.asset || parent?.overrideImageButton === true),
+          description: 'Far skal se mot venstre. For valgt hund brukes «Eget bilde for kullet» til nye bildevalg. Eldre bilder beholdes her uten å endre nettsiden.',
+          hidden: ({parent}) => parent?.dogReference?._ref || parent?.overrideImage?.asset || parent?.overrideImageButton === true
+            ? !parent?.image?.asset
+            : false,
         },
 
         {
@@ -255,6 +253,7 @@ export default {
           type: 'text',
           description: 'Ekstra informasjon som ikke faller under helseresultatene.',
         },
+        legacyInfoField,
       ],
     },
     {
@@ -399,19 +398,27 @@ export default {
   preview: {
     select: {
       title: 'dateOfBirth',
-      subtitle: 'mother.nickname',
-      father: 'father.nickname',
+      motherNickname: 'mother.nickname',
+      motherName: 'mother.name',
+      motherReferenceNickname: 'mother.dogReference.nickname',
+      motherReferenceName: 'mother.dogReference.name',
+      fatherNickname: 'father.nickname',
+      fatherName: 'father.name',
+      fatherReferenceNickname: 'father.dogReference.nickname',
+      fatherReferenceName: 'father.dogReference.name',
       media: 'mainImage',
     },
     prepare(selection) {
-      const {title, subtitle, father, media} = selection
+      const {title, media} = selection
+      const mother = selection.motherReferenceNickname || selection.motherReferenceName || selection.motherNickname || selection.motherName
+      const father = selection.fatherReferenceNickname || selection.fatherReferenceName || selection.fatherNickname || selection.fatherName
       const formattedDateOfBirth = title
         ? new Date(title).toLocaleDateString('no-NO')
         : 'Ingen dato oppgitt'
 
       return {
         title: formattedDateOfBirth,
-        subtitle: `${subtitle || 'Ingen mor oppgitt'} |  ${father || 'Ingen far oppgitt'}`,
+        subtitle: `${mother || 'Ingen mor oppgitt'} |  ${father || 'Ingen far oppgitt'}`,
         media: media || 'no-image-icon',
       }
     },
