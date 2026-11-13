@@ -9,11 +9,6 @@
   targetPort = 5173
   framework = "vite"
 
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/public/sitemap.xml"
-  status = 200
-
 # SPA fallback
   [[redirects]]
   from = "/*"

@@ -15,7 +15,7 @@ const urls = [
 ];
 
 // Create a stream to generate the sitemap
-const stream = new SitemapStream({ hostname: 'https://shirkus.no' });
+const stream = new SitemapStream({ hostname: 'https://shebonemo.no' });
 const writeStream = createWriteStream('./public/sitemap.xml');
 
 
